@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BasicGun : Gun {
     
-
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform bulletTarget;
+    [SerializeField] private float bulletSpeed;
     float timingRate = 0f;
     bool isReloading;
 
@@ -24,7 +26,8 @@ public class BasicGun : Gun {
     }
 
     public override void Shoot(){
-        Debug.Log("Shoot!");
+        GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
+        cloneBullet.GetComponent<Rigidbody2D>().AddForce(cloneBullet.transform.right * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
         loadedAmmo -= 1;
     }
