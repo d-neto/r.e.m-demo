@@ -510,7 +510,6 @@ GameObject:
   - component: {fileID: 1768656163}
   - component: {fileID: 1768656162}
   - component: {fileID: 1768656164}
-  - component: {fileID: 1768656165}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -657,24 +656,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1768656159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a0e709417a17be0a284849e05872c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 51324fb0c7c7209038eef36870254b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
---- !u!114 &1768656165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768656159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c8283434841d019a86dfa95b43e88a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireGunCountInHands: 1
-  gunsInHand: 0
+  Data: {fileID: 11400000, guid: 1b242b5be3375b593b65c3ba4af44bda, type: 2}
   normalGunPosition: {fileID: 1682797440}
 --- !u!1 &2026264136
 GameObject:

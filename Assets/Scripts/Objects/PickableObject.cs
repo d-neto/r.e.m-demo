@@ -9,7 +9,7 @@ public class PickableObject : MonoBehaviour
     [SerializeField] private GameObject pickObject;
     [SerializeField] private float area;
     [SerializeField] private LayerMask whatIsPlayer;
-    private GameObject player;
+    private Player player;
     private PlayerConfigs playerConfigs;
     private bool canPick = true;
     void Start()
@@ -28,7 +28,7 @@ public class PickableObject : MonoBehaviour
     void Update()
     {
         if(canPick && IsPlayerOnArea() && Input.GetButtonDown("PickObject")){
-            playerConfigs = player.GetComponent<PlayerConfigs>();
+            playerConfigs = player.Config;
 
             if(!playerConfigs.CanPickObject(pickObject))
                 return;
@@ -42,7 +42,7 @@ public class PickableObject : MonoBehaviour
     bool IsPlayerOnArea(){
         Collider2D[] detections = Physics2D.OverlapCircleAll(transform.position, area, whatIsPlayer);
         if(detections != null && detections.Length > 0){
-            player = detections[0].gameObject;
+            player = detections[0].GetComponent<Player>();
             return true;
         }
         return false;

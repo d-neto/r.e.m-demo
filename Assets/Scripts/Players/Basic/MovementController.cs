@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour
+public class MovementController
 {
 
     [SerializeField] private float speed;
@@ -11,12 +11,12 @@ public class MovementController : MonoBehaviour
     private Vector2 movement = Vector2.zero;
     private Rigidbody2D rbody;
 
-    void Start()
-    {
-        rbody = GetComponent<Rigidbody2D>();
+    public MovementController(Rigidbody2D rbody, float speed){
+        this.rbody = rbody;
+        this.speed = speed;
     }
 
-    void Update()
+    public void Update()
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");

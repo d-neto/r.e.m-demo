@@ -22,10 +22,10 @@ public class PickableComponent : MonoBehaviour {
             OnDrop();
     }
 
-    public void OnPick(GameObject originViewObject, GameObject player){
+    public void OnPick(GameObject originViewObject, Player player){
         // Do something...
         Destroy(originViewObject);
-        this.playerConfigs = player.GetComponent<PlayerConfigs>();
+        this.playerConfigs = player.Config;
         this.gameObject.transform.localPosition = Vector3.zero;
         this.gameObject.SetActive(true);
     }
@@ -40,7 +40,7 @@ public class PickableComponent : MonoBehaviour {
         cloneView.GetComponent<Rigidbody2D>().AddForce(direction * dropForce, ForceMode2D.Impulse);
         
         if(GetComponentType() == ComponentType.GUN)
-            if(playerConfigs) playerConfigs.RemoveFireGun();
+            playerConfigs?.RemoveFireGun();
     }
 
     public ComponentType GetComponentType(){
