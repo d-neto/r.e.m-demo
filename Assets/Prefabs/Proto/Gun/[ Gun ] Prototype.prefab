@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830974a53a8bce0a5bf5115a1d106661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickableViewObject: {fileID: 0}
+  pickableViewObject: {fileID: 8738256168431927593, guid: e7b7a0fd58eb9aba7b1fa789b90aae8d, type: 3}
   dropForce: 80
   canDrop: 1
   objectType: 0
@@ -343,11 +343,11 @@ MonoBehaviour:
   maxAngle: 360
   targetRefer: {fileID: 0}
   canInvertOn90Degree: 1
-  maxAmmo: 0
-  currentAmmo: 0
-  loadedAmmo: 0
-  fireRateInMS: 0
-  reloadTimeInMS: 0
+  maxAmmo: 16
+  currentAmmo: 48
+  loadedAmmo: 16
+  fireRateInMS: 250
+  reloadTimeInMS: 1000
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   bulletTarget: {fileID: 0}
-  bulletSpeed: 0
+  bulletSpeed: 16

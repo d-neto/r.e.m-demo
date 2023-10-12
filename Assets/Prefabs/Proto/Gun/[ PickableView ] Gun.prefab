@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 4483242646760973249}
   - component: {fileID: 4667666392472638118}
   m_Layer: 16
-  m_Name: '[ Pickable ] Gun'
+  m_Name: '[ PickableView ] Gun'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
