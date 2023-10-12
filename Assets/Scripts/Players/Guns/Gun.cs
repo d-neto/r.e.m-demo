@@ -9,7 +9,6 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
     [SerializeField] private bool canInvertOn90Degree = true;
-    private bool canShoot = true;
 
     [Header("Attributes")]
     [SerializeField] protected int maxAmmo;
@@ -36,6 +35,8 @@ public abstract class Gun : MonoBehaviour
         if(targetRefer == null) targetRefer = transform;
     }
 
+    private void OnEnable() => OnEnableGun();
+
     private void Update()
     {
         ApplyRotation();
@@ -53,6 +54,10 @@ public abstract class Gun : MonoBehaviour
     public virtual void Reload(){
         // Especify what happens when the 
         // player reload an weapon
+    }
+
+    public virtual void OnEnableGun() {
+        
     }
 
     public virtual void ApplyRotation(){

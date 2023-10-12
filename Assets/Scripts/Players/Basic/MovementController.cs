@@ -9,11 +9,11 @@ public class MovementController : MonoBehaviour
 
     private Vector2 input = Vector2.zero;
     private Vector2 movement = Vector2.zero;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rbody;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -22,7 +22,12 @@ public class MovementController : MonoBehaviour
         input.y = Input.GetAxisRaw("Vertical");
 
         movement = input.normalized;
-        rigidbody.velocity = movement * speed;
+        rbody.velocity = movement * speed;
+    }
+
+    public bool IsMoving(){
+        return (Mathf.Abs(rbody.velocity.x) > 0.1 || Mathf.Abs(rbody.velocity.y) > 0.1)
+            && (Mathf.Abs(input.x) > 0 || Mathf.Abs(input.y) > 0);
     }
 
 }

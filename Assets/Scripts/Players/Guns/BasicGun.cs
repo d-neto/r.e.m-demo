@@ -7,8 +7,14 @@ public class BasicGun : Gun {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletTarget;
     [SerializeField] private float bulletSpeed;
+    private bool canShoot = true;
+
     float timingRate = 0f;
     bool isReloading;
+
+    public override void OnEnableGun(){
+        this.isReloading = false;
+    }
 
     public override void ShootingController(){
         

@@ -348,3 +348,6 @@ MonoBehaviour:
   loadedAmmo: 0
   fireRateInMS: 0
   reloadTimeInMS: 0
+  bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
+  bulletTarget: {fileID: 0}
+  bulletSpeed: 0
