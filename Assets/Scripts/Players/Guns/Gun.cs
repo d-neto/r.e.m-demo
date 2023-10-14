@@ -95,13 +95,22 @@ public abstract class Gun : MonoBehaviour
     }
 
     public void SetupGun(GameObject gunSource){
-        // GetChild(0) -> [GFX]
-        // GetChild(1) -> [Positions]
         GameObject source = Instantiate(gunSource, Vector3.zero, Quaternion.identity);
-        source.transform.SetParent(this.transform.GetChild(0));
 
-        // GetChild(0) om source object must be the position of bullet spawn
-        source.transform.GetChild(0).SetParent(this.transform.GetChild(1));
+        List<Transform> childrenList = new List<Transform>();
+        for (int i = 0; i < source.transform.childCount; i++){
+            Transform child = source.transform.GetChild(i);
+            childrenList.Add(child);
+        }
+
+        foreach (Transform child in childrenList)
+        {
+            if (child != gunSource.transform){
+                child.SetParent(this.transform);
+                child.transform.localPosition = Vector3.zero;
+            }
+        }
+        Destroy(source);
     }
 
 }
