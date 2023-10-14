@@ -149,5 +149,6 @@ MonoBehaviour:
   reloadTimeInMS: 1000
   referenceCode: P
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
+  dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
   bulletTarget: {fileID: 0}
   bulletSpeed: 16

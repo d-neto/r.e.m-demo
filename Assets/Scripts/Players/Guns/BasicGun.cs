@@ -6,6 +6,7 @@ public class BasicGun : Gun {
     
     [SerializeField] private string referenceCode;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject dustParticle;
     [SerializeField] private Transform bulletTarget;
     [SerializeField] private float bulletSpeed;
     private bool canShoot = true;
@@ -40,6 +41,10 @@ public class BasicGun : Gun {
     }
 
     public override void Shoot(){
+
+        if(dustParticle)
+            Instantiate<GameObject>(dustParticle, bulletTarget.position, this.transform.rotation);
+
         GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
         cloneBullet.GetComponent<Rigidbody2D>().AddForce(cloneBullet.transform.right * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
