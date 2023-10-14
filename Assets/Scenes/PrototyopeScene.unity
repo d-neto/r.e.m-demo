@@ -730,8 +730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 1b242b5be3375b593b65c3ba4af44bda, type: 2}
-  Input: {fileID: 0}
-  Anim: {fileID: 0}
+  Input: {fileID: 1768656165}
+  Anim: {fileID: 1768656166}
   normalGunPosition: {fileID: 1682797440}
 --- !u!114 &1768656165
 MonoBehaviour:
