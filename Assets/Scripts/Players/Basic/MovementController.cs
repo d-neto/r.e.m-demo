@@ -18,8 +18,10 @@ public class MovementController
 
     public void Update()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
+        // input.x = Input.GetAxisRaw("Horizontal");
+        // input.y = Input.GetAxisRaw("Vertical");
+        input.x = Input.GetAxis("Horizontal");
+        input.y = Input.GetAxis("Vertical");
 
         movement = input.normalized;
         rbody.velocity = movement * speed;

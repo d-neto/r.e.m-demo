@@ -9,4 +9,7 @@ public class PlayerData : ScriptableObject
     [Header("Movement")]
     public float speed;
 
+    [Header("States")]
+    public PlayerState IdleState;
+
 }

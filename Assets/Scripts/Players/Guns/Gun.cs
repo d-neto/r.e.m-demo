@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class Gun : MonoBehaviour
 {
 
+    public Player withPlayer;
+
     [Header("Configs.")]
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
