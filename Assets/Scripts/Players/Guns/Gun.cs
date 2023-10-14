@@ -10,7 +10,12 @@ public abstract class Gun : MonoBehaviour
     [Header("Configs.")]
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
+    [SerializeField] protected AudioSource Audio;
     [SerializeField] private bool canInvertOn90Degree = true;
+
+    [Header("Audios")]
+    [SerializeField] protected AudioClip shootAudioClip;
+    [SerializeField] protected AudioClip reloadAudioClip;
 
     [Header("Attributes")]
     [SerializeField] protected int maxAmmo;
@@ -27,6 +32,11 @@ public abstract class Gun : MonoBehaviour
     Vector3 mouseDirection;
     float angle;
     float originalScaleY;
+
+    private void Awake(){
+        if(!this.Audio)
+            this.Audio = GetComponent<AudioSource>();
+    }
 
     private void Start(){
         reloadTime = (float) reloadTimeInMS / 1000f;

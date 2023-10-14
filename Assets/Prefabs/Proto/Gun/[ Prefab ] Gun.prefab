@@ -389,34 +389,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: maxAmmo
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: loadedAmmo
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: bulletSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: currentAmmo
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: bulletTarget
-      value: 
-      objectReference: {fileID: 8612182747131667655}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: fireRateInMS
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723250554636228981, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-      propertyPath: reloadTimeInMS
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 7033538062470555349, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
       propertyPath: pickableViewObject
       value: 
@@ -437,11 +409,6 @@ PrefabInstance:
 --- !u!1 &4581221610616395607 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7385395721981727390, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
-  m_PrefabInstance: {fileID: 6480106536190019017}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8612182747131667655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3344318665683951886, guid: 2857a62c6b4c3e2debfa5a8de530a4a5, type: 3}
   m_PrefabInstance: {fileID: 6480106536190019017}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8824178492803176658 stripped

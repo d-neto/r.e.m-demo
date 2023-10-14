@@ -30,7 +30,7 @@ public class BasicGun : Gun {
         if(timingRate > 0)
             timingRate -= Time.deltaTime;
 
-        if(Input.GetButton("Fire1") && !isReloading){
+        if(Input.GetButton("Fire1") && !isReloading && canShoot){
             if(timingRate <= 0 && loadedAmmo > 0)
                 Shoot();
             else if(loadedAmmo <= 0 && currentAmmo > 0)
@@ -49,10 +49,11 @@ public class BasicGun : Gun {
         cloneBullet.GetComponent<Rigidbody2D>().AddForce(cloneBullet.transform.right * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
         loadedAmmo -= 1;
+        this.Audio.PlayOneShot(shootAudioClip);
     }
 
     public override void Reload(){
-        Debug.Log("Reloading");
+        this.Audio.PlayOneShot(reloadAudioClip);
         if(!isReloading){
             StartCoroutine(ReloadingAmmo());
         }
