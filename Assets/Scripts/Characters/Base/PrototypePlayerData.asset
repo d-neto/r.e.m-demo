@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: PrototypePlayerData
   m_EditorClassIdentifier: 
   speed: 3
+  weapons:
+  - referenceCode: PrototypeGun
+    source: {fileID: 3487873299147819335, guid: 258f48b67754fa2078f7b14fd449fffc, type: 3}

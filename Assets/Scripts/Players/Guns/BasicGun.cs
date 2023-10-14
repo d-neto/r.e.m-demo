@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicGun : Gun {
     
+    [SerializeField] private string referenceCode;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletTarget;
     [SerializeField] private float bulletSpeed;
@@ -11,6 +12,13 @@ public class BasicGun : Gun {
 
     float timingRate = 0f;
     bool isReloading;
+
+    public override void OnStart()
+    {
+        base.OnStart();
+        this.SetupGun(withPlayer.Data.GetWeapon(referenceCode));
+        this.bulletTarget = this.transform.GetChild(1).GetChild(0);
+    }
 
     public override void OnEnableGun(){
         this.isReloading = false;

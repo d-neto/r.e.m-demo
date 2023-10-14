@@ -9,7 +9,22 @@ public class PlayerData : ScriptableObject
     [Header("Movement")]
     public float speed;
 
-    [Header("States")]
-    public PlayerState IdleState;
+    [Header("Hand Weapons")]
+    public List<Weapon> weapons;
 
+
+    public GameObject GetWeapon(string code){
+        GameObject found = weapons[0].source;
+        foreach(Weapon weapon in this.weapons)
+            if(weapon.referenceCode == code){
+                found = weapon.source;
+                break;
+            }
+        return found;
+    }
+}
+[System.Serializable]
+public class Weapon{
+    public string referenceCode;
+    public GameObject source;
 }

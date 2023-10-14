@@ -12,12 +12,15 @@ public class PickableObject : MonoBehaviour
     private Player player;
     private PlayerConfigs playerConfigs;
     private bool canPick = true;
+
+    private PickableComponent pickableComponent;
     void Start()
     {
         if(this.transform.GetChild(1)){
             pickObject = this.transform.GetChild(1).gameObject;
             pickObject.SetActive(false);
-            if(pickObject.GetComponent<PickableComponent>() == null){
+            pickableComponent = pickObject.GetComponent<PickableComponent>();
+            if(pickableComponent == null){
                 Debug.LogError("Invalid Pickable Object!");
                 canPick = false;
             }
@@ -32,9 +35,9 @@ public class PickableObject : MonoBehaviour
 
             if(!playerConfigs.CanPickObject(pickObject))
                 return;
-
+                
             pickObject.transform.SetParent(playerConfigs.GetNormalGunPosition());
-            pickObject.GetComponent<PickableComponent>().OnPick(this.gameObject, player);
+            pickableComponent.OnPick(this.gameObject, player);
             playerConfigs.AddFireGun();
         }
     }

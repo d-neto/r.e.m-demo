@@ -35,6 +35,8 @@ public abstract class Gun : MonoBehaviour
         originalScaleY = transform.localScale.y;
 
         if(targetRefer == null) targetRefer = transform;
+
+        OnStart();
     }
 
     private void OnEnable() => OnEnableGun();
@@ -61,6 +63,9 @@ public abstract class Gun : MonoBehaviour
     public virtual void OnEnableGun() {
         
     }
+    public virtual void OnStart() {
+        if(withPlayer == null) withPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 
     public virtual void ApplyRotation(){
 
@@ -77,6 +82,16 @@ public abstract class Gun : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
         }
 
+    }
+
+    public void SetupGun(GameObject gunSource){
+        // GetChild(0) -> [GFX]
+        // GetChild(1) -> [Positions]
+        GameObject source = Instantiate(gunSource, Vector3.zero, Quaternion.identity);
+        source.transform.SetParent(this.transform.GetChild(0));
+
+        // GetChild(0) om source object must be the position of bullet spawn
+        source.transform.GetChild(0).SetParent(this.transform.GetChild(1));
     }
 
 }

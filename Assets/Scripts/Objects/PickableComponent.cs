@@ -27,6 +27,10 @@ public class PickableComponent : MonoBehaviour {
         Destroy(originViewObject);
         this.playerConfigs = player.Config;
         this.gameObject.transform.localPosition = Vector3.zero;
+    
+        if(this.objectType == ComponentType.GUN)
+            this.GetComponent<Gun>().withPlayer = player;
+
         this.gameObject.SetActive(true);
     }
     public void OnDrop(){
