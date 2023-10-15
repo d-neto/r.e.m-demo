@@ -23,7 +23,8 @@ public class MovementController
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
 
-        movement = input.normalized;
+        // movement = input.normalized;
+        movement = input;
         rbody.velocity = movement * speed;
     }
 

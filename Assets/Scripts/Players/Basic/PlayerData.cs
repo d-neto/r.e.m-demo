@@ -6,6 +6,11 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
 
+    [Header("Stats")]
+    public float life;
+    public float endurance;
+    public float skillPower;
+
     [Header("Movement")]
     public float speed;
 

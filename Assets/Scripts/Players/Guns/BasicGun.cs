@@ -38,7 +38,7 @@ public class BasicGun : Gun {
         }
         if(Input.GetButtonDown("Fire1") && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0){
             timingRate = fireRate;
-            Audio.PlayOneShot(emptyAudioClip);
+            Audio.PlayOneShot(emptyAudioClip, 0.1f);
         }
     }
 
@@ -60,11 +60,11 @@ public class BasicGun : Gun {
         cloneBullet.GetComponent<Rigidbody2D>().AddForce(moveDirection * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
         loadedAmmo -= 1;
-        this.Audio.PlayOneShot(shootAudioClip);
+        this.Audio.PlayOneShot(shootAudioClip, 0.1f);
     }
 
     public override void Reload(){
-        this.Audio.PlayOneShot(reloadAudioClip);
+        this.Audio.PlayOneShot(reloadAudioClip, 0.1f);
         if(!isReloading){
             StartCoroutine(ReloadingAmmo());
         }
