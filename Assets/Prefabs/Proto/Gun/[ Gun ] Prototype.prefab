@@ -165,6 +165,7 @@ MonoBehaviour:
   canInvertOn90Degree: 1
   shootAudioClip: {fileID: 8300000, guid: 1323d7ceaa4afbbffa86b33582997266, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: eed5cb0c3a2393a669920483b278b039, type: 3}
+  emptyAudioClip: {fileID: 8300000, guid: 124aa03870e5afcde861e1ec12f0da67, type: 3}
   maxAmmo: 16
   currentAmmo: 48
   loadedAmmo: 16

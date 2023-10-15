@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
-    public delegate void InputEvent(string button);
-    public static event InputEvent OnInput;
-    public static event InputEvent OnHold;
+    public delegate void InputEvent();
+    public delegate void GunEvent(Gun gun);
+    public static event InputEvent OnInputFire;
+    public static event GunEvent OnReloadStart;
+    public static event GunEvent OnReloadEnd;
 
     void Update(){
-
-        if(OnInput != null){
-            if(Input.GetButtonDown("Fire1")) OnInput("Fire1");
-            if(Input.GetButtonDown("Fire2")) OnInput("Fire2");
-            if(Input.GetButtonDown("Fire3")) OnInput("Fire3");
+        if(OnInputFire != null){
+            if(Input.GetButton("Fire1")) OnInputFire();
         }
+    }
+
+    public static void Reloading(Gun gun, bool start){
+        if(start) OnReloadStart?.Invoke(gun);
+        else OnReloadEnd?.Invoke(gun);
     }
 }

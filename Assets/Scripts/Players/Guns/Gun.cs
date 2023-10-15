@@ -16,6 +16,7 @@ public abstract class Gun : MonoBehaviour
     [Header("Audios")]
     [SerializeField] protected AudioClip shootAudioClip;
     [SerializeField] protected AudioClip reloadAudioClip;
+    [SerializeField] protected AudioClip emptyAudioClip;
 
     [Header("Attributes")]
     [SerializeField] protected int maxAmmo;

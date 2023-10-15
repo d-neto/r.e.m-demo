@@ -36,8 +36,10 @@ public class BasicGun : Gun {
             else if(loadedAmmo <= 0 && currentAmmo > 0)
                 Reload();
         }
-        if(Input.GetButtonDown("Fire1") && loadedAmmo <= 0 && currentAmmo <= 0)
-            Debug.Log("No AMMO!!");
+        if(Input.GetButtonDown("Fire1") && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0){
+            timingRate = fireRate;
+            Audio.PlayOneShot(emptyAudioClip);
+        }
     }
 
     public override void Shoot(){
@@ -46,7 +48,16 @@ public class BasicGun : Gun {
             Instantiate<GameObject>(dustParticle, bulletTarget.position, this.transform.rotation);
 
         GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
-        cloneBullet.GetComponent<Rigidbody2D>().AddForce(cloneBullet.transform.right * bulletSpeed, ForceMode2D.Impulse);
+
+        Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletTarget.position);
+        
+        if(Vector2.Distance(moveDirection + bulletTarget.position, bulletTarget.position) < 0.5f)
+            moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+
+        moveDirection.z = 0;       
+        moveDirection.Normalize();
+
+        cloneBullet.GetComponent<Rigidbody2D>().AddForce(moveDirection * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
         loadedAmmo -= 1;
         this.Audio.PlayOneShot(shootAudioClip);
@@ -58,6 +69,7 @@ public class BasicGun : Gun {
             StartCoroutine(ReloadingAmmo());
         }
         isReloading = true;
+        InputHandler.Reloading(this, isReloading);
     }
 
     IEnumerator ReloadingAmmo(){
@@ -72,6 +84,7 @@ public class BasicGun : Gun {
         }
 
         isReloading = false;
+        InputHandler.Reloading(this, isReloading);
     }
 
 }
