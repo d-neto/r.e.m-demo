@@ -40,6 +40,7 @@ public class Player: MonoBehaviour
         StateMachine.Initialize(States.IdleState);
 
         PlayerStatsManager.OnDeath += OnDeath;
+        PlayerStatsManager.OnDamage += OnDamage;
     }
 
     void Update(){
@@ -56,10 +57,15 @@ public class Player: MonoBehaviour
 
     private void OnDestroy() {
         PlayerStatsManager.OnDeath -= OnDeath;
+        PlayerStatsManager.OnDamage -= OnDamage;
     }
     
     void OnDeath(Player player){
         if(player == this) Debug.Log("DEAD!");
+    }
+
+    void OnDamage(Player player){
+        if(player == this) Debug.Log("DAMAGE!");
     }
 
     public PlayerUIController UI() => this.UIController;

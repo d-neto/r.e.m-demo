@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUIController
+public class PlayerUIController : MonoBehaviour
 {
 
     [Header("Stats")]
