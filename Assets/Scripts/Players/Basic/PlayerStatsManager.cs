@@ -19,8 +19,10 @@ public class PlayerStatsManager
         this.lifeSlider = player.UI().LifeSlider();
         this.skillPowerSlider = player.UI().SkillSlider();
 
-        this.lifeSlider.maxValue = player.Data.life;
-        this.lifeSlider.value = player.Data.life;
+        if(this.lifeSlider){
+            this.lifeSlider.maxValue = player.Data.life;
+            this.lifeSlider.value = player.Data.life;
+        }
     }
 
     public void Update(){

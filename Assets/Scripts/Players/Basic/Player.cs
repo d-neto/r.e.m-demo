@@ -27,7 +27,7 @@ public class Player: MonoBehaviour
 
         if(!Input) Input = GetComponent<InputHandler>();
 
-        Movement = new MovementController(GetComponent<Rigidbody2D>(), Data.speed);
+        Movement = new MovementController(this);
         Config = new PlayerConfigs(1, normalGunPosition);
         StateMachine = new PlayerStateMachine();
         Stats = new PlayerStatsManager(this);
