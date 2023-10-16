@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class BasicGun : Gun {
     
+    [SerializeField] private string referenceCode;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject dustParticle;
     [SerializeField] private Transform bulletTarget;
     [SerializeField] private float bulletSpeed;
     private bool canShoot = true;
 
     float timingRate = 0f;
     bool isReloading;
+
+    public override void OnStart()
+    {
+        base.OnStart();
+        this.SetupGun(withPlayer.Data.GetWeapon(referenceCode));
+        this.bulletTarget = this.transform.GetChild(1).GetChild(0);
+    }
 
     public override void OnEnableGun(){
         this.isReloading = false;
@@ -21,29 +30,46 @@ public class BasicGun : Gun {
         if(timingRate > 0)
             timingRate -= Time.deltaTime;
 
-        if(Input.GetButton("Fire1") && !isReloading){
+        if(Input.GetButton("Fire1") && !isReloading && canShoot){
             if(timingRate <= 0 && loadedAmmo > 0)
                 Shoot();
             else if(loadedAmmo <= 0 && currentAmmo > 0)
                 Reload();
         }
-        if(Input.GetButtonDown("Fire1") && loadedAmmo <= 0 && currentAmmo <= 0)
-            Debug.Log("No AMMO!!");
+        if(Input.GetButtonDown("Fire1") && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0){
+            timingRate = fireRate;
+            Audio.PlayOneShot(emptyAudioClip, 0.1f);
+        }
     }
 
     public override void Shoot(){
+
+        if(dustParticle)
+            Instantiate<GameObject>(dustParticle, bulletTarget.position, this.transform.rotation);
+
         GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
-        cloneBullet.GetComponent<Rigidbody2D>().AddForce(cloneBullet.transform.right * bulletSpeed, ForceMode2D.Impulse);
+
+        Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletTarget.position);
+        
+        if(Vector2.Distance(moveDirection + bulletTarget.position, bulletTarget.position) < 0.5f)
+            moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+
+        moveDirection.z = 0;       
+        moveDirection.Normalize();
+
+        cloneBullet.GetComponent<Rigidbody2D>().AddForce(moveDirection * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
         loadedAmmo -= 1;
+        this.Audio.PlayOneShot(shootAudioClip, 0.1f);
     }
 
     public override void Reload(){
-        Debug.Log("Reloading");
+        this.Audio.PlayOneShot(reloadAudioClip, 0.1f);
         if(!isReloading){
             StartCoroutine(ReloadingAmmo());
         }
         isReloading = true;
+        InputHandler.Reloading(this, isReloading);
     }
 
     IEnumerator ReloadingAmmo(){
@@ -58,6 +84,7 @@ public class BasicGun : Gun {
         }
 
         isReloading = false;
+        InputHandler.Reloading(this, isReloading);
     }
 
 }

@@ -5,10 +5,18 @@ using UnityEngine;
 public abstract class Gun : MonoBehaviour
 {
 
+    public Player withPlayer;
+
     [Header("Configs.")]
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
+    [SerializeField] protected AudioSource Audio;
     [SerializeField] private bool canInvertOn90Degree = true;
+
+    [Header("Audios")]
+    [SerializeField] protected AudioClip shootAudioClip;
+    [SerializeField] protected AudioClip reloadAudioClip;
+    [SerializeField] protected AudioClip emptyAudioClip;
 
     [Header("Attributes")]
     [SerializeField] protected int maxAmmo;
@@ -26,6 +34,11 @@ public abstract class Gun : MonoBehaviour
     float angle;
     float originalScaleY;
 
+    private void Awake(){
+        if(!this.Audio)
+            this.Audio = GetComponent<AudioSource>();
+    }
+
     private void Start(){
         reloadTime = (float) reloadTimeInMS / 1000f;
         fireRate = (float) fireRateInMS / 1000f;
@@ -33,6 +46,8 @@ public abstract class Gun : MonoBehaviour
         originalScaleY = transform.localScale.y;
 
         if(targetRefer == null) targetRefer = transform;
+
+        OnStart();
     }
 
     private void OnEnable() => OnEnableGun();
@@ -59,6 +74,9 @@ public abstract class Gun : MonoBehaviour
     public virtual void OnEnableGun() {
         
     }
+    public virtual void OnStart() {
+        if(withPlayer == null) withPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 
     public virtual void ApplyRotation(){
 
@@ -75,6 +93,25 @@ public abstract class Gun : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
         }
 
+    }
+
+    public void SetupGun(GameObject gunSource){
+        GameObject source = Instantiate(gunSource, Vector3.zero, Quaternion.identity);
+
+        List<Transform> childrenList = new List<Transform>();
+        for (int i = 0; i < source.transform.childCount; i++){
+            Transform child = source.transform.GetChild(i);
+            childrenList.Add(child);
+        }
+
+        foreach (Transform child in childrenList)
+        {
+            if (child != gunSource.transform){
+                child.SetParent(this.transform);
+                child.transform.localPosition = Vector3.zero;
+            }
+        }
+        Destroy(source);
     }
 
 }
