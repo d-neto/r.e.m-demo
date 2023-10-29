@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
+    [SerializeField] private Vector3 direction;
+    [SerializeField] private float damage;
     [SerializeField] private GameObject destroyedBulletPS;
     [SerializeField] private AudioClip defaultHitAudioClip;
     private Transform player;
@@ -29,5 +31,10 @@ public class Bullet : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
+    public float GetDamage() => this.damage;
+    public void SetDamage(float damage) => this.damage = damage;
+    public Vector3 GetDirection() => this.direction;
+    public void SetDirection(Vector3 direction) => this.direction = direction;
 
 }

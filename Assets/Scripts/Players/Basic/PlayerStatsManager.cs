@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class PlayerStatsManager
 {
 
-    public delegate void StatEvent(Player player);
-    public static event StatEvent OnDeath;
-    public static event StatEvent OnDamage;
+    public delegate void StatEvent();
+    public delegate void DamageEvent(Transform origin);
+    public event StatEvent OnDeath;
+    public event DamageEvent OnDamage;
 
     private Player player;
     private Slider lifeSlider;
@@ -29,15 +30,15 @@ public class PlayerStatsManager
         if(isDead) return;
 
         if(player.Data.life <= 0){
-            OnDeath?.Invoke(player);
+            OnDeath?.Invoke();
             isDead = true;
         }
     }
 
-    public void TakeDamage(float damage){
+    public void TakeDamage(float damage, Transform origin){
         player.Data.life -= (damage - player.Data.endurance) > 0 ? (damage-player.Data.endurance) : 0;
         LifeSlider(player.Data.life);
-        OnDamage?.Invoke(player);
+        OnDamage?.Invoke(origin);
     }
 
     void LifeSlider(float life){

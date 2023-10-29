@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player: MonoBehaviour
@@ -15,6 +16,8 @@ public class Player: MonoBehaviour
     [Header("Player Components")]
     [SerializeField] private InputHandler Input;
     [SerializeField] private Animator Anim;
+    [SerializeField] private SpriteRenderer Renderer;
+    [SerializeField] private Collider2D Collider;
 
     [Header("Positions")]
     [SerializeField] private Transform normalGunPosition;
@@ -26,7 +29,10 @@ public class Player: MonoBehaviour
     void Awake(){
 
         if(!Input) Input = GetComponent<InputHandler>();
+        if(!Anim) Anim = GetComponent<Animator>();
+        if(!Renderer) Renderer = GetComponent<SpriteRenderer>();
 
+        Data = Instantiate<PlayerData>(Data);
         Movement = new MovementController(this);
         Config = new PlayerConfigs(1, normalGunPosition);
         StateMachine = new PlayerStateMachine();
@@ -36,11 +42,10 @@ public class Player: MonoBehaviour
     }
 
     void Start(){
-        if(!Anim) Anim = GetComponent<Animator>();
         StateMachine.Initialize(States.IdleState);
 
-        PlayerStatsManager.OnDeath += OnDeath;
-        PlayerStatsManager.OnDamage += OnDamage;
+        this.Stats.OnDeath += OnDeath;
+        this.Stats.OnDamage += OnDamage;
     }
 
     void Update(){
@@ -56,16 +61,42 @@ public class Player: MonoBehaviour
     public Animator GetAnimator() => this.Anim;
 
     private void OnDestroy() {
-        PlayerStatsManager.OnDeath -= OnDeath;
-        PlayerStatsManager.OnDamage -= OnDamage;
+        this.Stats.OnDeath -= OnDeath;
+        this.Stats.OnDamage -= OnDamage;
     }
     
-    void OnDeath(Player player){
-        if(player == this) Debug.Log("DEAD!");
+    void OnDeath(){
+        //  
     }
 
-    void OnDamage(Player player){
-        if(player == this) Debug.Log("DAMAGE!");
+    void OnDamage(Transform origin){
+        Vector2 direction = (this.transform.position - origin.position).normalized;
+        this.Movement.Rbody().AddForce(direction * 5, ForceMode2D.Impulse);
+        this.Movement.Lock(true);
+        StartCoroutine(Damaged());
+    }
+
+    IEnumerator Damaged(){
+        this.Anim.SetTrigger("damage");
+        this.Collider.enabled = false;
+
+        this.Renderer.color = new Color(255, 0, 0, 0.7f);
+        yield return new WaitForSeconds(0.15f);
+
+        this.Movement.Lock(false);
+
+        this.Renderer.color = new Color(255, 255, 255, 0.7f);
+        yield return new WaitForSeconds(0.15f);
+        this.Renderer.color = new Color(255, 0, 0, 0.7f);
+        yield return new WaitForSeconds(0.15f);
+        this.Renderer.color = new Color(255, 255, 255, 0.7f);
+        yield return new WaitForSeconds(0.15f);
+        this.Renderer.color = new Color(255, 0, 0, 0.7f);
+        yield return new WaitForSeconds(0.15f);
+        this.Renderer.color = new Color(255, 255, 255, 1f);
+
+        yield return new WaitForSeconds(0.5f);
+        this.Collider.enabled = true;
     }
 
     public PlayerUIController UI() => this.UIController;

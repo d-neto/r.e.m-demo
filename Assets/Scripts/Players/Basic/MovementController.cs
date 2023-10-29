@@ -12,6 +12,8 @@ public class MovementController
     private Rigidbody2D rbody;
     private Player player;
 
+    bool canMove = true;
+
     public MovementController(Player player){
         this.player = player;
         this.rbody = player.GetComponent<Rigidbody2D>();
@@ -23,8 +25,12 @@ public class MovementController
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
         movement = input;
-        rbody.velocity = movement * speed;
 
+        if(canMove) Movement();
+    }
+
+    public void Movement(){
+        rbody.velocity = movement * speed;
         InvertWithMouse();
     }
 
@@ -40,4 +46,8 @@ public class MovementController
         if(direction.x > 0) player.transform.localRotation = Quaternion.Euler(0, 180, 0);
         else if(direction.x < 0) player.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
+
+    public Rigidbody2D Rbody() => this.rbody;
+
+    public void Lock(bool isLocked) => this.canMove = !isLocked;
 }

@@ -9,6 +9,7 @@ public class BasicGun : Gun {
     [SerializeField] private GameObject dustParticle;
     [SerializeField] private Transform bulletTarget;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private float bulletDamage;
     private bool canShoot = true;
 
     float timingRate = 0f;
@@ -48,6 +49,7 @@ public class BasicGun : Gun {
             Instantiate<GameObject>(dustParticle, bulletTarget.position, this.transform.rotation);
 
         GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
+        cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
 
         Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletTarget.position);
         
@@ -56,6 +58,7 @@ public class BasicGun : Gun {
 
         moveDirection.z = 0;       
         moveDirection.Normalize();
+        cloneBullet.GetComponent<Bullet>().SetDirection(moveDirection);
 
         cloneBullet.GetComponent<Rigidbody2D>().AddForce(moveDirection * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
