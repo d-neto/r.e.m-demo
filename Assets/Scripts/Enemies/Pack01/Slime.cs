@@ -65,7 +65,6 @@ public class Slime : MeleeEnemy
     }
 
     public void KillSlime(){
-        Debug.Log("KILLL");
         Audio.PlayOneShot(deathAudioClip, 0.3f);
         Destroy(this.gameObject, 2f);
     }
