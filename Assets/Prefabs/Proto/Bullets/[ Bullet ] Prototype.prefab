@@ -121,8 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41be87f6e0b3a9319be2df0c9a4cecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  damage: 0
   destroyedBulletPS: {fileID: 2403383123155593966, guid: 754fc2020611771feb4f635a44dd4cc8, type: 3}
-  Audio: {fileID: 1772542510977805293}
   defaultHitAudioClip: {fileID: 8300000, guid: 3e79a2bed2da246d2b8409985c4e05ef, type: 3}
 --- !u!82 &1772542510977805293
 AudioSource:
@@ -180,7 +181,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -20,6 +20,7 @@ public class Slime : MeleeEnemy
     [SerializeField] protected AudioSource Audio;
 
     [Header("Audios")]
+    [SerializeField] private float volume;
     [SerializeField] private AudioClip jumpAudioClip;
     [SerializeField] private AudioClip damageAudioClip;
     [SerializeField] private AudioClip deathAudioClip;
@@ -31,6 +32,8 @@ public class Slime : MeleeEnemy
             this.SuperAnimator = GetComponent<Animator>();
         if(!this.Audio)
             this.Audio = transform.GetComponent<AudioSource>();
+
+        this.waitTime = Random.Range(this.waitTime-0.1f, this.waitTime+0.1f);
     }
     public override void OnUpdate()
     {
@@ -44,16 +47,15 @@ public class Slime : MeleeEnemy
     }
 
     public override void OnDeath(){
-        if(this.isDead) return;
         SuperAnimator.SetTrigger("dead");
         Anim.SetTrigger("dead");
         Instantiate(PSDeath, particleSpawn.position, Quaternion.identity);
-        this.isDead = true;
+        Destroy(this.gameObject);
     }
 
     public override void OnDamage(float damage, Vector3 direction){
         isTakingDamage = true;
-        Audio.PlayOneShot(damageAudioClip, 0.3f);
+        Audio.PlayOneShot(damageAudioClip, volume);
         StartCoroutine(TakeDamage(direction));
         if(damage - Data.endurance >= 0)
             this.Data.life -= (damage - Data.endurance);
@@ -64,14 +66,9 @@ public class Slime : MeleeEnemy
         rb2D.velocity = direction * Data.speed;
     }
 
-    public void KillSlime(){
-        Audio.PlayOneShot(deathAudioClip, 0.3f);
-        Destroy(this.gameObject, 2f);
-    }
-
     IEnumerator MovingToTarget(){
         startCoroutine = true;
-        Audio.PlayOneShot(jumpAudioClip, 0.3f);
+        Audio.PlayOneShot(jumpAudioClip, volume);
         rb2D.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(waitTime);
