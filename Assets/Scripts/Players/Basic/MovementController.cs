@@ -9,6 +9,7 @@ public class MovementController
 
     private Vector2 input = Vector2.zero;
     private Vector2 movement = Vector2.zero;
+    private Vector2 movementRaw = Vector2.zero;
     private Rigidbody2D rbody;
     private Player player;
 
@@ -25,6 +26,8 @@ public class MovementController
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
         movement = input;
+        movementRaw.x = Input.GetAxisRaw("Horizontal");
+        movementRaw.y = Input.GetAxisRaw("Vertical");
 
         if(canMove) Movement();
     }
@@ -47,6 +50,8 @@ public class MovementController
         else if(direction.x < 0) player.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+    public Vector2 Get() => this.movement;
+    public Vector2 GetRaw() => this.movementRaw;
     public Rigidbody2D Rbody() => this.rbody;
 
     public void Lock(bool isLocked) => this.canMove = !isLocked;

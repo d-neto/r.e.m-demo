@@ -23,14 +23,14 @@ TagManager:
   - 
   - 
   - PickableObject
+  - Enemy
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - InvunerablePlayer
   - 
   - 
   - 
