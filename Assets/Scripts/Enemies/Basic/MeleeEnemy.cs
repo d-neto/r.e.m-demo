@@ -20,10 +20,11 @@ public class MeleeEnemy : MonoBehaviour
         this.Data = Instantiate(this.Data);
 
         this.OnAwake();
+        EnemyManager.Instance.RegisterEnemy(this.GetComponent<AbleAim>());
     }
 
     void Update(){
-        if(isDead) return;
+        if(isDead) Destroy(this.gameObject);
         OnUpdate();
 
         if(Data.life <= 0 && !isDead) OnDeath();
@@ -39,6 +40,7 @@ public class MeleeEnemy : MonoBehaviour
 
 
     public virtual void OnDeath(){
+        EnemyManager.Instance.UnregisterEnemy(this.GetComponent<AbleAim>());
         isDead = true;
     }
 

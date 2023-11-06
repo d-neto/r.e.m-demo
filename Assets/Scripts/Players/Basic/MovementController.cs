@@ -5,6 +5,8 @@ using UnityEngine;
 public class MovementController
 {
 
+    public delegate void InvertSpriteMode();
+    private InvertSpriteMode InvertWith;
     [SerializeField] private float speed;
 
     private Vector2 input = Vector2.zero;
@@ -15,10 +17,14 @@ public class MovementController
 
     bool canMove = true;
 
+    Transform target;
+
     public MovementController(Player player){
         this.player = player;
         this.rbody = player.GetComponent<Rigidbody2D>();
         this.speed = player.Data.speed;
+
+        this.InvertWith = InvertWithMouse;
     }
 
     public void Update()
@@ -34,7 +40,7 @@ public class MovementController
 
     public void Movement(){
         rbody.velocity = movement * speed;
-        InvertWithMouse();
+        InvertWith();
     }
 
     public bool IsMoving(){
@@ -50,9 +56,22 @@ public class MovementController
         else if(direction.x < 0) player.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+    public void InvertWithActualTarget(){
+        Vector3 direction = -input;
+        if(target){
+            direction = (player.transform.position - target.position).normalized;
+        }
+
+        if(direction.x > 0) player.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        else if(direction.x < 0) player.transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+
     public Vector2 Get() => this.movement;
     public Vector2 GetRaw() => this.movementRaw;
     public Rigidbody2D Rbody() => this.rbody;
 
     public void Lock(bool isLocked) => this.canMove = !isLocked;
+    public void ChangeInvertMode(InvertSpriteMode mode) => this.InvertWith = mode;
+    public void SerActualTarget(Transform target) => this.target = target;
+    public void RemoveActualTarget() => this.target = null;
 }
