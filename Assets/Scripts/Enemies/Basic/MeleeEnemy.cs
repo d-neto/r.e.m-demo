@@ -20,6 +20,9 @@ public class MeleeEnemy : MonoBehaviour
         this.Data = Instantiate(this.Data);
 
         this.OnAwake();
+    }
+
+    void Start(){
         EnemyManager.Instance.RegisterEnemy(this.GetComponent<AbleAim>());
     }
 
