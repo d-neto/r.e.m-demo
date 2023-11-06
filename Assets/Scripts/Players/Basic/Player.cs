@@ -78,7 +78,7 @@ public class Player: MonoBehaviour
 
     IEnumerator Damaged(){
         this.Anim.SetTrigger("damage");
-        this.Collider.enabled = false;
+        this.DisableCollision();
 
         this.Renderer.color = new Color(255, 0, 0, 0.7f);
         yield return new WaitForSeconds(0.15f);
@@ -96,9 +96,11 @@ public class Player: MonoBehaviour
         this.Renderer.color = new Color(255, 255, 255, 1f);
 
         yield return new WaitForSeconds(0.5f);
-        this.Collider.enabled = true;
+        this.EnableCollision();
     }
 
     public PlayerUIController UI() => this.UIController;
-
+    public void EnableCollision() => this.gameObject.layer = 6;
+    public void DisableCollision() => this.gameObject.layer = 24;
+    public SpriteRenderer Graphics() => this.Renderer;
 }

@@ -16,6 +16,8 @@ MonoBehaviour:
   endurance: 0
   skillPower: 20
   speed: 3
+  dashSpeed: 100
+  dashTiming: 0.1
   weapons:
-  - referenceCode: PrototypeGun
+  - referenceCode: Pistol#01
     source: {fileID: 8582376053168952783, guid: a916f6fe2ad8edef595326bb77f64dbd, type: 3}
