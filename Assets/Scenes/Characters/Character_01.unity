@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &343905919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343905920}
+  - component: {fileID: 343905921}
+  m_Layer: 0
+  m_Name: '[ EnemyManager ]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343905920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343905919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343905921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343905919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc30dff4b12e95bcaa89bc8e6b9012e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368615380
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +182,7 @@ GameObject:
   - component: {fileID: 368615388}
   - component: {fileID: 368615387}
   - component: {fileID: 368615383}
+  - component: {fileID: 368615389}
   m_Layer: 17
   m_Name: '[ Enemy ] JS'
   m_TagString: Enemy
@@ -154,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 368615380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.08, y: -1.38, z: 0}
+  m_LocalPosition: {x: 7.61, y: -3.63, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -390,6 +435,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &368615389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368615380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eeea0f28a3b39848b30e883a01ab7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 974377045}
 --- !u!1001 &478767487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,6 +456,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1835672472584100893, guid: 044a761075d51a3eca8dd394e58ee842, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835672472584100893, guid: 044a761075d51a3eca8dd394e58ee842, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1835672472584100893, guid: 044a761075d51a3eca8dd394e58ee842, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.12
@@ -497,6 +563,37 @@ MonoBehaviour:
   canDash: 1
   isDashing: 0
   ghostPrefab: {fileID: 6688115920489748952, guid: 00a811fbf6573bf5a9fff33b29e0a2ec, type: 3}
+--- !u!1 &974377044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974377045}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &974377045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974377044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.325, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1301359277}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995199129
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +883,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 995199130}
+  - {fileID: 974377045}
   m_Father: {fileID: 368615382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1313250096
@@ -1091,6 +1189,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1242918622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916723251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3992602573514146890, guid: 044a761075d51a3eca8dd394e58ee842, type: 3}
+  m_PrefabInstance: {fileID: 478767487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e703e8bbc6415b79a959590078e305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &115192372136614326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,7 +1611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffefcb92a53fbdec82f9cd599ef19b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withPlayer: {fileID: 0}
+  withPlayer: {fileID: 1996481242795770653}
+  targetMethod: mouse
+  actualTarget: {fileID: 0}
   maxAngle: 360
   targetRefer: {fileID: 1086579766941617220}
   Audio: {fileID: 2787400331905879250}
@@ -1515,10 +1626,11 @@ MonoBehaviour:
   loadedAmmo: 16
   fireRateInMS: 250
   reloadTimeInMS: 700
+  bulletTarget: {fileID: 0}
+  Aim: {fileID: 1916723251}
   referenceCode: Pistol#01
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
-  bulletTarget: {fileID: 0}
   bulletSpeed: 17
   bulletDamage: 3.5
 --- !u!70 &4843476613890355298
@@ -1660,3 +1772,4 @@ SceneRoots:
   - {fileID: 1086579766941617220}
   - {fileID: 478767487}
   - {fileID: 368615382}
+  - {fileID: 343905920}

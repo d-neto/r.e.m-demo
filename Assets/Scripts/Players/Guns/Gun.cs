@@ -5,9 +5,13 @@ using UnityEngine;
 public abstract class Gun : MonoBehaviour
 {
 
+    public delegate void RotationMethod();
+    public RotationMethod ApplyRotation;
     public Player withPlayer;
 
     [Header("Configs.")]
+    [SerializeField] private string targetMethod = "mouse";
+    [SerializeField] private AbleAim actualTarget;
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
     [SerializeField] protected AudioSource Audio;
@@ -25,18 +29,25 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField] private int fireRateInMS;
     [SerializeField] private int reloadTimeInMS;
+    [SerializeField] protected Transform bulletTarget;
+    [SerializeField] protected AimController Aim;
+
     protected float reloadTime;
     protected float fireRate;
 
-    Vector3 mousePosition;
     Vector3 positionRefer;
+    Vector3 rotateToTargetRefer;
     Vector3 mouseDirection;
+    protected Vector2 BulletToDirection;
     float angle;
     float originalScaleY;
 
     private void Awake(){
         if(!this.Audio)
             this.Audio = GetComponent<AudioSource>();
+
+        if(targetMethod == "target") ChangeRotationToTarget();
+        else ChangeRotationToMouse();
     }
 
     private void Start(){
@@ -78,11 +89,28 @@ public abstract class Gun : MonoBehaviour
         if(withPlayer == null) withPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-    public virtual void ApplyRotation(){
 
-        mousePosition = Input.mousePosition;
+    public void ChangeRotationToTarget(){
+        ChangeRotationMethod(RotationByTarget);
+        this.withPlayer.Movement.ChangeInvertMode(this.withPlayer.Movement.InvertWithActualTarget);
+        Aim.ChangeMode(Aim.UseTarget);
+    }
+    public void ChangeRotationToMouse(){
+        ChangeRotationMethod(RotationByMouse);
+        this.withPlayer.Movement.ChangeInvertMode(this.withPlayer.Movement.InvertWithMouse);
+        Aim.ChangeMode(Aim.UseMouse);
+    }
+
+    public void ChangeRotationMethod(RotationMethod method){
+        this.ApplyRotation = method;
+    }
+
+    public virtual void RotationByMouse(){
+
+        BulletToDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         positionRefer = Camera.main.WorldToScreenPoint(targetRefer.position);
-        mouseDirection = mousePosition - positionRefer;
+        mouseDirection = Aim.GetByMouse() - positionRefer;
 
         angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
         angle = Mathf.Clamp(angle, -maxAngle, maxAngle);
@@ -94,6 +122,33 @@ public abstract class Gun : MonoBehaviour
         }
 
     }
+    public virtual void RotationByTarget(){
+        if(!actualTarget){
+            BulletToDirection = transform.position + bulletTarget.right;
+            this.withPlayer.Movement.RemoveActualTarget();
+            this.Aim.NoTarget();
+            return;
+        }
+
+        BulletToDirection = actualTarget.Get().position;
+        this.withPlayer.Movement.SerActualTarget(actualTarget.Get());
+        this.Aim.SetTarget(actualTarget.Get());
+
+        rotateToTargetRefer = Camera.main.WorldToScreenPoint(actualTarget.Get().position);
+        positionRefer = Camera.main.WorldToScreenPoint(targetRefer.position);
+        mouseDirection = rotateToTargetRefer - positionRefer;
+
+        angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+        angle = Mathf.Clamp(angle, -maxAngle, maxAngle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if(canInvertOn90Degree){
+            float scaleY = (angle > 90 || angle < -90) ? -originalScaleY : originalScaleY;
+            transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
+        }
+
+    }
+
 
     public void SetupGun(GameObject gunSource){
         GameObject source = Instantiate(gunSource, Vector3.zero, Quaternion.identity);
@@ -112,6 +167,47 @@ public abstract class Gun : MonoBehaviour
             }
         }
         Destroy(source);
+    }
+
+    AbleAim[] targets;
+    int targetIndex;
+    bool isRotationDefault = false;
+    public void SearchTarget(bool findFirst = false){
+        targets = EnemyManager.Instance.GetEnemiesInRadius(withPlayer.transform.position, 15);
+        if(targets.Length == 0){
+            if(!isRotationDefault){
+                transform.localRotation = Quaternion.AngleAxis(0f, new Vector3(0, 0, 0));
+                isRotationDefault = true;
+            }
+            return;
+        }
+
+        AbleAim choose = actualTarget;
+        if(!actualTarget){
+            choose = targets[0];
+            targetIndex = 0;
+        }
+
+        float distFromPlayer, distFromChoose;
+
+        int idx = 0;
+        foreach(AbleAim target in targets){
+            distFromPlayer = Vector2.Distance(transform.position, target.transform.position);
+            distFromChoose = Vector2.Distance(transform.position, choose.transform.position);
+            if(distFromPlayer < distFromChoose && distFromChoose > 2){
+                choose = target;
+                targetIndex = idx;
+            }
+            idx++;
+        }
+        if(!actualTarget || !findFirst)
+            actualTarget = choose;
+
+        isRotationDefault = false;
+    }
+
+    public void SwitchTarget(){
+        this.actualTarget = targets[targetIndex+1 >= targets.Length ? 0 : ++targetIndex];
     }
 
 }

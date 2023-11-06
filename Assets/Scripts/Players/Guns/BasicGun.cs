@@ -7,7 +7,6 @@ public class BasicGun : Gun {
     [SerializeField] private string referenceCode;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject dustParticle;
-    [SerializeField] private Transform bulletTarget;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float bulletDamage;
     private bool canShoot = true;
@@ -41,6 +40,10 @@ public class BasicGun : Gun {
             timingRate = fireRate;
             Audio.PlayOneShot(emptyAudioClip, 0.1f);
         }
+
+        if(Input.GetButtonDown("SwitchTarget")) SwitchTarget();
+
+        if(withPlayer.Movement.IsMoving()) SearchTarget();
     }
 
     public override void Shoot(){
@@ -51,10 +54,10 @@ public class BasicGun : Gun {
         GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
         cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
 
-        Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletTarget.position);
+        Vector3 moveDirection = (this.BulletToDirection - (Vector2) bulletTarget.position);
         
         if(Vector2.Distance(moveDirection + bulletTarget.position, bulletTarget.position) < 0.5f)
-            moveDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            moveDirection = (this.BulletToDirection - (Vector2) transform.position);
 
         moveDirection.z = 0;       
         moveDirection.Normalize();

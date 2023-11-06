@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AimController : MonoBehaviour
 {
-    
+    public delegate void TargetMode();
+    TargetMode TargetModeUpdate;
+
     [Header("Colors")]
     [SerializeField] private Color normalAimColor;
     [SerializeField] private Color invalidAimColor;
@@ -16,11 +18,13 @@ public class AimController : MonoBehaviour
     [SerializeField] private Animator Anim;
 
     Vector3 mousePosition;
+    Transform target;
     float timingShoot = 0.3f;
     float currentTiming = 0.3f;
     bool canFireAnimation = true;
 
     void Awake(){
+        this.TargetModeUpdate = UseMouse;
         SetColor(normalAimColor);
         if(!Anim) Anim = GetComponent<Animator>();
     }
@@ -38,13 +42,20 @@ public class AimController : MonoBehaviour
     }
 
     void Update(){
-        mousePosition = Input.mousePosition;
-        transform.position = (Vector2) Camera.main.ScreenToWorldPoint(mousePosition);
+        
+        TargetModeUpdate();
 
         if(currentTiming <= 0) canFireAnimation = true;
         if(currentTiming >= 0) currentTiming -= Time.deltaTime;
     }
 
+    public void UseMouse(){
+        mousePosition = Input.mousePosition;
+        transform.position = (Vector2) Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+    public void UseTarget(){
+        transform.position = target ? target.position : transform.position;
+    }
 
     void SetColor(Color color){
         foreach(SpriteRenderer sprite in sprites){
@@ -81,4 +92,11 @@ public class AimController : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy")) SetColor(normalAimColor);
     }
 
+    public Vector3 GetByMouse() => this.mousePosition;
+    public void SetTarget(Transform target){
+        this.Anim.SetBool("no-target", false);
+        this.target = target;
+    }
+    public void ChangeMode(TargetMode mode) => this.TargetModeUpdate = mode;
+    public void NoTarget() => this.Anim.SetBool("no-target", true);
 }

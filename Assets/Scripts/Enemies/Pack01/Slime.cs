@@ -47,10 +47,10 @@ public class Slime : MeleeEnemy
     }
 
     public override void OnDeath(){
+        base.OnDeath();
         SuperAnimator.SetTrigger("dead");
         Anim.SetTrigger("dead");
         Instantiate(PSDeath, particleSpawn.position, Quaternion.identity);
-        Destroy(this.gameObject);
     }
 
     public override void OnDamage(float damage, Vector3 direction){
