@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AimController : MonoBehaviour
-{
+{   
+    [SerializeField] protected Player player;
+    [SerializeField] protected Transform nullTarget;
     public delegate void TargetMode();
     TargetMode TargetModeUpdate;
 
@@ -12,7 +14,9 @@ public class AimController : MonoBehaviour
     [SerializeField] private Color invalidAimColor;
     [SerializeField] private Color targetAimColor;
 
+    public enum AIM_MODE{Mouse, Target};
     [Header("Configs.")]
+    [SerializeField] public AIM_MODE mode = AIM_MODE.Mouse;
     [SerializeField] private List<SpriteRenderer> sprites;
 
     [SerializeField] private Animator Anim;
@@ -24,9 +28,19 @@ public class AimController : MonoBehaviour
     bool canFireAnimation = true;
 
     void Awake(){
-        this.TargetModeUpdate = UseMouse;
         SetColor(normalAimColor);
         if(!Anim) Anim = GetComponent<Animator>();
+
+        switch(mode){
+            case AIM_MODE.Target:
+                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithActualTarget);
+                ChangeMode(UseTarget);
+                break;
+            case AIM_MODE.Mouse:
+                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithMouse);
+                ChangeMode(UseMouse);
+                break;
+        }
     }
 
     void Start(){
@@ -52,8 +66,11 @@ public class AimController : MonoBehaviour
     public void UseMouse(){
         mousePosition = Input.mousePosition;
         transform.position = (Vector2) Camera.main.ScreenToWorldPoint(mousePosition);
+        SetTarget(transform);
     }
     public void UseTarget(){
+        SearchTarget();
+        if(Input.GetButtonDown("SwitchTarget")) SwitchTarget();
         transform.position = target ? target.position : transform.position;
     }
 
@@ -93,10 +110,69 @@ public class AimController : MonoBehaviour
     }
 
     public Vector3 GetByMouse() => this.mousePosition;
+    public Vector3 GetScreenPosition() => Camera.main.WorldToScreenPoint(this.transform.position);
+    public Transform GetActualTarget() => this.target;
     public void SetTarget(Transform target){
         this.Anim.SetBool("no-target", false);
         this.target = target;
     }
     public void ChangeMode(TargetMode mode) => this.TargetModeUpdate = mode;
     public void NoTarget() => this.Anim.SetBool("no-target", true);
+
+
+
+
+    AbleAim[] targets;
+    AbleAim actualTarget;
+    int targetIndex;
+    bool showNoTarget = false;
+    public void SearchTarget(float range = 15, bool findFirst = false){
+        targets = EnemyManager.Instance.GetEnemiesInRadius(player.transform.position, range);
+
+        if(targets.Length == 0){
+            if(!showNoTarget){
+                NoTarget();
+                player.Movement.SetNullTarget(true);
+                this.target = nullTarget;
+                showNoTarget = true;
+            }
+            return;
+        }
+
+        AbleAim choose = actualTarget;
+        if(!actualTarget){
+            choose = targets[0];
+            targetIndex = 0;
+        }
+
+        float distFromPlayer, distFromChoose, distChooseFromOther;
+
+        int idx = 0;
+        foreach(AbleAim target in targets){
+            distFromPlayer = Vector2.Distance(transform.position, target.Get().position);
+            distFromChoose = Vector2.Distance(transform.position, choose.Get().position);
+            distChooseFromOther = Vector2.Distance(target.Get().position, choose.Get().position);
+            if(distFromPlayer < distFromChoose && distChooseFromOther > 2){
+                choose = target;
+                targetIndex = idx;
+            }
+            idx++;
+        }
+        if(!actualTarget || !findFirst)
+            actualTarget = choose;
+
+        showNoTarget = false;
+        if(player.Movement.IsNullTarget()) player.Movement.SetNullTarget(false);
+        SetTarget(actualTarget.Get());
+    }
+
+    public void SwitchTarget(){
+        if(targets.Length == 0) return;
+        targetIndex++;
+        if(targetIndex >= targets.Length) targetIndex = 0;
+        this.actualTarget = targets[targetIndex];
+        SetTarget(actualTarget.Get());
+        Debug.Log("SWITCH: " + targetIndex);
+    }
+
 }

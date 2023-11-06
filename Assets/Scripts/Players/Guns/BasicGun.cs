@@ -40,10 +40,6 @@ public class BasicGun : Gun {
             timingRate = fireRate;
             Audio.PlayOneShot(emptyAudioClip, 0.1f);
         }
-
-        if(Input.GetButtonDown("SwitchTarget")) SwitchTarget();
-
-        if(withPlayer.Movement.IsMoving()) SearchTarget();
     }
 
     public override void Shoot(){

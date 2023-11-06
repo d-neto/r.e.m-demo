@@ -56,9 +56,10 @@ public class MovementController
         else if(direction.x < 0) player.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+    bool nullTarget = false;
     public void InvertWithActualTarget(){
         Vector3 direction = -input;
-        if(target){
+        if(!nullTarget && target){
             direction = (player.transform.position - target.position).normalized;
         }
 
@@ -74,4 +75,6 @@ public class MovementController
     public void ChangeInvertMode(InvertSpriteMode mode) => this.InvertWith = mode;
     public void SerActualTarget(Transform target) => this.target = target;
     public void RemoveActualTarget() => this.target = null;
+    public void SetNullTarget(bool nullTarget) => this.nullTarget = nullTarget;
+    public bool IsNullTarget() => this.nullTarget;
 }
