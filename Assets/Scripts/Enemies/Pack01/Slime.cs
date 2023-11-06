@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Slime : MeleeEnemy
@@ -12,6 +13,10 @@ public class Slime : MeleeEnemy
     bool startCoroutine = false;
     bool isJumping = false;
     bool isTakingDamage = false;
+
+    [Header("UI")]
+    [SerializeField] protected GameObject DamageCanvas;
+    [SerializeField] protected GameObject UIDamageIndicatorText;
 
     [Header("Components")]
     [SerializeField] protected Animator SuperAnimator;
@@ -53,7 +58,18 @@ public class Slime : MeleeEnemy
         Instantiate(PSDeath, particleSpawn.position, Quaternion.identity);
     }
 
+    GameObject actualDamageIndicatorText = null;
     public override void OnDamage(float damage, Vector3 direction){
+
+        if(!actualDamageIndicatorText)
+            actualDamageIndicatorText = Instantiate(UIDamageIndicatorText, DamageCanvas.transform);
+
+        actualDamageIndicatorText.transform.position = this.transform.position;
+        actualDamageIndicatorText.GetComponent<TMP_Text>().text = ((int) damage).ToString();
+        actualDamageIndicatorText.GetComponent<Animator>().Play("show");
+
+        if(damage >= this.Data.life) actualDamageIndicatorText.GetComponent<TMP_Text>().text = "NaN";
+
         isTakingDamage = true;
         Audio.PlayOneShot(damageAudioClip, volume);
         StartCoroutine(TakeDamage(direction));

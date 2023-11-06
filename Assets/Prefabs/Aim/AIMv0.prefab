@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 5555932133514822251}
   - component: {fileID: 6918710542686851905}
   m_Layer: 0
-  m_Name: AIM
+  m_Name: AIMv0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

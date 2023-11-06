@@ -177,6 +177,7 @@ public abstract class Gun : MonoBehaviour
         if(targets.Length == 0){
             if(!isRotationDefault){
                 transform.localRotation = Quaternion.AngleAxis(0f, new Vector3(0, 0, 0));
+                transform.localScale = new Vector3(1, 1, 1);
                 isRotationDefault = true;
             }
             return;
