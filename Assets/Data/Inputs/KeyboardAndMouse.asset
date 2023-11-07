@@ -16,7 +16,7 @@ MonoBehaviour:
   verticalAxis: Vertical
   dash: DashButtonKeyboard
   dropObject: DropObjectKeyboard
-  pickObject: PickObjectKeyBoard
+  pickObject: PickObjectKeyboard
   shoot: FireKeyboard
   reload: ReloadKeyboard
   switchTarget: SwitchTargetKeyboard
