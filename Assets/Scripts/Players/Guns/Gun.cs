@@ -7,7 +7,6 @@ public abstract class Gun : MonoBehaviour
     public Player withPlayer;
 
     [Header("Configs.")]
-    [SerializeField] private string targetMethod = "mouse";
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
     [SerializeField] protected AudioSource Audio;
