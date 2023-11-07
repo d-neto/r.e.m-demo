@@ -30,13 +30,13 @@ public class BasicGun : Gun {
         if(timingRate > 0)
             timingRate -= Time.deltaTime;
 
-        if(Input.GetButton("Fire1") && !isReloading && canShoot){
+        if(withPlayer.GetInput().GetFire() && !isReloading && canShoot){
             if(timingRate <= 0 && loadedAmmo > 0)
                 Shoot();
             else if(loadedAmmo <= 0 && currentAmmo > 0)
                 Reload();
         }
-        if(Input.GetButtonDown("Fire1") && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0){
+        if(withPlayer.GetInput().GetFireDown() && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0){
             timingRate = fireRate;
             Audio.PlayOneShot(emptyAudioClip, 0.1f);
         }
@@ -71,7 +71,7 @@ public class BasicGun : Gun {
             StartCoroutine(ReloadingAmmo());
         }
         isReloading = true;
-        InputHandler.Reloading(this, isReloading);
+        withPlayer.GetInput().Reloading(this, isReloading);
     }
 
     IEnumerator ReloadingAmmo(){
@@ -86,7 +86,7 @@ public class BasicGun : Gun {
         }
 
         isReloading = false;
-        InputHandler.Reloading(this, isReloading);
+        withPlayer.GetInput().Reloading(this, isReloading);
     }
 
 }

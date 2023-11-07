@@ -103,4 +103,5 @@ public class Player: MonoBehaviour
     public void EnableCollision() => this.gameObject.layer = 6;
     public void DisableCollision() => this.gameObject.layer = 24;
     public SpriteRenderer Graphics() => this.Renderer;
+    public InputHandler GetInput() => this.Input;
 }

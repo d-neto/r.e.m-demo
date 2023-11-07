@@ -29,11 +29,11 @@ public class MovementController
 
     public void Update()
     {
-        input.x = Input.GetAxis("Horizontal");
-        input.y = Input.GetAxis("Vertical");
+        input.x = player.GetInput().GetHorizontal();
+        input.y =  player.GetInput().GetVertical();
         movement = input;
-        movementRaw.x = Input.GetAxisRaw("Horizontal");
-        movementRaw.y = Input.GetAxisRaw("Vertical");
+        movementRaw.x =  player.GetInput().GetHorizontalRaw();
+        movementRaw.y =  player.GetInput().GetVerticalRaw();
 
         if(canMove) Movement();
     }

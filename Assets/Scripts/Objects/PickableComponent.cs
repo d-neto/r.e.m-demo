@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickableComponent : MonoBehaviour {
     
     [Header("Pick. Config.")]
+    [SerializeField] private Player player;
     [SerializeField] private GameObject pickableViewObject;
     [SerializeField] private float dropForce = 100f;
     [SerializeField] private bool canDrop = true;
@@ -18,7 +19,7 @@ public class PickableComponent : MonoBehaviour {
     PlayerConfigs playerConfigs;
 
     void Update(){
-        if(canDrop && Input.GetButtonDown("DropObject"))
+        if(canDrop && player.GetInput().GetDropObject())
             OnDrop();
     }
 
@@ -50,5 +51,7 @@ public class PickableComponent : MonoBehaviour {
     public ComponentType GetComponentType(){
         return this.objectType;
     }
+
+    public void SetPlayer(Player player) => this.player = player;
 
 }

@@ -30,7 +30,7 @@ public class PickableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canPick && IsPlayerOnArea() && Input.GetButtonDown("PickObject")){
+        if(canPick && IsPlayerOnArea() && player.GetInput().GetPickObject()){
             playerConfigs = player.Config;
 
             if(!playerConfigs.CanPickObject(pickObject))
@@ -38,6 +38,7 @@ public class PickableObject : MonoBehaviour
                 
             pickObject.transform.SetParent(playerConfigs.GetNormalGunPosition());
             pickableComponent.OnPick(this.gameObject, player);
+            pickableComponent.SetPlayer(player);
             playerConfigs.AddFireGun();
         }
     }

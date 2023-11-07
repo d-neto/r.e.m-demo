@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830974a53a8bce0a5bf5115a1d106661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1996481242795770653}
   pickableViewObject: {fileID: 8738256168431927593, guid: 8b0841019ea9ed06d871a8558f43bd23, type: 3}
   dropForce: 80
   canDrop: 1
@@ -2522,7 +2523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129509157824557083, guid: e3dfcb61a379fb718a4285265aae2356, type: 3}
       propertyPath: mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4129509157824557083, guid: e3dfcb61a379fb718a4285265aae2356, type: 3}
       propertyPath: player
@@ -2549,6 +2550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a220c9360ff8714917a9d0d30c9e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputButtons: {fileID: 11400000, guid: 6de01b82d8eea868c9486c9f8d564f6d, type: 2}
 --- !u!4 &7071767005083537825
 Transform:
   m_ObjectHideFlags: 0

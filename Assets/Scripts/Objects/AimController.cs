@@ -30,6 +30,14 @@ public class AimController : MonoBehaviour
     void Awake(){
         SetColor(normalAimColor);
         if(!Anim) Anim = GetComponent<Animator>();
+    }
+
+    void Start(){
+        Cursor.visible = false;
+
+        player.GetInput().OnInputFire += FireAnimation;
+        player.GetInput().OnReloadStart += ReloadStart;
+        player.GetInput().OnReloadEnd += ReloadEnd;
 
         switch(mode){
             case AIM_MODE.Target:
@@ -41,14 +49,6 @@ public class AimController : MonoBehaviour
                 ChangeMode(UseMouse);
                 break;
         }
-    }
-
-    void Start(){
-        Cursor.visible = false;
-
-        InputHandler.OnInputFire += FireAnimation;
-        InputHandler.OnReloadStart += ReloadStart;
-        InputHandler.OnReloadEnd += ReloadEnd;
     }
 
     void OnEnable() {
@@ -70,7 +70,7 @@ public class AimController : MonoBehaviour
     }
     public void UseTarget(){
         SearchTarget();
-        if(Input.GetButtonDown("SwitchTarget")) SwitchTarget();
+        if(player.GetInput().GetSwitchTarget()) SwitchTarget();
         transform.position = target ? target.position : transform.position;
     }
 
@@ -96,9 +96,9 @@ public class AimController : MonoBehaviour
     }
 
     private void OnDestroy() {
-        InputHandler.OnInputFire -= FireAnimation;
-        InputHandler.OnReloadStart -= ReloadStart;
-        InputHandler.OnReloadEnd -= ReloadEnd;
+        player.GetInput().OnInputFire -= FireAnimation;
+        player.GetInput().OnReloadStart -= ReloadStart;
+        player.GetInput().OnReloadEnd -= ReloadEnd;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
