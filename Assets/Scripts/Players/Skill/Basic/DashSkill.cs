@@ -9,11 +9,14 @@ public class DashSkill : Skill {
     [SerializeField] float dashTimer;
     [SerializeField] bool canDash = true;
     [SerializeField] bool isDashing = false;
+    [SerializeField] float dashDelayWaitTime = 2f;
     [SerializeField] GameObject ghostPrefab;
+    float actualDashDelayWaitTime = 0f;
 
     public override void OnUpdate()
     {
-        if(Input.GetButtonDown("Dash") && canDash && Manager.GetPlayer().Movement.IsMoving()) Dash();
+        if(actualDashDelayWaitTime >= 0) actualDashDelayWaitTime -= Time.deltaTime;
+        if(actualDashDelayWaitTime <= 0 && Input.GetButtonDown("Dash") && canDash && Manager.GetPlayer().Movement.IsMoving()) Dash();
 
         if(isDashing){
             GameObject ghost = Instantiate(ghostPrefab, Manager.GetPlayer().transform.position, Manager.GetPlayer().transform.rotation);
@@ -24,6 +27,8 @@ public class DashSkill : Skill {
     }
 
     void Dash(){
+        this.Manager.GetPlayer().PlayAudio(Manager.GetPlayer().Data.ACDash);
+        this.actualDashDelayWaitTime = dashDelayWaitTime;
         this.canDash = false;
         this.isDashing = true;
         this.Manager.GetPlayer().DisableCollision();

@@ -15,9 +15,10 @@ MonoBehaviour:
   life: 20
   endurance: 0
   skillPower: 20
+  experience: 0
   speed: 3
-  dashSpeed: 100
-  dashTiming: 0.1
+  ACHurt: {fileID: 8300000, guid: 853cee387db76803f81beaa5d32e799f, type: 3}
+  ACDash: {fileID: 8300000, guid: 62e1bf7adfa48c5d3ad14983c4b99279, type: 3}
   weapons:
   - referenceCode: Pistol#01
     source: {fileID: 8582376053168952783, guid: a916f6fe2ad8edef595326bb77f64dbd, type: 3}

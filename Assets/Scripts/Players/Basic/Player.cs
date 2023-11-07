@@ -15,6 +15,7 @@ public class Player: MonoBehaviour
     [Header("Player Components")]
     [SerializeField] private InputHandler Input;
     [SerializeField] private Animator Anim;
+    [SerializeField] private AudioSource Audio;
     [SerializeField] private SpriteRenderer Renderer;
     [SerializeField] private Collider2D Collider;
 
@@ -29,6 +30,7 @@ public class Player: MonoBehaviour
 
         if(!Input) Input = GetComponent<InputHandler>();
         if(!Anim) Anim = GetComponent<Animator>();
+        if(!Audio) Audio = GetComponent<AudioSource>();
         if(!Renderer) Renderer = GetComponent<SpriteRenderer>();
 
         Data = Instantiate<PlayerData>(Data);
@@ -72,6 +74,7 @@ public class Player: MonoBehaviour
         Vector2 direction = (this.transform.position - origin.position).normalized;
         this.Movement.Rbody().AddForce(direction * 5, ForceMode2D.Impulse);
         this.Movement.Lock(true);
+        PlayAudio(Data.ACHurt, 0.5f);
         StartCoroutine(Damaged());
     }
 
@@ -103,4 +106,5 @@ public class Player: MonoBehaviour
     public void DisableCollision() => this.gameObject.layer = 24;
     public SpriteRenderer Graphics() => this.Renderer;
     public InputHandler GetInput() => this.Input;
+    public void PlayAudio(AudioClip audioClip, float volume = 0.4f) => this.Audio.PlayOneShot(audioClip, volume);
 }

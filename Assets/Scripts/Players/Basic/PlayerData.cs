@@ -10,9 +10,14 @@ public class PlayerData : ScriptableObject
     public float life;
     public float endurance;
     public float skillPower;
+    public float experience;
 
     [Header("Movement")]
     public float speed;
+
+    [Header("Sounds")]
+    public AudioClip ACHurt;
+    public AudioClip ACDash;
 
     [Header("Hand Weapons")]
     public List<Weapon> weapons;

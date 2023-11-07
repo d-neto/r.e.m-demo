@@ -45,4 +45,8 @@ public class PlayerStatsManager
         if(lifeSlider)
             lifeSlider.value = life;
     }
+
+    public void AddXp(float amount){
+        this.player.Data.experience += amount;
+    }
 }
