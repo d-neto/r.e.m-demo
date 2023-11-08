@@ -16,7 +16,7 @@ public class InputHandler : MonoBehaviour
 
     void Update(){
         if(OnInputFire != null){
-            if(Input.GetButton("Fire1")) OnInputFire();
+            if(GetFire()) OnInputFire();
         }
     }
 

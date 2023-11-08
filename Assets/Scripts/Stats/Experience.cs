@@ -25,5 +25,6 @@ public class Experience : MonoBehaviour
     }
 
     public float Get() => this.amount;
+    public void Set(float value) => this.amount = value;
     public void SetPlayer(Player p) => this.forPlayer = p;
 }

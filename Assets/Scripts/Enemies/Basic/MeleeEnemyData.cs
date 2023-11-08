@@ -11,6 +11,10 @@ public class MeleeEnemyData : ScriptableObject
     public float damage;
     public float endurance;
 
+    [Header("Rewards")]
+    public GameObject XPPrefab;
+    public float XPAmount;
+
     [Header("Movement")]
     public float speed;
     public AnimatorController animator;

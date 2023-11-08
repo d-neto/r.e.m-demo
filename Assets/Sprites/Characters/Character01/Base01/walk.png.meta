@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5cd6109fb2c919b6382b144d221011d2
+guid: 358cee75403ba4c89a0188761aa561f0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd4aab1a077e3a198b786221846ebcf0
-      internalID: -1030636393
+      spriteID: c274c578c7dd589e18f60ca44549192b
+      internalID: 73269529
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,8 @@ TextureImporter:
       name: RYAN_WALK_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 0
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617032b7567f535fcb5b803d3b0f1a38
-      internalID: 1846936852
+      spriteID: d00c197deb988301f9459c9568854c76
+      internalID: -472122718
       vertices: []
       indices: 
       edges: []
@@ -168,7 +168,49 @@ TextureImporter:
       name: RYAN_WALK_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd6c0e3dd66daaebb8b1d9ff2fc49cb
+      internalID: 67138498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RYAN_WALK_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df0ba1e5b601b068bc73d41a34242e0
+      internalID: 998595968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RYAN_WALK_4
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -179,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66c49d0e7c10d0abfa2ea3c23bba290a
-      internalID: -469996031
+      spriteID: ab76847b84b542f58aed990d5f533bff
+      internalID: 806966119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RYAN_WALK_3
+      name: RYAN_WALK_5
       rect:
         serializedVersion: 2
         x: 0
@@ -200,50 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb9720a850253d85aaee503aa860ff69
-      internalID: 290290866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RYAN_WALK_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4a79af05c2482dc4b392d14256077f2
-      internalID: -1566527328
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RYAN_WALK_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fa784b673329f4efa3436137c691b6a
-      internalID: 107894670
+      spriteID: e08e23b0b3c01b67b94f7c86b287dbe0
+      internalID: 676760737
       vertices: []
       indices: 
       edges: []
@@ -259,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RYAN_WALK_0: -1030636393
-      RYAN_WALK_1: 1846936852
-      RYAN_WALK_2: -469996031
-      RYAN_WALK_3: 290290866
-      RYAN_WALK_4: -1566527328
-      RYAN_WALK_5: 107894670
+      RYAN_WALK_0: 73269529
+      RYAN_WALK_1: -472122718
+      RYAN_WALK_2: 67138498
+      RYAN_WALK_3: 998595968
+      RYAN_WALK_4: 806966119
+      RYAN_WALK_5: 676760737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

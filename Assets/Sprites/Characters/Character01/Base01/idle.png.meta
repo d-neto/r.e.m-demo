@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 85943f8c22cf3ed869cf980f9684aeba
+guid: 733fff744ae2a0a8fb3603869c8f03fe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1d0bf38e434f3a1c899ab3a2ecedf0e
-      internalID: 594123650
+      spriteID: c824a9eaa8f7f08339e4d948f7abe178
+      internalID: 485862486
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,8 @@ TextureImporter:
       name: RYAN_IDLE_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 0
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3eb53bb12fb0fb5aab31fc2aa854632
-      internalID: -241293357
+      spriteID: 2360cebfae5cc58b4adebd6d2487464a
+      internalID: -73642954
       vertices: []
       indices: 
       edges: []
@@ -168,7 +168,49 @@ TextureImporter:
       name: RYAN_IDLE_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a67222f31f6cf0169b1b0b86582719fe
+      internalID: -372994189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RYAN_IDLE_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6106a1c1ef618ed1b03153344960375
+      internalID: 2008087770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RYAN_IDLE_4
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -179,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 296f6b532be416bef901cee40e0bc4f4
-      internalID: -1813220517
+      spriteID: 99f9c66a2d2174373b27b29cbd8558d1
+      internalID: -1804435101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RYAN_IDLE_3
+      name: RYAN_IDLE_5
       rect:
         serializedVersion: 2
         x: 0
@@ -200,50 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfddccdc82e093c289b8f7207c0fe982
-      internalID: -912255962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RYAN_IDLE_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c13e6138815fab76cb395699f5052a64
-      internalID: -1198452441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RYAN_IDLE_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49558927aec7a32c2a9e1777bbf65032
-      internalID: -511476193
+      spriteID: 5ac97dfdf04dd449f909366080357113
+      internalID: -399463555
       vertices: []
       indices: 
       edges: []
@@ -263,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abaa1839c094d428e9c998a734c59f27
-      internalID: -465786149
+      spriteID: b33d64250d89158ada20ca2b36888a93
+      internalID: -1299857899
       vertices: []
       indices: 
       edges: []
@@ -280,13 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RYAN_IDLE_0: 594123650
-      RYAN_IDLE_1: -241293357
-      RYAN_IDLE_2: -1813220517
-      RYAN_IDLE_3: -912255962
-      RYAN_IDLE_4: -1198452441
-      RYAN_IDLE_5: -511476193
-      RYAN_IDLE_6: -465786149
+      RYAN_IDLE_0: 485862486
+      RYAN_IDLE_1: -73642954
+      RYAN_IDLE_2: -372994189
+      RYAN_IDLE_3: 2008087770
+      RYAN_IDLE_4: -1804435101
+      RYAN_IDLE_5: -399463555
+      RYAN_IDLE_6: -1299857899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
