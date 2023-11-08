@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4985579261333979426}
   - component: {fileID: 4304549400978249572}
   - component: {fileID: 1772542510977805293}
+  - component: {fileID: 4439606432522789413}
   m_Layer: 11
   m_Name: '[ Bullet ] Prototype'
   m_TagString: Untagged
@@ -221,6 +222,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!210 &4439606432522789413
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586516442144795234}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &6807529208332215177
 GameObject:
   m_ObjectHideFlags: 0

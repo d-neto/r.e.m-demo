@@ -13,33 +13,38 @@ public class PickableObject : MonoBehaviour
     private PlayerConfigs playerConfigs;
     private bool canPick = true;
 
-    private PickableComponent pickableComponent;
-    void Start()
-    {
-        if(this.transform.GetChild(1)){
-            pickObject = this.transform.GetChild(1).gameObject;
-            pickObject.SetActive(false);
-            pickableComponent = pickObject.GetComponent<PickableComponent>();
-            if(pickableComponent == null){
-                Debug.LogError("Invalid Pickable Object!");
-                canPick = false;
-            }
-        }
-    }
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private Material highlightMaterial;
+    [SerializeField] private SpriteRenderer spriteToHighlight;
+    [SerializeField] private PickableComponent pickableComponent;
 
+    bool playerCatch = false;
     // Update is called once per frame
     void Update()
     {
-        if(canPick && IsPlayerOnArea() && player.GetInput().GetPickObject()){
-            playerConfigs = player.Config;
+        if(IsPlayerOnArea()){
 
-            if(!playerConfigs.CanPickObject(pickObject))
-                return;
-                
-            pickObject.transform.SetParent(playerConfigs.GetNormalGunPosition());
-            pickableComponent.OnPick(this.gameObject, player);
-            pickableComponent.SetPlayer(player);
-            playerConfigs.AddFireGun();
+            if(!playerCatch){
+                this.spriteToHighlight.material = highlightMaterial;
+                player.GetTips().ShowPick();
+                playerCatch = true;
+            }
+
+            if(canPick && player.GetInput().GetPickObject()){
+                playerConfigs = player.Config;
+                if(!playerConfigs.CanPickObject(pickObject))
+                    return;
+                pickObject.transform.SetParent(playerConfigs.GetNormalGunPosition());
+                pickableComponent.OnPick(this.gameObject, player);
+                pickableComponent.SetPlayer(player);
+                playerConfigs.AddFireGun();
+                player.GetTips().Destroy();
+            }
+        }else if(playerCatch){
+            this.spriteToHighlight.material = defaultMaterial;
+            if(player)
+                player.GetTips().Destroy();
+            playerCatch = false;
         }
     }
 
@@ -55,5 +60,15 @@ public class PickableObject : MonoBehaviour
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, area);
+    }
+
+    public void SetPick(GameObject pick){
+        this.pickObject = pick;
+        this.pickableComponent = this.pickObject.GetComponent<PickableComponent>() ? this.pickObject.GetComponent<PickableComponent>() : null;
+        if(this.pickableComponent == null){
+            Debug.LogError("Invalid Pickable Object!");
+            canPick = false;
+        }
+        this.pickObject.SetActive(false);
     }
 }

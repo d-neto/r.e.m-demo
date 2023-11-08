@@ -72,7 +72,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7216671803354669957}
@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 264345500822267008}
   - component: {fileID: 4483242646760973249}
   - component: {fileID: 4667666392472638118}
+  - component: {fileID: 3767646123693735030}
   m_Layer: 16
   m_Name: '[ PickableView ] Pistol'
   m_TagString: Untagged
@@ -181,6 +182,10 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  highlightMaterial: {fileID: 2100000, guid: f2b0cb194160dbacc9e108d5cafdb1f8, type: 2}
+  spriteToHighlight: {fileID: 5737897323067829756}
+  pickableComponent: {fileID: 0}
 --- !u!58 &4483242646760973249
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -213,9 +218,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13457847, y: 0}
+  m_Offset: {x: 0.0018178672, y: 0}
   serializedVersion: 2
-  m_Radius: 0.28296947
+  m_Radius: 0.24245475
 --- !u!50 &4667666392472638118
 Rigidbody2D:
   serializedVersion: 4
@@ -243,3 +248,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!210 &3767646123693735030
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738256168431927593}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0

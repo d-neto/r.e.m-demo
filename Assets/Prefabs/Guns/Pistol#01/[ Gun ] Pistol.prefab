@@ -142,9 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830974a53a8bce0a5bf5115a1d106661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   pickableViewObject: {fileID: 8738256168431927593, guid: 8b0841019ea9ed06d871a8558f43bd23, type: 3}
   dropForce: 80
   canDrop: 1
+  pickSound: {fileID: 8300000, guid: d3c222d5c1c4a4d888199459cf77cb41, type: 3}
+  dropSound: {fileID: 8300000, guid: e53196f32e56b05949175a6a8e451d13, type: 3}
+  Audio: {fileID: 8120356736300072544}
   objectType: 0
 --- !u!114 &6723250554636228981
 MonoBehaviour:
@@ -171,9 +175,10 @@ MonoBehaviour:
   loadedAmmo: 16
   fireRateInMS: 300
   reloadTimeInMS: 1000
+  bulletTarget: {fileID: 0}
+  Aim: {fileID: 0}
   referenceCode: Pistol#01
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
-  bulletTarget: {fileID: 0}
   bulletSpeed: 16
   bulletDamage: 3.5

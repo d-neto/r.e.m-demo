@@ -9,6 +9,9 @@ public class PickableComponent : MonoBehaviour {
     [SerializeField] private GameObject pickableViewObject;
     [SerializeField] private float dropForce = 100f;
     [SerializeField] private bool canDrop = true;
+    [SerializeField] private AudioClip pickSound;
+    [SerializeField] private AudioClip dropSound;
+    [SerializeField] private AudioSource Audio;
 
     public enum ComponentType {
         GUN,
@@ -17,6 +20,10 @@ public class PickableComponent : MonoBehaviour {
     [SerializeField] private ComponentType objectType;
 
     PlayerConfigs playerConfigs;
+
+    void Awake(){
+        if(!this.Audio) this.Audio = GetComponent<AudioSource>();
+    }
 
     void Update(){
         if(canDrop && player.GetInput().GetDropObject())
@@ -33,6 +40,7 @@ public class PickableComponent : MonoBehaviour {
             this.GetComponent<Gun>().withPlayer = player;
 
         this.gameObject.SetActive(true);
+        Audio.PlayOneShot(pickSound, 0.5f);
     }
     public void OnDrop(){
         // Do something
@@ -41,11 +49,14 @@ public class PickableComponent : MonoBehaviour {
         this.gameObject.SetActive(false);
 
         Vector3 direction = (Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position)).normalized;
-        cloneView.GetComponent<Rigidbody2D>().AddTorque(100);
-        cloneView.GetComponent<Rigidbody2D>().AddForce(direction * dropForce, ForceMode2D.Impulse);
-        
+        Rigidbody2D rb = cloneView.GetComponent<Rigidbody2D>();
+        rb.AddTorque(100);
+        rb.AddForce(direction * dropForce, ForceMode2D.Impulse);
+        cloneView.GetComponent<PickableObject>().SetPick(this.gameObject);
+
         if(GetComponentType() == ComponentType.GUN)
             playerConfigs?.RemoveFireGun();
+        GlobalAudio.Instance.Auxiliar().PlayOneShot(dropSound, 0.5f);
     }
 
     public ComponentType GetComponentType(){

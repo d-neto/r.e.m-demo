@@ -11,6 +11,7 @@ public class Player: MonoBehaviour
     public PlayerStatsManager Stats {get; private set;}
     [Header("Player Classes")]
     public PlayerData Data;
+    public PlayerTips Tips;
 
     [Header("Player Components")]
     [SerializeField] private InputHandler Input;
@@ -18,9 +19,11 @@ public class Player: MonoBehaviour
     [SerializeField] private AudioSource Audio;
     [SerializeField] private SpriteRenderer Renderer;
     [SerializeField] private Collider2D Collider;
+    [SerializeField] private AimController AIM;
 
     [Header("Positions")]
     [SerializeField] private Transform normalGunPosition;
+    [SerializeField] private Transform normalTipPosition;
     public StateGroup States;
 
     [Header("UI")]
@@ -35,9 +38,10 @@ public class Player: MonoBehaviour
 
         Data = Instantiate<PlayerData>(Data);
         Movement = new MovementController(this);
-        Config = new PlayerConfigs(1, normalGunPosition);
+        Config = new PlayerConfigs(1, normalGunPosition, normalTipPosition);
         StateMachine = new PlayerStateMachine();
         Stats = new PlayerStatsManager(this);
+        Tips ??= new PlayerTips(this);
 
         States = new StateGroup(this, this.StateMachine, this.Data);
     }
@@ -107,4 +111,6 @@ public class Player: MonoBehaviour
     public SpriteRenderer Graphics() => this.Renderer;
     public InputHandler GetInput() => this.Input;
     public void PlayAudio(AudioClip audioClip, float volume = 0.4f) => this.Audio.PlayOneShot(audioClip, volume);
+    public PlayerTips GetTips() => this.Tips;
+    public AimController GetAIM() => this.AIM;
 }

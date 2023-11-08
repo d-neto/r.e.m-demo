@@ -79,6 +79,7 @@ public abstract class Gun : MonoBehaviour
     }
     public virtual void OnStart() {
         if(withPlayer == null) withPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        this.Aim = withPlayer.GetAIM();
     }
 
     public virtual void ApplyRotation(){
