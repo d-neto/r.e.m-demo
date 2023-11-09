@@ -23,6 +23,7 @@ public class Player: MonoBehaviour
 
     [Header("Positions")]
     [SerializeField] private Transform normalGunPosition;
+    [SerializeField] private Transform nullTargetPosition;
     [SerializeField] private Transform normalTipPosition;
     public StateGroup States;
 
@@ -38,12 +39,15 @@ public class Player: MonoBehaviour
 
         Data = Instantiate<PlayerData>(Data);
         Movement = new MovementController(this);
-        Config = new PlayerConfigs(1, normalGunPosition, normalTipPosition);
+        Config = new PlayerConfigs(this, Data.maxGunsInHands, normalGunPosition, normalTipPosition, nullTargetPosition);
         StateMachine = new PlayerStateMachine();
         Stats = new PlayerStatsManager(this);
         Tips ??= new PlayerTips(this);
 
         States = new StateGroup(this, this.StateMachine, this.Data);
+
+        Config.SetGuns(Data.actualGunsInHands);
+        CreateAim();
     }
 
     void Start(){
@@ -51,6 +55,8 @@ public class Player: MonoBehaviour
 
         this.Stats.OnDeath += OnDeath;
         this.Stats.OnDamage += OnDamage;
+
+        this.AIM.gameObject.SetActive(true);
     }
 
     void Update(){
@@ -113,4 +119,8 @@ public class Player: MonoBehaviour
     public void PlayAudio(AudioClip audioClip, float volume = 0.4f) => this.Audio.PlayOneShot(audioClip, volume);
     public PlayerTips GetTips() => this.Tips;
     public AimController GetAIM() => this.AIM;
+    public void CreateAim(){
+        this.AIM = Instantiate(this.Data.AimPrefab, null).GetComponent<AimController>();
+        this.AIM.Setup(this, Config.GetNullTargetPosition());
+    }
 }

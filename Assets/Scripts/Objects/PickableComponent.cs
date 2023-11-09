@@ -48,14 +48,17 @@ public class PickableComponent : MonoBehaviour {
         this.transform.SetParent(cloneView.transform);
         this.gameObject.SetActive(false);
 
-        Vector3 direction = (Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position)).normalized;
+        Vector3 direction = (player.GetAIM().GetScreenPosition() - Camera.main.WorldToScreenPoint(transform.position)).normalized;
         Rigidbody2D rb = cloneView.GetComponent<Rigidbody2D>();
         rb.AddTorque(100);
         rb.AddForce(direction * dropForce, ForceMode2D.Impulse);
         cloneView.GetComponent<PickableObject>().SetPick(this.gameObject);
 
-        if(GetComponentType() == ComponentType.GUN)
-            playerConfigs?.RemoveFireGun();
+        if(GetComponentType() == ComponentType.GUN){
+            player.Config?.RemoveFireGun();
+            for(int i = 0; i < transform.childCount; i++)
+                Destroy(transform.GetChild(i).gameObject);
+        }
         GlobalAudio.Instance.Auxiliar().PlayOneShot(dropSound, 0.5f);
     }
 

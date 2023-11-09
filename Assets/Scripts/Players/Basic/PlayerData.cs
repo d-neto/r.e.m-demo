@@ -19,7 +19,12 @@ public class PlayerData : ScriptableObject
     public AudioClip ACHurt;
     public AudioClip ACDash;
 
+    [Header("Prefabs")]
+    public GameObject AimPrefab;
+    
     [Header("Hand Weapons")]
+    public int maxGunsInHands = 1;
+    public int actualGunsInHands = 1;
     public List<Weapon> weapons;
 
 

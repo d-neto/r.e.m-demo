@@ -19,6 +19,9 @@ MonoBehaviour:
   speed: 3
   ACHurt: {fileID: 8300000, guid: 853cee387db76803f81beaa5d32e799f, type: 3}
   ACDash: {fileID: 8300000, guid: 62e1bf7adfa48c5d3ad14983c4b99279, type: 3}
+  AimPrefab: {fileID: 597180975415129117, guid: e3dfcb61a379fb718a4285265aae2356, type: 3}
+  maxGunsInHands: 1
+  actualGunsInHands: 1
   weapons:
   - referenceCode: Pistol#01
     source: {fileID: 8582376053168952783, guid: a916f6fe2ad8edef595326bb77f64dbd, type: 3}

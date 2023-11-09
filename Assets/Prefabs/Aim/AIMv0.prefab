@@ -187,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1835672472584100893
 Transform:
   m_ObjectHideFlags: 0
@@ -217,9 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e703e8bbc6415b79a959590078e305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  nullTarget: {fileID: 0}
   normalAimColor: {r: 1, g: 1, b: 1, a: 1}
   invalidAimColor: {r: 0.48835552, g: 0.48835552, b: 0.48835552, a: 1}
   targetAimColor: {r: 1, g: 0, b: 0, a: 1}
+  mode: 0
   sprites:
   - {fileID: 2123700990983840423}
   - {fileID: 7555633052375374488}
@@ -227,6 +230,7 @@ MonoBehaviour:
   - {fileID: 2937891076188860803}
   - {fileID: 1528401988786995505}
   Anim: {fileID: 0}
+  actualTarget: {fileID: 0}
 --- !u!210 &6827467876641198189
 SortingGroup:
   m_ObjectHideFlags: 0

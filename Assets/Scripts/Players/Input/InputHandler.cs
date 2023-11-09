@@ -35,6 +35,7 @@ public class InputHandler : MonoBehaviour
     public bool GetReload() => Input.GetButton(InputButtons.reload);
     public bool GetDash() => Input.GetButton(InputButtons.dash);
     public bool GetSwitchTarget() => Input.GetButton(InputButtons.switchTarget);
+    public bool GetSwitchTargetDown() => Input.GetButtonDown(InputButtons.switchTarget);
     public bool GetDropObject() => Input.GetButton(InputButtons.dropObject);
     public bool GetPickObject() => Input.GetButton(InputButtons.pickObject);
 }

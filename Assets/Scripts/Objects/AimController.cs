@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AimController : MonoBehaviour
@@ -30,6 +31,7 @@ public class AimController : MonoBehaviour
     void Awake(){
         SetColor(normalAimColor);
         if(!Anim) Anim = GetComponent<Animator>();
+        ActiveMode();
     }
 
     void Start(){
@@ -38,39 +40,42 @@ public class AimController : MonoBehaviour
         player.GetInput().OnInputFire += FireAnimation;
         player.GetInput().OnReloadStart += ReloadStart;
         player.GetInput().OnReloadEnd += ReloadEnd;
-
-        switch(mode){
-            case AIM_MODE.Target:
-                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithActualTarget);
-                ChangeMode(UseTarget);
-                break;
-            case AIM_MODE.Mouse:
-                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithMouse);
-                ChangeMode(UseMouse);
-                break;
-        }
     }
 
     void OnEnable() {
         Cursor.visible = false;
     }
 
+    bool disabled = false;
     void Update(){
         
-        TargetModeUpdate();
+        if(player.Config.HasGuns())
+            TargetModeUpdate();
 
         if(currentTiming <= 0) canFireAnimation = true;
         if(currentTiming >= 0) currentTiming -= Time.deltaTime;
     }
 
     public void UseMouse(){
+        if(disabled){
+            Disabled(false);
+        }
         mousePosition = Input.mousePosition;
         transform.position = (Vector2) Camera.main.ScreenToWorldPoint(mousePosition);
         SetTarget(transform);
     }
     public void UseTarget(){
-        SearchTarget();
-        if(player.GetInput().GetSwitchTarget()) SwitchTarget();
+        if(disabled){
+            Disabled(false);
+        }
+
+        NewSearchTarget();
+        
+        if(target && Vector2.Distance(player.transform.position, target.position) > 15){
+            SwitchTarget();
+        }
+
+        if(player.GetInput().GetSwitchTargetDown()) SwitchTarget();
         transform.position = target ? target.position : transform.position;
     }
 
@@ -118,61 +123,98 @@ public class AimController : MonoBehaviour
     }
     public void ChangeMode(TargetMode mode) => this.TargetModeUpdate = mode;
     public void NoTarget() => this.Anim.SetBool("no-target", true);
+    public void Disabled(bool value){
+        disabled = value;
+        this.Anim.SetBool("disabled", value);
+    }
 
+    public void ActiveMode(){
+        switch(mode){
+            case AIM_MODE.Target:
+                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithActualTarget);
+                ChangeMode(UseTarget);
+                break;
+            case AIM_MODE.Mouse:
+                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithMouse);
+                ChangeMode(UseMouse);
+                break;
+        }
+    }
 
+    List<AbleAim> targets = new List<AbleAim>();
 
-
-    AbleAim[] targets;
+    [SerializeField]
     AbleAim actualTarget;
     int targetIndex;
-    bool showNoTarget = false;
-    public void SearchTarget(float range = 15, bool findFirst = false){
-        targets = EnemyManager.Instance.GetEnemiesInRadius(player.transform.position, range);
-
-        if(targets.Length == 0){
-            if(!showNoTarget){
-                NoTarget();
+    List<AbleAim> tempTargets;
+    public void NewSearchTarget(float range = 15, bool findFirst = false){
+        tempTargets = EnemyManager.Instance.GetEnemiesInRadius(player.transform.position, range);
+        
+        if(tempTargets.Count == 0){
+            if(!disabled){
+                SetNullTarget();
+                targets.RemoveAll((e) => true);
                 player.Movement.SetNullTarget(true);
-                this.target = nullTarget;
-                showNoTarget = true;
+                actualTarget = null;
+                Disabled(true);
             }
             return;
         }
 
         AbleAim choose = actualTarget;
         if(!actualTarget){
-            choose = targets[0];
+            choose = tempTargets.First();
             targetIndex = 0;
+            SetTarget(choose.Get());
         }
 
         float distFromPlayer, distFromChoose, distChooseFromOther;
-
         int idx = 0;
-        foreach(AbleAim target in targets){
+        foreach(AbleAim target in tempTargets){
+
+            if(targets != null && targets.Contains(target)) continue;
+            else targets.Add(target);
+
             distFromPlayer = Vector2.Distance(transform.position, target.Get().position);
             distFromChoose = Vector2.Distance(transform.position, choose.Get().position);
             distChooseFromOther = Vector2.Distance(target.Get().position, choose.Get().position);
+
             if(distFromPlayer < distFromChoose && distChooseFromOther > 2){
                 choose = target;
                 targetIndex = idx;
             }
+
             idx++;
         }
+
+        for(int i = 0; i < targets.Count; i++){
+            if(!tempTargets.Contains(targets[i])) targets.Remove(targets[i]);
+        }
+
         if(!actualTarget || !findFirst)
             actualTarget = choose;
 
-        showNoTarget = false;
-        if(player.Movement.IsNullTarget()) player.Movement.SetNullTarget(false);
-        SetTarget(actualTarget.Get());
+        if(player.Movement.IsNullTarget()){
+            player.Movement.SetNullTarget(false);
+        }
+
+        if(disabled){
+            Disabled(false);
+        }
     }
 
     public void SwitchTarget(){
-        if(targets.Length == 0) return;
+        if(targets.Count == 0) return;
         targetIndex++;
-        if(targetIndex >= targets.Length) targetIndex = 0;
+        if(targetIndex >= targets.Count) targetIndex = 0;
         this.actualTarget = targets[targetIndex];
         SetTarget(actualTarget.Get());
-        Debug.Log("SWITCH: " + targetIndex);
     }
 
+    public bool IsReady() => this.player.Movement != null;
+    void SetNullTarget() => this.target = nullTarget;
+    public void Setup(Player player, Transform nullTarget){
+        this.player = player;
+        this.nullTarget = nullTarget;
+    }
 }

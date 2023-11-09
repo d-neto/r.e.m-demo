@@ -21,13 +21,13 @@ public class EnemyManager : MonoBehaviour
         if (enemies.Contains(enemy)) enemies.Remove(enemy);
     }
 
-    public AbleAim[] GetEnemiesInRadius(Vector2 position, float searchRadius){
+    public List<AbleAim> GetEnemiesInRadius(Vector2 position, float searchRadius){
         List<AbleAim> enemiesInRadius = new List<AbleAim>();
         foreach (AbleAim enemy in enemies)
         {
             float distance = Vector2.Distance(position, enemy.transform.position);
             if (distance <= searchRadius) enemiesInRadius.Add(enemy);
         }
-        return enemiesInRadius.ToArray();
+        return enemiesInRadius;
     }
 }

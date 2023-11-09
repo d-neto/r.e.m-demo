@@ -18,6 +18,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected AudioClip emptyAudioClip;
 
     [Header("Attributes")]
+    [SerializeField] protected string referenceCode;
     [SerializeField] protected int maxAmmo;
     [SerializeField] protected int currentAmmo;
     [SerializeField] protected int loadedAmmo;
@@ -108,9 +109,9 @@ public abstract class Gun : MonoBehaviour
 
     }
 
-    public void SetupGun(GameObject gunSource){
+    public void SetupGun(GameObject gunSource, AimController Aim){
         GameObject source = Instantiate(gunSource, Vector3.zero, Quaternion.identity);
-
+        this.Aim = Aim;
         List<Transform> childrenList = new List<Transform>();
         for (int i = 0; i < source.transform.childCount; i++){
             Transform child = source.transform.GetChild(i);
@@ -122,8 +123,18 @@ public abstract class Gun : MonoBehaviour
             if (child != gunSource.transform){
                 child.SetParent(this.transform);
                 child.transform.localPosition = Vector3.zero;
+                child.transform.localScale = new Vector3(1, 1, 1);
+                child.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
         }
+        this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        this.bulletTarget = this.transform.GetChild(1).GetChild(0);
         Destroy(source);
+
+        targetRefer = transform;
+
+        if(this.Aim.IsReady())
+            this.Aim.ActiveMode();
+
     }
 }
