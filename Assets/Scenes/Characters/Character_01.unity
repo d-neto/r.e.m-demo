@@ -1364,10 +1364,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.01615509
-    y: -0.18965517
-    width: 1.0339258
-    height: 1.3793104
+    x: -0.016129032
+    y: -0.18624642
+    width: 1.032258
+    height: 1.3753582
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2665,7 +2665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   withPlayer: {fileID: 1996481242795770653}
   maxAngle: 360
-  targetRefer: {fileID: 1086579766941617220}
+  targetRefer: {fileID: 0}
   Audio: {fileID: 2787400331905879250}
   canInvertOn90Degree: 1
   shootAudioClip: {fileID: 8300000, guid: 1323d7ceaa4afbbffa86b33582997266, type: 3}
@@ -2930,9 +2930,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1313250099}
-  - {fileID: 1086579766941617220}
   - {fileID: 368615382}
   - {fileID: 53017078}
   - {fileID: 17064626}
   - {fileID: 1582639100}
   - {fileID: 1175380154}
+  - {fileID: 1086579766941617220}

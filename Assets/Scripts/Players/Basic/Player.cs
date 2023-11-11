@@ -77,42 +77,20 @@ public class Player: MonoBehaviour
     }
     
     void OnDeath(){
-        //  
+        StateMachine.ChangeState(States.DeadState);
     }
 
     void OnDamage(Transform origin){
-        Vector2 direction = (this.transform.position - origin.position).normalized;
-        this.Movement.Rbody().AddForce(direction * 5, ForceMode2D.Impulse);
-        this.Movement.Lock(true);
-        PlayAudio(Data.ACHurt, 0.5f);
-        StartCoroutine(Damaged());
-    }
-
-    IEnumerator Damaged(){
-        this.Anim.SetTrigger("damage");
-        this.DisableCollision();
-
-        this.Renderer.color = new Color(255, 0, 0, 0.7f);
-        yield return new WaitForSeconds(0.15f);
-
-        this.Movement.Lock(false);
-
-        this.Renderer.color = new Color(255, 255, 255, 0.7f);
-        yield return new WaitForSeconds(0.15f);
-        this.Renderer.color = new Color(255, 0, 0, 0.7f);
-        yield return new WaitForSeconds(0.15f);
-        this.Renderer.color = new Color(255, 255, 255, 0.7f);
-        yield return new WaitForSeconds(0.15f);
-        this.Renderer.color = new Color(255, 0, 0, 0.7f);
-        yield return new WaitForSeconds(0.15f);
-        this.Renderer.color = new Color(255, 255, 255, 1f);
-
-        yield return new WaitForSeconds(0.5f);
-        this.EnableCollision();
+        if(Stats.IsDead()) return;
+        ((BasicDamageState) States.DamageState).SetOrigin(origin);
+        StateMachine.ChangeState(States.DamageState);
     }
 
     public PlayerUIController UI() => this.UIController;
-    public void EnableCollision() => this.gameObject.layer = 6;
+    public void EnableCollision(){
+        if(Stats.IsDead()) return;
+        this.gameObject.layer = 6;
+    }
     public void DisableCollision() => this.gameObject.layer = 24;
     public SpriteRenderer Graphics() => this.Renderer;
     public InputHandler GetInput() => this.Input;

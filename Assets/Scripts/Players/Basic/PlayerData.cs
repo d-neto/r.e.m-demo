@@ -21,6 +21,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Prefabs")]
     public GameObject AimPrefab;
+    public GameObject PSDeathPrefab;
     
     [Header("Hand Weapons")]
     public int maxGunsInHands = 1;

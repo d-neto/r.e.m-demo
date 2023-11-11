@@ -49,4 +49,6 @@ public class PlayerStatsManager
     public void AddXp(float amount){
         this.player.Data.experience += amount;
     }
+
+    public bool IsDead() => isDead;
 }
