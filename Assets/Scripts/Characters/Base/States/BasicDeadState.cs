@@ -17,6 +17,7 @@ public class BasicDeadState : PlayerState
         player.Graphics().enabled = false;
         for(int i = 0; i < player.transform.childCount; i++)
             player.transform.GetChild(i).gameObject.SetActive(false);
+        player.PlayAudio(player.Data.ACDead, 0.8f);
     }
 
     public override void Update()

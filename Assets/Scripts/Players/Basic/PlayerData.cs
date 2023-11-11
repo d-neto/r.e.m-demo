@@ -18,6 +18,7 @@ public class PlayerData : ScriptableObject
     [Header("Sounds")]
     public AudioClip ACHurt;
     public AudioClip ACDash;
+    public AudioClip ACDead;
 
     [Header("Prefabs")]
     public GameObject AimPrefab;
