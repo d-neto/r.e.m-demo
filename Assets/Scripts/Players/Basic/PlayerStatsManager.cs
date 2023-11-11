@@ -30,8 +30,8 @@ public class PlayerStatsManager
         if(isDead) return;
 
         if(player.Data.life <= 0){
-            OnDeath?.Invoke();
             isDead = true;
+            OnDeath?.Invoke();
         }
     }
 

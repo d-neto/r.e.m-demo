@@ -18,6 +18,8 @@ public class BasicDeadState : PlayerState
         for(int i = 0; i < player.transform.childCount; i++)
             player.transform.GetChild(i).gameObject.SetActive(false);
         player.PlayAudio(player.Data.ACDead, 0.8f);
+
+        PlayerManager.Instance.ShowGameOver();
     }
 
     public override void Update()

@@ -20,3 +20,4 @@ MonoBehaviour:
   shoot: FireKeyboard
   reload: ReloadKeyboard
   switchTarget: SwitchTargetKeyboard
+  confirm: ConfirmKeyboardA
