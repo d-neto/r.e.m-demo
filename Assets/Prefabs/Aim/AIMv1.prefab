@@ -138,7 +138,7 @@ MonoBehaviour:
   normalAimColor: {r: 1, g: 1, b: 1, a: 1}
   invalidAimColor: {r: 0.48835552, g: 0.48835552, b: 0.48835552, a: 1}
   targetAimColor: {r: 1, g: 0, b: 0, a: 1}
-  mode: 1
+  mode: 0
   sprites:
   - {fileID: 8509942981155080042}
   - {fileID: 924759881747540562}

@@ -35,6 +35,9 @@ public class MovementController
         movementRaw.x =  player.GetInput().GetHorizontalRaw();
         movementRaw.y =  player.GetInput().GetVerticalRaw();
 
+    }
+
+    public void FixedUpdate(){
         if(canMove) Movement();
     }
 

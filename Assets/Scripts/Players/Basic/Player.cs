@@ -68,6 +68,7 @@ public class Player: MonoBehaviour
     }
 
     void FixedUpdate(){
+        Movement.FixedUpdate();
         StateMachine.CurrentState?.FixedUpdate();
     }
     

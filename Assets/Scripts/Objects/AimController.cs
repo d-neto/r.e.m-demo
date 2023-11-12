@@ -148,8 +148,17 @@ public class AimController : MonoBehaviour
     int targetIndex;
     List<AbleAim> tempTargets;
     public void NewSearchTarget(float range = 15, bool findFirst = false){
+        if(!EnemyManager.Instance){
+            if(!disabled){
+                SetNullTarget();
+                targets.RemoveAll((e) => true);
+                player.Movement.SetNullTarget(true);
+                actualTarget = null;
+                Disabled(true);
+            }
+            return;
+        }
         tempTargets = EnemyManager.Instance.GetEnemiesInRadius(player.transform.position, range);
-        
         if(tempTargets.Count == 0){
             if(!disabled){
                 SetNullTarget();
