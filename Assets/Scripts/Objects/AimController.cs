@@ -47,8 +47,9 @@ public class AimController : MonoBehaviour
     }
 
     bool disabled = false;
+    bool isLocked = false;
     void Update(){
-        
+        if(isLocked) return;
         if(player.Config.HasGuns())
             TargetModeUpdate();
 
@@ -226,4 +227,6 @@ public class AimController : MonoBehaviour
         this.player = player;
         this.nullTarget = nullTarget;
     }
+
+    public void Lock(bool status) => this.isLocked = status;
 }

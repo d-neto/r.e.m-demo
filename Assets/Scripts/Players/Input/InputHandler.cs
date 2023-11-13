@@ -40,5 +40,6 @@ public class InputHandler : MonoBehaviour
     public bool GetPickObject() => Input.GetButton(InputButtons.pickObject);
     public bool GetConfirmDown() => Input.GetButtonDown(InputButtons.confirm);
     public bool GetConfirm() => Input.GetButton(InputButtons.confirm);
+    public bool GetPauseDown() => Input.GetButtonDown(InputButtons.pause);
 }
 

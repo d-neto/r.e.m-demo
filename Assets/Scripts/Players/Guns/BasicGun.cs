@@ -28,6 +28,7 @@ public class BasicGun : Gun {
         if(timingRate > 0)
             timingRate -= Time.deltaTime;
 
+        if(withPlayer.GetInput().GetReload() && !isReloading) Reload();
         if(withPlayer.GetInput().GetFire() && !isReloading && canShoot){
             if(timingRate <= 0 && loadedAmmo > 0)
                 Shoot();
@@ -74,7 +75,7 @@ public class BasicGun : Gun {
 
     IEnumerator ReloadingAmmo(){
         if(currentAmmo - maxAmmo >= 0){
-            currentAmmo -= maxAmmo;
+            currentAmmo -= (maxAmmo-loadedAmmo);
             yield return new WaitForSeconds(reloadTime);
             loadedAmmo = maxAmmo;
         }else{

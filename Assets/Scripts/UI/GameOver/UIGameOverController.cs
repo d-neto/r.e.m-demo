@@ -23,6 +23,7 @@ public class UIGameOverController : MonoBehaviour
     void Start(){
         mainPlayer = GameObject.FindWithTag("Player").GetComponent<Player>();
         ChangeOption();
+        Invoke(nameof(StopTime), 2f);
     }
     void Update()
     {
@@ -52,6 +53,7 @@ public class UIGameOverController : MonoBehaviour
         if(mainPlayer.GetInput().GetConfirmDown()){
             switch(selectedOption){
                 case 0:
+                    Time.timeScale = 1;
                     SceneManager.LoadScene(0);
                     break;
             }
@@ -62,5 +64,9 @@ public class UIGameOverController : MonoBehaviour
         if(selectedOption >= maxOptions) selectedOption = 0;
         if(selectedOption < 0) selectedOption = maxOptions-1;
         options[selectedOption].color = selectedColor;
+    }
+
+    void StopTime(){
+        Time.timeScale = 0;
     }
 }

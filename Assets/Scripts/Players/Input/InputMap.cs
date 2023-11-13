@@ -11,5 +11,6 @@ public class InputMap : ScriptableObject {
     public string reload;
     public string switchTarget;
     public string confirm;
+    public string pause;
 
 }
