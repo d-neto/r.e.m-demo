@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BasicGun : Gun {
     
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private GameObject dustParticle;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float bulletDamage;
-    private bool canShoot = true;
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] protected GameObject dustParticle;
+    [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected float bulletDamage;
+    protected bool canShoot = true;
 
-    float timingRate = 0f;
-    bool isReloading;
+    protected float timingRate = 0f;
+    protected bool isReloading;
 
     public override void OnStart()
     {
