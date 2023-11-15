@@ -27,3 +27,5 @@ MonoBehaviour:
   weapons:
   - referenceCode: Pistol#01
     source: {fileID: 8582376053168952783, guid: a916f6fe2ad8edef595326bb77f64dbd, type: 3}
+  - referenceCode: Shotgun#01
+    source: {fileID: 8582376053168952783, guid: 8ec8470f273c3851eb3459ec7c17ee40, type: 3}
