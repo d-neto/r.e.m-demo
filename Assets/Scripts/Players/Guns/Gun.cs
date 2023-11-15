@@ -35,7 +35,7 @@ public abstract class Gun : MonoBehaviour
     Vector3 rotateToTargetRefer;
     Vector3 mouseDirection;
     protected Vector2 BulletToDirection;
-    float angle;
+    protected float angle;
     float originalScaleY;
 
     private void Awake(){
@@ -94,7 +94,7 @@ public abstract class Gun : MonoBehaviour
         positionRefer = Camera.main.WorldToScreenPoint(targetRefer.position);
         mouseDirection =  Aim.GetScreenPosition() - positionRefer;
 
-        this.withPlayer.Movement.SerActualTarget(Aim.GetActualTarget());
+        this.withPlayer.Movement.SetActualTarget(Aim.GetActualTarget());
         this.BulletToDirection = Aim.GetActualTarget().position;
 
         angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;

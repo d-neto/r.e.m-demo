@@ -5,7 +5,11 @@ using UnityEngine;
 public class Shotgun : BasicGun {
 
     public int bulletCount = 3;
-    public float angleBullet = 0.25f;
+
+    [Range(0, 360)]
+    [SerializeField]
+    float maxSpreadAngle = 17f;
+
     public override void Shoot(){
 
         if(dustParticle)
@@ -17,33 +21,19 @@ public class Shotgun : BasicGun {
         if(Vector2.Distance(moveDirection + bulletTarget.position, bulletTarget.position) < 0.5f)
             moveDirection = (this.BulletToDirection - (Vector2) transform.position);
 
-        moveDirection.z = 0;       
+        moveDirection.z = 0;
         moveDirection.Normalize();
 
-        for(int i = 1; i <= bulletCount/2; i++){
-            Vector2 newDirection = moveDirection;
-            newDirection.y += i*angleBullet;
-            newDirection.x += i*angleBullet;
-            GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float normalizedSpread = (i / (float)(bulletCount - 1)) * 2f - 1f;
+            float spreadAngle = maxSpreadAngle * normalizedSpread;
+            Quaternion rotation = Quaternion.Euler(0, 0, spreadAngle);
+            Vector2 newDirection = rotation * moveDirection;
+            GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, rotation);
             cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
             cloneBullet.GetComponent<Bullet>().SetDirection(newDirection.normalized);
             cloneBullet.GetComponent<Rigidbody2D>().AddForce(newDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
-        }
-        for(int i = (bulletCount/2)+1; i < bulletCount; i++){
-            Vector2 newDirection = moveDirection;
-            newDirection.y -= (i-(bulletCount/2))*angleBullet;
-            newDirection.x -= (i-(bulletCount/2))*angleBullet;
-            GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
-            cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
-            cloneBullet.GetComponent<Bullet>().SetDirection(newDirection.normalized);
-            cloneBullet.GetComponent<Rigidbody2D>().AddForce(newDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
-        }
-
-        if(bulletCount%2 != 0){
-            GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
-            cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
-            cloneBullet.GetComponent<Bullet>().SetDirection(moveDirection);
-            cloneBullet.GetComponent<Rigidbody2D>().AddForce(moveDirection * bulletSpeed, ForceMode2D.Impulse);
         }
 
         timingRate = fireRate;
