@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     public List<AbleAim> GetEnemiesInRadius(Vector2 position, float searchRadius){
+        if(enemies.Count == 0) return enemies;
         List<AbleAim> enemiesInRadius = new List<AbleAim>();
         foreach (AbleAim enemy in enemies)
         {

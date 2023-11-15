@@ -133,7 +133,7 @@ public abstract class Gun : MonoBehaviour
 
         targetRefer = transform;
 
-        if(this.Aim.IsReady())
+        if(this.Aim && this.Aim.IsReady())
             this.Aim.ActiveMode();
 
     }

@@ -7,7 +7,7 @@ public class PlayerState
     protected Player player;
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
-    private string animationName;
+    protected string animationName;
     protected float startTime;
 
     public PlayerState(string animationName, Player player, PlayerStateMachine stateMachine, PlayerData playerData){

@@ -30,8 +30,8 @@ public class PlayerStatsManager
         if(isDead) return;
 
         if(player.Data.life <= 0){
-            OnDeath?.Invoke();
             isDead = true;
+            OnDeath?.Invoke();
         }
     }
 
@@ -49,4 +49,6 @@ public class PlayerStatsManager
     public void AddXp(float amount){
         this.player.Data.experience += amount;
     }
+
+    public bool IsDead() => isDead;
 }

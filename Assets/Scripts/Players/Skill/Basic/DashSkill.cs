@@ -16,7 +16,7 @@ public class DashSkill : Skill {
     public override void OnUpdate()
     {
         if(actualDashDelayWaitTime >= 0) actualDashDelayWaitTime -= Time.deltaTime;
-        if(actualDashDelayWaitTime <= 0 && Input.GetButtonDown("Dash") && canDash && Manager.GetPlayer().Movement.IsMoving()) Dash();
+        if(actualDashDelayWaitTime <= 0 && Manager.GetPlayer().GetInput().GetDash() && canDash && Manager.GetPlayer().Movement.IsMoving()) Dash();
 
         if(isDashing){
             GameObject ghost = Instantiate(ghostPrefab, Manager.GetPlayer().transform.position, Manager.GetPlayer().transform.rotation);

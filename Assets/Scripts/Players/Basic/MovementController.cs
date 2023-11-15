@@ -35,6 +35,9 @@ public class MovementController
         movementRaw.x =  player.GetInput().GetHorizontalRaw();
         movementRaw.y =  player.GetInput().GetVerticalRaw();
 
+    }
+
+    public void FixedUpdate(){
         if(canMove) Movement();
     }
 
@@ -77,4 +80,6 @@ public class MovementController
     public void RemoveActualTarget() => this.target = null;
     public void SetNullTarget(bool nullTarget) => this.nullTarget = nullTarget;
     public bool IsNullTarget() => this.nullTarget;
+
+    public bool CanMove() => this.canMove;
 }

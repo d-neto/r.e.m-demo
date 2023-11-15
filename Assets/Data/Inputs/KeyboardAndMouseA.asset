@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5210bd53d7d9188d883200026cfd4e5, type: 3}
   m_Name: KeyboardAndMouseA
   m_EditorClassIdentifier: 
-  horizontalAxis: HorizontalKeyboardA
-  verticalAxis: VerticalKeyboardA
-  dash: DashButtonKeyboard
-  dropObject: DropObjectKeyboard
-  pickObject: PickObjectKeyboard
-  shoot: FireKeyboard
-  reload: ReloadKeyboard
-  switchTarget: SwitchTargetKeyboard
+  horizontalAxis: KeyboardA:Horizontal
+  verticalAxis: KeyboardA:Vertical
+  dash: KeyboardA:Dash
+  dropObject: KeyboardA:DropObject
+  pickObject: KeyboardA:PickObject
+  shoot: KeyboardA:Fire
+  reload: KeyboardA:Reload
+  switchTarget: KeyboardA:SwitchTarget
+  confirm: KeyboardA:Confirm
+  pause: KeyboardA:Pause

@@ -23,4 +23,10 @@ public class MenuPrincipalManager : MonoBehaviour
         Debug.Log("Sair do jogo");
         Application.Quit();
     }
+
+    void Update(){
+        if(Input.anyKey && !Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2)){
+            infiniteMode();
+        }
+    }
 }
