@@ -76,7 +76,7 @@ public class MovementController
 
     public void Lock(bool isLocked) => this.canMove = !isLocked;
     public void ChangeInvertMode(InvertSpriteMode mode) => this.InvertWith = mode;
-    public void SerActualTarget(Transform target) => this.target = target;
+    public void SetActualTarget(Transform target) => this.target = target;
     public void RemoveActualTarget() => this.target = null;
     public void SetNullTarget(bool nullTarget) => this.nullTarget = nullTarget;
     public bool IsNullTarget() => this.nullTarget;
