@@ -61,6 +61,7 @@ public class BasicGun : Gun {
         cloneBullet.GetComponent<Rigidbody2D>().AddForce(moveDirection * bulletSpeed, ForceMode2D.Impulse);
         timingRate = fireRate;
         loadedAmmo -= 1;
+        MyCamera.Instance.ShakeCam(0.2f, 1.4f, 1f);
         this.Audio.PlayOneShot(shootAudioClip, 0.1f);
     }
 

@@ -18,6 +18,7 @@ public class BasicDamageState : PlayerState
         player.Movement.Rbody().AddForce(direction * 5, ForceMode2D.Impulse);
         player.Movement.Lock(true);
         player.PlayAudio(player.Data.ACHurt, 0.5f);
+        MyCamera.Instance.ShakeCam(0.2f, 5f, 3f);
         player.StartCoroutine(Damaged());
     }
 

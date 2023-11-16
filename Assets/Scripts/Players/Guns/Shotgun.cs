@@ -38,8 +38,8 @@ public class Shotgun : BasicGun {
 
         timingRate = fireRate;
         loadedAmmo -= 1;
+        MyCamera.Instance.ShakeCam(0.3f, 2f, 1.2f);
         this.Audio.PlayOneShot(shootAudioClip, 0.1f);
-
     }
 
 }
