@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4842f0c1260778f4780a55720e9eb0f8, type: 3}
+  m_Name: Lucius
+  m_EditorClassIdentifier: 
+  life: 20
+  endurance: 0
+  skillPower: 20
+  experience: 0
+  speed: 3
+  ACHurt: {fileID: 8300000, guid: 853cee387db76803f81beaa5d32e799f, type: 3}
+  ACDash: {fileID: 8300000, guid: 62e1bf7adfa48c5d3ad14983c4b99279, type: 3}
+  ACDead: {fileID: 8300000, guid: dc6f294127925e60ab6b4f011471cec5, type: 3}
+  AimPrefab: {fileID: 597180975415129117, guid: e3dfcb61a379fb718a4285265aae2356, type: 3}
+  PSDeathPrefab: {fileID: 2701033862929032320, guid: 055dcfaadb6ef8e088850c0587510bb9, type: 3}
+  maxGunsInHands: 1
+  actualGunsInHands: 1
+  weapons:
+  - referenceCode: Pistol#01
+    source: {fileID: 8582376053168952783, guid: bc349dcf3f7371176b49982d81cc86d2, type: 3}
+  - referenceCode: Shotgun#01
+    source: {fileID: 8582376053168952783, guid: 565199b1a4119f3d7a1094d4a5c0a262, type: 3}
