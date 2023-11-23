@@ -38,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - MapConnection
+  - MapGrid
   - 
   m_SortingLayers:
   - name: Default

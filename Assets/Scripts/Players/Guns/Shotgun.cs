@@ -7,8 +7,7 @@ public class Shotgun : BasicGun {
     public int bulletCount = 3;
 
     [Range(0, 360)]
-    [SerializeField]
-    float maxSpreadAngle = 17f;
+    public float maxSpreadAngle = 17f;
 
     public override void Shoot(){
 

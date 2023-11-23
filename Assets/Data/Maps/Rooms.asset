@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d51c9eded12154f91b5be384ce63e4, type: 3}
+  m_Name: Rooms
+  m_EditorClassIdentifier: Assembly-CSharp::ListRooms
+  topRooms:
+  - {fileID: 980012179606717517, guid: 971cea2b3cb89e832a63c50c6b2b0ecb, type: 3}
+  rightRooms:
+  - {fileID: 980012179606717517, guid: fc0395c63ae0321e9b7f2e21c371eb73, type: 3}
+  - {fileID: 980012179606717517, guid: 0cf71655f94c20960a79f7415d01ffc1, type: 3}
+  bottomRooms:
+  - {fileID: 980012179606717517, guid: 971cea2b3cb89e832a63c50c6b2b0ecb, type: 3}
+  - {fileID: 980012179606717517, guid: b2e94271c3427da039bd55ee5b23ffbf, type: 3}
+  leftRooms:
+  - {fileID: 980012179606717517, guid: fc0395c63ae0321e9b7f2e21c371eb73, type: 3}
+  - {fileID: 980012179606717517, guid: 0cf71655f94c20960a79f7415d01ffc1, type: 3}
