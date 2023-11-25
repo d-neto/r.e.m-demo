@@ -1601,7 +1601,7 @@ GameObject:
   - component: {fileID: 1664602034}
   - component: {fileID: 1664602033}
   m_Layer: 0
-  m_Name: MyCamera
+  m_Name: '[ Camera ] MyCamera'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1911,7 +1911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: []
   centerPoint: {fileID: 2084820515}
-  maxDistance: 4
+  maxDistance: 9
 --- !u!4 &2084820515
 Transform:
   m_ObjectHideFlags: 0

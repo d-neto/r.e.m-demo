@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public static CameraFollow Instance;
     public GameObject[] players;
     public Transform centerPoint;
-    public float maxDistance = 4f;
+    public float maxDistance = 9f;
 
     void Awake(){
         if(!Instance) Instance = this;
