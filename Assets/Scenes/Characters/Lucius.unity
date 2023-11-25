@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 2084820515}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7.5
@@ -374,7 +374,7 @@ Transform:
   m_GameObject: {fileID: 444792171}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9, y: -1.37, z: -10}
+  m_LocalPosition: {x: 46.05, y: -2.37, z: -19.958385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1334,7 +1334,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.125
+  orthographic size: 3.7875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1469,7 +1469,7 @@ Transform:
   m_GameObject: {fileID: 1363304226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9, y: -1.37, z: -10}
+  m_LocalPosition: {x: 46.05, y: -2.37, z: -19.958385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1636,6 +1636,7 @@ Transform:
   m_Children:
   - {fileID: 1363304232}
   - {fileID: 444792173}
+  - {fileID: 2084820515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672737822
@@ -1879,6 +1880,53 @@ Transform:
   - {fileID: 2144992549}
   m_Father: {fileID: 1435230869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2084820513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084820515}
+  - component: {fileID: 2084820514}
+  m_Layer: 0
+  m_Name: '[ PlayerCameraFollow ]'
+  m_TagString: PlayerCameraFollow
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2084820514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084820513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b779edeffb5b578a927572db313cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  centerPoint: {fileID: 2084820515}
+  maxDistance: 4
+--- !u!4 &2084820515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084820513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 46.05, y: -2.37, z: -9.9583845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1664602034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2144992548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +2017,9 @@ MonoBehaviour:
   reloadTimeInMS: 700
   bulletTarget: {fileID: 0}
   Aim: {fileID: 0}
+  hasLight: 0
+  LightPrefab: {fileID: 0}
+  Light: {fileID: 0}
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
   bulletSpeed: 17
