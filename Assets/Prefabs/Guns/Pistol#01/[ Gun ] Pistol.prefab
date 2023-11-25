@@ -170,6 +170,7 @@ MonoBehaviour:
   shootAudioClip: {fileID: 8300000, guid: 1323d7ceaa4afbbffa86b33582997266, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: eed5cb0c3a2393a669920483b278b039, type: 3}
   emptyAudioClip: {fileID: 8300000, guid: 124aa03870e5afcde861e1ec12f0da67, type: 3}
+  referenceCode: Pistol#01
   maxAmmo: 16
   currentAmmo: 48
   loadedAmmo: 16
@@ -177,7 +178,9 @@ MonoBehaviour:
   reloadTimeInMS: 1000
   bulletTarget: {fileID: 0}
   Aim: {fileID: 0}
-  referenceCode: Pistol#01
+  hasLight: 1
+  LightPrefab: {fileID: 2082277598358406123, guid: 3b87350475156afbebd6c2cb958faa8c, type: 3}
+  Light: {fileID: 0}
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
   bulletSpeed: 16

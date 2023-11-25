@@ -8,6 +8,7 @@ TagManager:
   - '[ UI ] DamageIndicators'
   - UI:GameOver
   - UI:HUD
+  - PlayerCameraFollow
   layers:
   - Default
   - TransparentFX

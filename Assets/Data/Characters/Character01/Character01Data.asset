@@ -23,7 +23,7 @@ MonoBehaviour:
   AimPrefab: {fileID: 597180975415129117, guid: e3dfcb61a379fb718a4285265aae2356, type: 3}
   PSDeathPrefab: {fileID: 2701033862929032320, guid: 055dcfaadb6ef8e088850c0587510bb9, type: 3}
   maxGunsInHands: 1
-  actualGunsInHands: 1
+  actualGunsInHands: 0
   weapons:
   - referenceCode: Pistol#01
     source: {fileID: 8582376053168952783, guid: a916f6fe2ad8edef595326bb77f64dbd, type: 3}

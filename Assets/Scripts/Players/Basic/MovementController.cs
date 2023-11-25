@@ -31,10 +31,10 @@ public class MovementController
     {
         input.x = player.GetInput().GetHorizontal();
         input.y =  player.GetInput().GetVertical();
+        TruncateInputByPlayersDistance();
         movement = input;
         movementRaw.x =  player.GetInput().GetHorizontalRaw();
         movementRaw.y =  player.GetInput().GetVerticalRaw();
-
     }
 
     public void FixedUpdate(){
@@ -57,6 +57,14 @@ public class MovementController
 
         if(direction.x > 0) player.transform.localRotation = Quaternion.Euler(0, 180, 0);
         else if(direction.x < 0) player.transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    void TruncateInputByPlayersDistance(){
+        Vector2 dir = (player.transform.position - CameraFollow.Instance.centerPoint.position);
+        if(dir.x > CameraFollow.Instance.maxDistance && input.x > 0) input.x = 0;
+        if(dir.x < -CameraFollow.Instance.maxDistance && input.x < 0) input.x = 0;
+        if(dir.y > CameraFollow.Instance.maxDistance && input.y > 0) input.y = 0;
+        if(dir.y < -CameraFollow.Instance.maxDistance && input.y < 0) input.y = 0;
     }
 
     bool nullTarget = false;

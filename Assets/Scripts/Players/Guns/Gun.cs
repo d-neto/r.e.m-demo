@@ -28,6 +28,11 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected Transform bulletTarget;
     [SerializeField] protected AimController Aim;
 
+    [Header("Lights")]
+    [SerializeField] protected bool hasLight;
+    [SerializeField] protected GameObject LightPrefab;
+    [SerializeField] protected GameObject Light;
+
     protected float reloadTime;
     protected float fireRate;
 
@@ -54,7 +59,14 @@ public abstract class Gun : MonoBehaviour
         OnStart();
     }
 
-    private void OnEnable() => OnEnableGun();
+    private void OnEnable(){
+        OnEnableGun();
+        if(hasLight){
+            if(this.Light) Destroy(this.Light);
+            this.Light = Instantiate(this.LightPrefab, bulletTarget);
+            this.Light.transform.localPosition = Vector3.zero;
+        }
+    }
 
     private void Update()
     {
@@ -101,10 +113,14 @@ public abstract class Gun : MonoBehaviour
         angle = Mathf.Clamp(angle, -maxAngle, maxAngle);
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-
         if(canInvertOn90Degree){
             float scaleY = (angle > 90 || angle < -90) ? -originalScaleY : originalScaleY;
             transform.localScale = new Vector3(transform.localScale.x, scaleY, transform.localScale.z);
+
+            if(hasLight){
+                Vector3 newRotation = new Vector3(0f, scaleY > 0 ? 180f : 0f, 90f);
+                Light.transform.localRotation = Quaternion.Euler(newRotation);
+            }
         }
 
     }

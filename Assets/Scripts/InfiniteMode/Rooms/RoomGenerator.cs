@@ -144,7 +144,7 @@ public class RoomGenerator : MonoBehaviour
         foreach (Player player in players)
         {
             float distance = Vector2.Distance(room.transform.position, player.transform.position);
-            if (distance < 100f){
+            if (distance < 32*4){
                 return true;
             }
         }

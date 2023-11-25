@@ -20,7 +20,8 @@ public class BasicGun : Gun {
 
     public override void OnEnableGun(){
         this.isReloading = false;
-        this.SetupGun(withPlayer.Data.GetWeapon(referenceCode), withPlayer.GetAIM());
+        if(this.transform.childCount <= 0)
+            this.SetupGun(withPlayer.Data.GetWeapon(referenceCode), withPlayer.GetAIM());
     }
 
     public override void ShootingController(){
