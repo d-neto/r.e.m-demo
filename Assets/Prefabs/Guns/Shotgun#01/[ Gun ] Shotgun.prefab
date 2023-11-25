@@ -181,9 +181,9 @@ MonoBehaviour:
   hasLight: 1
   LightPrefab: {fileID: 2082277598358406123, guid: 3b87350475156afbebd6c2cb958faa8c, type: 3}
   Light: {fileID: 0}
-  bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
+  bulletPrefab: {fileID: 6939239731163391451, guid: de743d658205abcc2b7aa3ea7918035b, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: dd2b8704602c51614be9a2d2c27b12b7, type: 3}
-  bulletSpeed: 15
+  bulletSpeed: 10
   bulletDamage: 3
   bulletCount: 3
   maxSpreadAngle: 17

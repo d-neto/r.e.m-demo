@@ -174,7 +174,7 @@ MonoBehaviour:
   maxAmmo: 16
   currentAmmo: 48
   loadedAmmo: 16
-  fireRateInMS: 300
+  fireRateInMS: 400
   reloadTimeInMS: 1000
   bulletTarget: {fileID: 0}
   Aim: {fileID: 0}
@@ -183,5 +183,5 @@ MonoBehaviour:
   Light: {fileID: 0}
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
-  bulletSpeed: 16
+  bulletSpeed: 10
   bulletDamage: 3.5

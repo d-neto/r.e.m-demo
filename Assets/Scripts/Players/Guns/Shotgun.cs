@@ -29,7 +29,7 @@ public class Shotgun : BasicGun {
             float spreadAngle = maxSpreadAngle * normalizedSpread;
             Quaternion rotation = Quaternion.Euler(0, 0, spreadAngle);
             Vector2 newDirection = rotation * moveDirection;
-            GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, rotation);
+            GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
             cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
             cloneBullet.GetComponent<Bullet>().SetDirection(newDirection.normalized);
             cloneBullet.GetComponent<Rigidbody2D>().AddForce(newDirection.normalized * bulletSpeed, ForceMode2D.Impulse);

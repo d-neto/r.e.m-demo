@@ -67,7 +67,11 @@ public class RoomGenerator : MonoBehaviour
         generateds.Add(room);
 
         for(int i = 0; i < size && i < generateds.Count; i++){
-            if(generateds[i].WasGenerated()) continue;
+            if(generateds[i].WasGenerated()){
+                for(int j = 0; j < generateds[i].connections.Count; j++) 
+                    generateds.Add(generateds[i].connections[j]);
+                continue;
+            }
             generateds[i].SetupRandom(roomsPrefabs);
 
             generatedByCurrent = generateds[i].Generate();
@@ -115,14 +119,16 @@ public class RoomGenerator : MonoBehaviour
         int generatedsAround = 0;
         List<Room> generateds = new List<Room>();
         generateds.Add(room);
-        for(int i = 0; i < 5 && i < generateds.Count; i++){
+        for(int i = 0; i < 12 && i < generateds.Count; i++){
             if(generateds[i].connections == null) continue;
             for(int j = 0; j < generateds[i].connections.Count; j++){
                 if(generateds[i].connections[j].WasGenerated()) generatedsAround++;
                 generateds.Add(generateds[i].connections[j]);
             }
         }
-        if(generatedsAround <= 16) GenerateChunksByIndex(room);
+        if(generatedsAround <= 64){
+            GenerateChunksByIndex(room);
+        }
         SetVisiblesByPlayersPosition();
     }
 
