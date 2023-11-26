@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - '[ UI ] DamageIndicators'
   - UI:GameOver
   - UI:HUD
   - PlayerCameraFollow
+  - UI:DamageIndicators
   layers:
   - Default
   - TransparentFX

@@ -10515,8 +10515,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.00165, y: 0.5116999, z: 0}
-    m_Extent: {x: 5.5001497, y: 1.859, z: 0}
+    m_Center: {x: 3.9981, y: 0.5131, z: 0}
+    m_Extent: {x: 5.5055, y: 1.8577, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10755,8 +10755,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.03369999, y: 0.033199996, z: 0}
-    m_Extent: {x: 0.9705, y: 0.87960005, z: 0}
+    m_Center: {x: -0.032050014, y: 0.039249986, z: 0}
+    m_Extent: {x: 0.96875, y: 0.87275004, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10837,8 +10837,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.0054502, y: 0.51294994, z: 0}
-    m_Extent: {x: 5.49885, y: 1.86445, z: 0}
+    m_Center: {x: 3.99935, y: 0.52075005, z: 0}
+    m_Extent: {x: 5.5009503, y: 1.86395, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -11070,7 +11070,7 @@ MonoBehaviour:
   - {x: 4.4925804, y: -1.1767521, z: 0}
   m_ShapePathHash: 2090275941
   m_Mesh: {fileID: 0}
-  m_InstanceId: -132608
+  m_InstanceId: 58306
   m_LocalBounds:
     m_Center: {x: -0.0017700195, y: -0.29685807, z: 0}
     m_Extent: {x: 4.4943504, y: 0.9321716, z: 0}
@@ -11088,7 +11088,8 @@ GameObject:
   - component: {fileID: 2054724413584350335}
   - component: {fileID: 8119297646134405330}
   - component: {fileID: 8486913330747477782}
-  m_Layer: 30
+  - component: {fileID: 4161558072283098001}
+  m_Layer: 8
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11860,55 +11861,67 @@ CompositeCollider2D:
       - X: 60000000
         Y: -50000000
       - X: 60000000
-        Y: -70000000
+        Y: -64375000
       - X: 150000000
-        Y: -70000000
+        Y: -64375000
     - - X: 190000000
         Y: -80000000
       - X: 180000000
         Y: -80000000
       - X: 180000000
-        Y: -150000000
+        Y: -144375008
       - X: 190000000
-        Y: -150000000
+        Y: -144375008
     - - X: 30000000
         Y: -80000000
       - X: 20000000
         Y: -80000000
       - X: 20000000
-        Y: -150000000
+        Y: -144375008
       - X: 30000000
-        Y: -150000000
+        Y: -144375008
     - - X: 150000000
         Y: -160000000
       - X: 60000000
         Y: -160000000
       - X: 60000000
-        Y: -180000000
+        Y: -174375008
       - X: 150000000
-        Y: -180000000
+        Y: -174375008
   m_CompositePaths:
     m_Paths:
-    - - {x: 14.999971, y: -7}
+    - - {x: 14.999971, y: -6.4375}
       - {x: 14.999971, y: -5}
       - {x: 6, y: -5.000029}
-      - {x: 6.000029, y: -7}
-    - - {x: 18.999971, y: -15}
+      - {x: 6.000029, y: -6.4375}
+    - - {x: 18.999971, y: -14.437501}
       - {x: 18.999971, y: -8}
       - {x: 18, y: -8.00003}
-      - {x: 18.000029, y: -15}
-    - - {x: 2.999971, y: -15}
+      - {x: 18.000029, y: -14.437501}
+    - - {x: 2.999971, y: -14.437501}
       - {x: 2.999971, y: -8}
       - {x: 2, y: -8.00003}
-      - {x: 2.0000293, y: -15}
-    - - {x: 14.999971, y: -18}
+      - {x: 2.0000293, y: -14.437501}
+    - - {x: 14.999971, y: -17.437502}
       - {x: 14.999971, y: -16}
       - {x: 6, y: -16.000029}
-      - {x: 6.000029, y: -18}
+      - {x: 6.000029, y: -17.437502}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 6334801907382238765}
+--- !u!114 &4161558072283098001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334801907382238765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21dbab9177f546457bc86c617292d1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6510312154773406765
 GameObject:
   m_ObjectHideFlags: 0
@@ -12191,7 +12204,7 @@ MonoBehaviour:
   - {x: -3.4056168, y: -1.2123632, z: 0}
   m_ShapePathHash: 1635744321
   m_Mesh: {fileID: 0}
-  m_InstanceId: -133352
+  m_InstanceId: 58340
   m_LocalBounds:
     m_Center: {x: -3.9002361, y: 2.229195, z: 0}
     m_Extent: {x: 0.49461937, y: 3.4415584, z: 0}
@@ -12253,7 +12266,7 @@ MonoBehaviour:
   - {x: -3.4056168, y: -1.2123632, z: 0}
   m_ShapePathHash: 1635744321
   m_Mesh: {fileID: 0}
-  m_InstanceId: -137106
+  m_InstanceId: 58268
   m_LocalBounds:
     m_Center: {x: -3.9002361, y: 2.229195, z: 0}
     m_Extent: {x: 0.49461937, y: 3.4415584, z: 0}
@@ -12472,7 +12485,7 @@ MonoBehaviour:
   - {x: 4.4925804, y: -1.1767521, z: 0}
   m_ShapePathHash: 2090275941
   m_Mesh: {fileID: 0}
-  m_InstanceId: -128508
+  m_InstanceId: 58320
   m_LocalBounds:
     m_Center: {x: -0.0017700195, y: -0.29685807, z: 0}
     m_Extent: {x: 4.4943504, y: 0.9321716, z: 0}

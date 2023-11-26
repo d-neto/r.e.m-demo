@@ -50,6 +50,7 @@ public class RoomGenerator : MonoBehaviour
             loadingText.text = (int) loaded + "%";
             SetSlider(loaded);
         }
+        AstarPath.active.FlushGraphUpdates();
     }
 
     IEnumerator Generate(int size){
@@ -84,7 +85,7 @@ public class RoomGenerator : MonoBehaviour
                 yield return null;
             }
         }
-
+        AstarPath.active.FlushGraphUpdates();
         yield return null;
     }
 

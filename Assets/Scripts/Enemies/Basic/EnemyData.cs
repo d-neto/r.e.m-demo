@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName="newMeleeEnemyData", menuName="Data/Enemies Data/Melee")]
-public class MeleeEnemyData : ScriptableObject 
+[CreateAssetMenu(fileName="newMeleeEnemyData", menuName="Data/Enemies Data/Enemy")]
+public class EnemyData : ScriptableObject 
 {
     [Header("Stats.")]
     public float life;

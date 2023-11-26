@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Slime : MeleeEnemy
+public class Slime : Enemy
 {
 
 
@@ -15,7 +15,7 @@ public class Slime : MeleeEnemy
     bool isTakingDamage = false;
 
     [Header("UI")]
-    [SerializeField] protected GameObject DamageCanvas;
+    [SerializeField] protected static GameObject DamageCanvas;
     [SerializeField] protected GameObject UIDamageIndicatorText;
 
     [Header("Components")]
@@ -39,10 +39,13 @@ public class Slime : MeleeEnemy
             this.Audio = transform.GetComponent<AudioSource>();
 
         this.waitTime = Random.Range(this.waitTime-0.1f, this.waitTime+0.1f);
+
+        DamageCanvas = GameObject.FindWithTag("UI:DamageIndicators");
     }
     public override void OnUpdate()
     {
         base.OnUpdate();
+        Finder.Update();
 
         if(isJumping && !isTakingDamage) MoveToTarget();
 
@@ -81,8 +84,8 @@ public class Slime : MeleeEnemy
     }
 
     void MoveToTarget(){
-        Vector2 direction = (target.position - transform.position).normalized;
-        rb2D.velocity = direction * Data.speed;
+        // Vector2 direction = (target.position - transform.position).normalized;
+        rb2D.velocity = Finder.GetDirection() * Data.speed;
     }
 
     IEnumerator MovingToTarget(){
