@@ -12,6 +12,7 @@ public class BasicGun : Gun {
 
     protected float timingRate = 0f;
     protected bool isReloading;
+    protected bool isInfinite = true;
 
     public override void OnStart()
     {
@@ -33,10 +34,10 @@ public class BasicGun : Gun {
         if(withPlayer.GetInput().GetFire() && !isReloading && canShoot){
             if(timingRate <= 0 && loadedAmmo > 0)
                 Shoot();
-            else if(loadedAmmo <= 0 && currentAmmo > 0)
+            else if(loadedAmmo <= 0 && (currentAmmo > 0 || isInfinite))
                 Reload();
         }
-        if(withPlayer.GetInput().GetFireDown() && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0){
+        if(withPlayer.GetInput().GetFireDown() && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0 && !isInfinite){
             timingRate = fireRate;
             Audio.PlayOneShot(emptyAudioClip, 0.1f);
         }
@@ -76,7 +77,7 @@ public class BasicGun : Gun {
     }
 
     IEnumerator ReloadingAmmo(){
-        if(currentAmmo - maxAmmo >= 0){
+        if(currentAmmo - maxAmmo >= 0 || isInfinite){
             currentAmmo -= (maxAmmo-loadedAmmo);
             yield return new WaitForSeconds(reloadTime);
             loadedAmmo = maxAmmo;

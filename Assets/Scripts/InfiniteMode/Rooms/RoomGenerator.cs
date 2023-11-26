@@ -19,6 +19,7 @@ public class RoomGenerator : MonoBehaviour
 
     bool initStarted = false;
     float valuePerRoom;
+    public Animator loadingAnimator;
     public Slider loadingSlider;
     public TMP_Text loadingText;
 
@@ -50,6 +51,7 @@ public class RoomGenerator : MonoBehaviour
             loadingText.text = (int) loaded + "%";
             SetSlider(loaded);
         }
+        loadingAnimator.SetBool("disapear", true);
         AstarPath.active.FlushGraphUpdates();
     }
 

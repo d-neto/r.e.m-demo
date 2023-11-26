@@ -38,6 +38,7 @@ public class PlayerStatsManager
     public void TakeDamage(float damage, Transform origin){
         player.Data.life -= (damage - player.Data.endurance) > 0 ? (damage-player.Data.endurance) : 0;
         LifeSlider(player.Data.life);
+        player.UI().LifeSliderAnimator().SetTrigger("damage");
         OnDamage?.Invoke(origin);
     }
 

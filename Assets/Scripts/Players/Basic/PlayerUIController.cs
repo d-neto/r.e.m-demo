@@ -7,6 +7,7 @@ public class PlayerUIController : MonoBehaviour
 {
 
     [Header("Stats")]
+    [SerializeField] private Animator lifeSliderAnimator;
     [SerializeField] private Slider lifeSlider;
     [SerializeField] private Slider skillPowerSlider;
 
@@ -17,4 +18,5 @@ public class PlayerUIController : MonoBehaviour
 
     public Slider LifeSlider() => this.lifeSlider;
     public Slider SkillSlider() => this.skillPowerSlider;
+    public Animator LifeSliderAnimator() => this.lifeSliderAnimator;
 }

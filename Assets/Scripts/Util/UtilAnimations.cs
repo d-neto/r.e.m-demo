@@ -5,6 +5,10 @@ using UnityEngine;
 public class UtilAnimations : MonoBehaviour
 {
 
+    public void DisableObject(){
+        this.gameObject.SetActive(false);
+    }
+
     public void DestroyObject(){
         Destroy(this.gameObject);
     }
