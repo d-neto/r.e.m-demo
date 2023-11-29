@@ -102,6 +102,6 @@ public class Player: MonoBehaviour
     public AimController GetAIM() => this.AIM;
     public void CreateAim(){
         this.AIM = Instantiate(this.Data.AimPrefab, null).GetComponent<AimController>();
-        this.AIM.Setup(this, Config.GetNullTargetPosition());
+        this.AIM.Setup(this, Config.GetNullTargetPosition(), this.Input.Get().targetMode);
     }
 }

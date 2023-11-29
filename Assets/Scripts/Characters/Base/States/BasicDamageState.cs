@@ -20,6 +20,8 @@ public class BasicDamageState : PlayerState
         player.PlayAudio(player.Data.ACHurt, 0.5f);
         MyCamera.Instance.ShakeCam(0.2f, 5f, 3f);
         player.StartCoroutine(Damaged());
+        if(player.Data.life > 0)
+            JoystickVibration.Instance.Rumble(player.GetInput().Get().joystickIndex, 0.25f, 1f, 0.2f);
     }
 
     public override void Update()

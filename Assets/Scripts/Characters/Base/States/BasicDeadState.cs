@@ -19,6 +19,7 @@ public class BasicDeadState : PlayerState
             player.transform.GetChild(i).gameObject.SetActive(false);
         player.PlayAudio(player.Data.ACDead, 0.8f);
 
+        JoystickVibration.Instance.Rumble(player.GetInput().Get().joystickIndex, 0.05f, 1f, 0.5f);
         PlayerManager.Instance.ShowGameOver();
     }
 

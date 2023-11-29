@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum AIM_MODE{Mouse, Target, Joystick};
 public class AimController : MonoBehaviour
 {   
     [SerializeField] protected Player player;
@@ -15,7 +16,6 @@ public class AimController : MonoBehaviour
     [SerializeField] private Color invalidAimColor;
     [SerializeField] private Color targetAimColor;
 
-    public enum AIM_MODE{Mouse, Target};
     [Header("Configs.")]
     [SerializeField] public AIM_MODE mode = AIM_MODE.Mouse;
     [SerializeField] private List<SpriteRenderer> sprites;
@@ -80,6 +80,19 @@ public class AimController : MonoBehaviour
         transform.position = target ? target.position : transform.position;
     }
 
+    public void UseJoystick(){
+        if(disabled){
+            Disabled(false);
+        }
+        transform.position = (Vector2) player.transform.position +(player.GetInput().GetAxisAnalog()*3f);
+        if(player.GetInput().GetAxisAnalog() == Vector2.zero){
+            SetNullTarget();
+            NoTarget();
+        }else{
+            SetTarget(transform);
+        }
+    }
+
     void SetColor(Color color){
         foreach(SpriteRenderer sprite in sprites){
             sprite.color = color;
@@ -138,6 +151,10 @@ public class AimController : MonoBehaviour
             case AIM_MODE.Mouse:
                 this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithMouse);
                 ChangeMode(UseMouse);
+                break;
+            case AIM_MODE.Joystick:
+                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithActualTarget);
+                ChangeMode(UseJoystick);
                 break;
         }
     }
@@ -226,6 +243,10 @@ public class AimController : MonoBehaviour
     public void Setup(Player player, Transform nullTarget){
         this.player = player;
         this.nullTarget = nullTarget;
+    }
+    public void Setup(Player player, Transform nullTarget, AIM_MODE mode){
+        Setup(player, nullTarget);
+        this.mode = mode;
     }
 
     public void Lock(bool status) => this.isLocked = status;

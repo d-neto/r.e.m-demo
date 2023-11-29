@@ -41,5 +41,17 @@ public class InputHandler : MonoBehaviour
     public bool GetConfirmDown() => Input.GetButtonDown(InputButtons.confirm);
     public bool GetConfirm() => Input.GetButton(InputButtons.confirm);
     public bool GetPauseDown() => Input.GetButtonDown(InputButtons.pause);
+
+    Vector2 analog = new Vector2();
+    public Vector2 GetAxisAnalog(){
+        analog.x = Input.GetAxis(InputButtons.handleHorizontal);
+        analog.y = Input.GetAxis(InputButtons.handleVertical);
+        return analog;
+    }
+    public Vector2 GetAxisAnalogRaw(){
+        analog.x = Input.GetAxisRaw(InputButtons.handleHorizontal);
+        analog.y = Input.GetAxisRaw(InputButtons.handleVertical);
+        return analog;
+    }
 }
 

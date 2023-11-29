@@ -22,3 +22,7 @@ MonoBehaviour:
   switchTarget: Joystick1:SwitchTarget
   confirm: Joystick1:Confirm
   pause: Joystick1:Pause
+  handleHorizontal: Joystick1:AnalogHorizontal
+  handleVertical: Joystick1:AnalogVertical
+  targetMode: 1
+  joystickIndex: 0

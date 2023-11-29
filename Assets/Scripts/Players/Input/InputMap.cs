@@ -12,5 +12,10 @@ public class InputMap : ScriptableObject {
     public string switchTarget;
     public string confirm;
     public string pause;
+    public string handleHorizontal;
+    public string handleVertical;
+    public AIM_MODE targetMode;
+
+    public int joystickIndex;
 
 }
