@@ -81,6 +81,7 @@ public class Player: MonoBehaviour
     
     void OnDeath(){
         StateMachine.ChangeState(States.DeadState);
+        this.AIM.gameObject.SetActive(false);
     }
 
     void OnDamage(Transform origin){
@@ -102,6 +103,6 @@ public class Player: MonoBehaviour
     public AimController GetAIM() => this.AIM;
     public void CreateAim(){
         this.AIM = Instantiate(this.Data.AimPrefab, null).GetComponent<AimController>();
-        this.AIM.Setup(this, Config.GetNullTargetPosition(), this.Input.Get().targetMode);
+        this.AIM.Setup(this, this.nullTargetPosition, this.Input.Get().targetMode);
     }
 }

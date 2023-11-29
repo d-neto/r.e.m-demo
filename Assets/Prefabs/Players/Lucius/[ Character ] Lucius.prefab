@@ -539,12 +539,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 9079129841130746411}
-  dashSpeed: 10
+  dashSpeed: 15
   dashTimer: 0.15
   canDash: 1
   isDashing: 0
   dashDelayWaitTime: 2
-  ghostPrefab: {fileID: 6688115920489748952, guid: 00a811fbf6573bf5a9fff33b29e0a2ec, type: 3}
+  ghostPrefab: {fileID: 6688115920489748952, guid: c477eec07e622adaf9ad9955c0d96f4b, type: 3}
 --- !u!1 &6171432462105867635
 GameObject:
   m_ObjectHideFlags: 0

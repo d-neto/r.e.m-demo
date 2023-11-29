@@ -31,7 +31,7 @@ public class BasicGun : Gun {
             timingRate -= Time.deltaTime;
 
         if(withPlayer.GetInput().GetReload() && !isReloading) Reload();
-        if(withPlayer.GetInput().GetFire() && !isReloading && canShoot){
+        if(IsFireShootPressed()){
             if(timingRate <= 0 && loadedAmmo > 0)
                 Shoot();
             else if(loadedAmmo <= 0 && (currentAmmo > 0 || isInfinite))
@@ -49,7 +49,7 @@ public class BasicGun : Gun {
             Instantiate<GameObject>(dustParticle, bulletTarget.position, this.transform.rotation);
 
         GameObject cloneBullet = Instantiate<GameObject>(bulletPrefab, bulletTarget.position, this.transform.rotation);
-        cloneBullet.GetComponent<Bullet>().SetDamage(bulletDamage);
+        cloneBullet.GetComponent<Bullet>().Setup(withPlayer.transform, bulletDamage);
 
         Vector3 moveDirection = (this.BulletToDirection - (Vector2) bulletTarget.position);
         
@@ -89,6 +89,10 @@ public class BasicGun : Gun {
 
         isReloading = false;
         withPlayer.GetInput().Reloading(this, isReloading);
+    }
+
+    bool IsFireShootPressed(){
+        return (withPlayer.GetInput().GetFire() || (withPlayer.GetAIM().mode == AIM_MODE.JoystickAuto && withPlayer.GetInput().GetAxisAnalogRaw() != Vector2.zero)) && !isReloading && canShoot;
     }
 
 }

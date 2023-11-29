@@ -22,3 +22,7 @@ MonoBehaviour:
   switchTarget: KeyboardB:SwitchTarget
   confirm: KeyboardB:Confirm
   pause: KeyboardB:Pause
+  handleHorizontal: 
+  handleVertical: 
+  targetMode: 0
+  joystickIndex: -1

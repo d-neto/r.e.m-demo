@@ -209,6 +209,9 @@ MonoBehaviour:
   reloadTimeInMS: 700
   bulletTarget: {fileID: 0}
   Aim: {fileID: 0}
+  hasLight: 0
+  LightPrefab: {fileID: 0}
+  Light: {fileID: 0}
   bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
   bulletSpeed: 17
@@ -560,6 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b312d43511ee96f7b0403dd637c7aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeSliderAnimator: {fileID: 0}
   lifeSlider: {fileID: 0}
   skillPowerSlider: {fileID: 0}
   gunIcon: {fileID: 0}
@@ -647,12 +651,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 5134059326459425842}
-  dashSpeed: 10
+  dashSpeed: 15
   dashTimer: 0.15
   canDash: 1
   isDashing: 0
   dashDelayWaitTime: 2
-  ghostPrefab: {fileID: 6688115920489748952, guid: 00a811fbf6573bf5a9fff33b29e0a2ec, type: 3}
+  ghostPrefab: {fileID: 6688115920489748952, guid: 4df3be5bf59d481f18879d62e8c405b7, type: 3}
 --- !u!1 &4868631198300742153
 GameObject:
   m_ObjectHideFlags: 0

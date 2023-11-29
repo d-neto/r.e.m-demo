@@ -12,7 +12,7 @@ public class JoystickVibration : MonoBehaviour
     }
 
     public void Rumble(int index, float lowFrequency, float highFrequency, float timing){
-        if(Gamepad.all.Count <= index) return;
+        if(Gamepad.all.Count <= index || index < 0) return;
         Gamepad.all[index]?.SetMotorSpeeds(lowFrequency, highFrequency);
         StartCoroutine(StopRumble(index, timing));
     }
@@ -23,7 +23,7 @@ public class JoystickVibration : MonoBehaviour
     }
 
     public void Stop(int index){
-        if(Gamepad.all.Count <= index) return;
+        if(Gamepad.all.Count <= index || index < 0) return;
         Gamepad.all[index]?.SetMotorSpeeds(0f, 0f);
     }
 }

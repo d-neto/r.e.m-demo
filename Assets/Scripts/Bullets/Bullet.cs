@@ -37,4 +37,12 @@ public class Bullet : MonoBehaviour
     public Vector3 GetDirection() => this.direction;
     public void SetDirection(Vector3 direction) => this.direction = direction;
 
+    public void Setup(Transform player, float damage){
+        SetDamage(damage);
+        this.player = player;
+    }
+    public void Setup(Transform player, Vector3 direction, float damage){
+        Setup(player, damage);
+        SetDirection(direction);
+    }
 }

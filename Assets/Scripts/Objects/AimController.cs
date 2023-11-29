@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum AIM_MODE{Mouse, Target, Joystick};
+public enum AIM_MODE{Mouse, Target, Joystick, JoystickAuto};
 public class AimController : MonoBehaviour
 {   
     [SerializeField] protected Player player;
@@ -84,11 +84,12 @@ public class AimController : MonoBehaviour
         if(disabled){
             Disabled(false);
         }
-        transform.position = (Vector2) player.transform.position +(player.GetInput().GetAxisAnalog()*3f);
         if(player.GetInput().GetAxisAnalog() == Vector2.zero){
-            SetNullTarget();
+            transform.position = nullTarget.position;
+            this.target = transform;
             NoTarget();
         }else{
+            transform.position = (Vector2) player.transform.position +(player.GetInput().GetAxisAnalog()*3f);
             SetTarget(transform);
         }
     }
@@ -153,6 +154,10 @@ public class AimController : MonoBehaviour
                 ChangeMode(UseMouse);
                 break;
             case AIM_MODE.Joystick:
+                this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithActualTarget);
+                ChangeMode(UseJoystick);
+                break;
+            case AIM_MODE.JoystickAuto:
                 this.player.Movement.ChangeInvertMode(this.player.Movement.InvertWithActualTarget);
                 ChangeMode(UseJoystick);
                 break;
