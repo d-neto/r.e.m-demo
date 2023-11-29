@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 4b071e60ebdbf3145953a7c2ea9769ca
   - enabled: 1
-    path: Assets/Scenes/CopySelectorPlayer 1.unity
+    path: Assets/Scenes/SelectorPlayer 1.unity
     guid: da8896f4d7bf60248a579e350364620a
   - enabled: 1
     path: Assets/Scenes/Characters/Character_01.unity
