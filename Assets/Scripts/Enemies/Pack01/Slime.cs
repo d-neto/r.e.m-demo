@@ -8,11 +8,11 @@ public class Slime : Enemy
 
 
     [Header("Configs.")]
-    [SerializeField] private float waitTime = 0.9f;
-    [SerializeField] private float airTime = 0.9f;
-    bool startCoroutine = false;
-    bool isJumping = false;
-    bool isTakingDamage = false;
+    [SerializeField] protected float waitTime = 0.9f;
+    [SerializeField] protected float airTime = 0.9f;
+    protected bool startCoroutine = false;
+    protected bool isJumping = false;
+    protected bool isTakingDamage = false;
 
     [Header("UI")]
     [SerializeField] protected static GameObject DamageCanvas;
@@ -25,10 +25,10 @@ public class Slime : Enemy
     [SerializeField] protected AudioSource Audio;
 
     [Header("Audios")]
-    [SerializeField] private float volume;
-    [SerializeField] private AudioClip jumpAudioClip;
-    [SerializeField] private AudioClip damageAudioClip;
-    [SerializeField] private AudioClip deathAudioClip;
+    [SerializeField] protected float volume;
+    [SerializeField] protected AudioClip jumpAudioClip;
+    [SerializeField] protected AudioClip damageAudioClip;
+    [SerializeField] protected AudioClip deathAudioClip;
 
     public override void OnAwake()
     {
@@ -64,7 +64,7 @@ public class Slime : Enemy
         clone.GetComponent<Experience>().Set(GetData().XPAmount);
     }
 
-    GameObject actualDamageIndicatorText = null;
+    protected GameObject actualDamageIndicatorText = null;
     public override void OnDamage(float damage, Vector3 direction){
 
         if(!actualDamageIndicatorText)
@@ -83,12 +83,12 @@ public class Slime : Enemy
             this.Data.life -= (damage - Data.endurance);
     }
 
-    void MoveToTarget(){
+    protected void MoveToTarget(){
         // Vector2 direction = (target.position - transform.position).normalized;
         rb2D.velocity = Finder.GetDirection() * Data.speed;
     }
 
-    IEnumerator MovingToTarget(){
+    public virtual IEnumerator MovingToTarget(){
         startCoroutine = true;
         Audio.PlayOneShot(jumpAudioClip, volume);
         rb2D.velocity = Vector2.zero;
@@ -109,7 +109,7 @@ public class Slime : Enemy
         startCoroutine = false;
     }
 
-    IEnumerator TakeDamage(Vector3 direction){
+    public virtual IEnumerator TakeDamage(Vector3 direction){
 
         isJumping = false;
         SuperAnimator.SetTrigger("damage");

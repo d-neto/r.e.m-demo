@@ -17,10 +17,12 @@ public class PathFinder
 
     Coroutine updatePath = null;
 
-    public PathFinder(Enemy e, Seeker seeker){
+    float updatePathTimer;
+
+    public PathFinder(Enemy e, Seeker seeker, float updatePathTimer = 1f){
         this.seeker = seeker;
         this.enemy = e;
-
+        this.updatePathTimer = updatePathTimer;
         updatePath = enemy.StartCoroutine(UpdatePath());
     }
 
@@ -43,10 +45,8 @@ public class PathFinder
 
     IEnumerator UpdatePath(){
         while (true){
-            if(path == null || (path != null && Vector3.Distance(enemy.transform.position, enemy.GetTargetPosition()) > nextWaypointDistance)){
-                seeker.StartPath(enemy.transform.position, enemy.GetTargetPosition(), OnPathComplete);
-            }
-            yield return new WaitForSeconds(1f);
+            SearchPath();
+            yield return new WaitForSeconds(updatePathTimer);
         }
     }
 
@@ -59,4 +59,12 @@ public class PathFinder
             currentWaypoint = 0;
         }
     }
+
+    public void SearchPath(){
+        if(path == null || (path != null && Vector3.Distance(enemy.transform.position, enemy.GetTargetPosition()) > nextWaypointDistance)){
+            seeker.StartPath(enemy.transform.position, enemy.GetTargetPosition(), OnPathComplete);
+        }
+    }
+
+    public void SetTimer(float value) => this.updatePathTimer = value;
 }

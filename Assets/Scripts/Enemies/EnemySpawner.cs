@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void RandomSpawn(){
-        GameObject clone = Instantiate(enemies[Random.Range(0, enemies.Count-1)], spawns[Random.Range(0, spawns.Count-1)].position, Quaternion.identity);
+        GameObject clone = Instantiate(enemies[Random.Range(0, enemies.Count)], spawns[Random.Range(0, spawns.Count)].position, Quaternion.identity);
     }
 
 }

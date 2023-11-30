@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 320203719046315803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.325, z: 0}
+  m_LocalPosition: {x: -0.004, y: -0.376, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 3525998740073203533}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.069, z: 0}
+  m_LocalPosition: {x: -0.005, y: -0.318, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -109,11 +109,11 @@ GameObject:
   - component: {fileID: 6783486608837107746}
   - component: {fileID: 1109486337649725913}
   - component: {fileID: 6802821245822749182}
-  - component: {fileID: 8144450160060181924}
+  - component: {fileID: 4902357590017373926}
   - component: {fileID: 7239646475660861524}
   - component: {fileID: 566973014577375265}
   m_Layer: 17
-  m_Name: '[ EnemySlime ] JS'
+  m_Name: '[ EnemySlime ] JellyMonster'
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010978848, y: -0.31385404}
+  m_Offset: {x: 0.0132764205, y: -0.34538066}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -207,7 +207,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3494439, y: 0.36935472}
+  m_Size: {x: 0.3886869, y: 0.33735132}
   m_EdgeRadius: 0
 --- !u!210 &6783486608837107746
 SortingGroup:
@@ -327,7 +327,7 @@ Animator:
   m_GameObject: {fileID: 3898213380590746459}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e536f2aa3c6df0c88bec5e5d3969ff1a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0f9a55dcbc4d2e2db9dc14ed4efa196b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -338,7 +338,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8144450160060181924
+--- !u!114 &4902357590017373926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,19 +347,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3898213380590746459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c9c7bbe70c89cd8896fcfeb7e59a0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e79286b867814ab1b1226fb157dc68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 11400000, guid: 92fa1634d51c4a2e8852a58aa5261aa2, type: 2}
+  Data: {fileID: 11400000, guid: fd137aeabc9f33c758f33801a10f6b6f, type: 2}
   Anim: {fileID: 6019450066045679751}
   rb2D: {fileID: 7016453856850972424}
   target: {fileID: 0}
   ableToAim: {fileID: 7239646475660861524}
-  waitTime: 0.7
-  airTime: 0.35
+  waitTime: 0.9
+  airTime: 0.9
   UIDamageIndicatorText: {fileID: 4422758632536850164, guid: d7d2bdf18c4ca1f18876c81e840656ca, type: 3}
   SuperAnimator: {fileID: 6802821245822749182}
-  PSDeath: {fileID: 4264407893690673293, guid: 3fda54c7d8cafe464a2a6ef052d5624b, type: 3}
+  PSDeath: {fileID: 4264407893690673293, guid: 0502f62f5684800f3bbe37a2ff355ab7, type: 3}
   particleSpawn: {fileID: 6046046538745986165}
   Audio: {fileID: 1109486337649725913}
   volume: 0.2
@@ -498,7 +498,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0032, y: -0.4242, z: 0}
-  m_LocalScale: {x: 0.5224136, y: 0.1516, z: 1}
+  m_LocalScale: {x: 0.43462685, y: 0.105599895, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8658493548572948227}
@@ -523,7 +523,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 1078622871345125686}
   - component: {fileID: 6019450066045679751}
   m_Layer: 0
-  m_Name: JS
+  m_Name: JellyMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,8 +582,8 @@ Transform:
   m_GameObject: {fileID: 9092744448881650113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.011, y: -0.033, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6458165330487166842}
@@ -608,7 +608,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: c91aea6f7999ceb62a14b74ba721fbac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -629,7 +629,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1028494629, guid: 19fca2d569081ca4d9cde818094cf1cb, type: 3}
+  m_Sprite: {fileID: 2036498047, guid: b4685ae5712e06145aaec56ac5192143, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -650,7 +650,7 @@ Animator:
   m_GameObject: {fileID: 9092744448881650113}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: db57d2ad8aa87d98da261d2a897feca2, type: 2}
+  m_Controller: {fileID: 9100000, guid: e1450949e4df7501488ccfe0b7897784, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
