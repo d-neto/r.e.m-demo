@@ -61,6 +61,12 @@ public class AimController : MonoBehaviour
         if(disabled){
             Disabled(false);
         }
+
+        if(player.GetInput().GetSwitchModeDown()){
+            this.mode = AIM_MODE.Target;
+            ActiveMode();
+        }
+
         mousePosition = Input.mousePosition;
         transform.position = (Vector2) Camera.main.ScreenToWorldPoint(mousePosition);
         SetTarget(transform);
@@ -68,6 +74,12 @@ public class AimController : MonoBehaviour
     public void UseTarget(){
         if(disabled){
             Disabled(false);
+        }
+
+        if(player.GetInput().GetSwitchModeDown()){
+            if(player.GetInput().Get().joystickIndex >= 0) this.mode = AIM_MODE.Joystick;
+            else this.mode = AIM_MODE.Mouse;
+            ActiveMode();
         }
 
         NewSearchTarget();
@@ -84,6 +96,13 @@ public class AimController : MonoBehaviour
         if(disabled){
             Disabled(false);
         }
+
+        if(player.GetInput().GetSwitchModeDown()){
+            if(this.mode == AIM_MODE.Joystick) this.mode = AIM_MODE.JoystickAuto;
+            else this.mode = AIM_MODE.Target;
+            ActiveMode();
+        }
+
         if(player.GetInput().GetAxisAnalog() == Vector2.zero){
             transform.position = nullTarget.position;
             this.target = transform;

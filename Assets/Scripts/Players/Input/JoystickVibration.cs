@@ -26,4 +26,10 @@ public class JoystickVibration : MonoBehaviour
         if(Gamepad.all.Count <= index || index < 0) return;
         Gamepad.all[index]?.SetMotorSpeeds(0f, 0f);
     }
+
+    private void OnApplicationQuit() {
+        for(int i = 0; i < Gamepad.all.Count; i++){
+            Gamepad.all[i]?.SetMotorSpeeds(0f, 0f);
+        }
+    }
 }

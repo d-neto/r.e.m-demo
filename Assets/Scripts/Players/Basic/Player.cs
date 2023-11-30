@@ -80,6 +80,8 @@ public class Player: MonoBehaviour
     }
     
     void OnDeath(){
+        GetCollider().enabled = false;
+        DisableCollision();
         StateMachine.ChangeState(States.DeadState);
         this.AIM.gameObject.SetActive(false);
     }
@@ -95,8 +97,12 @@ public class Player: MonoBehaviour
         if(Stats.IsDead()) return;
         this.gameObject.layer = 6;
     }
-    public void DisableCollision() => this.gameObject.layer = 24;
+    public void DisableCollision(){
+        if(Stats.IsDead()) return;
+        this.gameObject.layer = 24;
+    } 
     public SpriteRenderer Graphics() => this.Renderer;
+    public Collider2D GetCollider() => this.Collider;
     public InputHandler GetInput() => this.Input;
     public void PlayAudio(AudioClip audioClip, float volume = 0.4f) => this.Audio.PlayOneShot(audioClip, volume);
     public PlayerTips GetTips() => this.Tips;

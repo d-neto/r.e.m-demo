@@ -20,6 +20,7 @@ MonoBehaviour:
   shoot: KeyboardA:Fire
   reload: KeyboardA:Reload
   switchTarget: KeyboardA:SwitchTarget
+  switchAIMMode: KeyboardA:SwitchAIMMode
   confirm: KeyboardA:Confirm
   pause: KeyboardA:Pause
   handleHorizontal: 

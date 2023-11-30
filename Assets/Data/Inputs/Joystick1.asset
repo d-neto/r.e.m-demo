@@ -20,6 +20,7 @@ MonoBehaviour:
   shoot: Joystick1:Fire
   reload: Joystick1:Reload
   switchTarget: Joystick1:SwitchTarget
+  switchAIMMode: Joystick1:SwitchAIMMode
   confirm: Joystick1:Confirm
   pause: Joystick1:Pause
   handleHorizontal: Joystick1:AnalogHorizontal

@@ -66,8 +66,10 @@ public class Enemy : MonoBehaviour
     public Vector3 GetTargetPosition(){
         GameObject player = null;
         foreach(GameObject g in GameObject.FindGameObjectsWithTag("Player"))
-            if(player == null || Vector2.Distance(g.transform.position, transform.position) < Vector2.Distance(player.transform.position, transform.position))
+            if(g.layer != 7 && (player == null || Vector2.Distance(g.transform.position, transform.position) < Vector2.Distance(player.transform.position, transform.position)))
                 player = g;
-        return player.transform.position;
+        if(player != null)
+            return player.transform.position;
+        return Vector3.zero;
     }
 }

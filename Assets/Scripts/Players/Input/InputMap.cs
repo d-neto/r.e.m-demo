@@ -10,6 +10,7 @@ public class InputMap : ScriptableObject {
     public string shoot;
     public string reload;
     public string switchTarget;
+    public string switchAIMMode;
     public string confirm;
     public string pause;
     public string handleHorizontal;

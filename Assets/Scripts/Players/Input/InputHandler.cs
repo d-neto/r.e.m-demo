@@ -38,9 +38,11 @@ public class InputHandler : MonoBehaviour
     public bool GetSwitchTargetDown() => Input.GetButtonDown(InputButtons.switchTarget);
     public bool GetDropObject() => Input.GetButton(InputButtons.dropObject);
     public bool GetPickObject() => Input.GetButton(InputButtons.pickObject);
+    public bool GetSwitchModeDown() => Input.GetButtonDown(InputButtons.switchAIMMode);
     public bool GetConfirmDown() => Input.GetButtonDown(InputButtons.confirm);
     public bool GetConfirm() => Input.GetButton(InputButtons.confirm);
     public bool GetPauseDown() => Input.GetButtonDown(InputButtons.pause);
+    public int GetJoystick() => InputButtons.joystickIndex;
 
     Vector2 analog = new Vector2();
     public Vector2 GetAxisAnalog(){
@@ -52,6 +54,11 @@ public class InputHandler : MonoBehaviour
         analog.x = Input.GetAxisRaw(InputButtons.handleHorizontal);
         analog.y = Input.GetAxisRaw(InputButtons.handleVertical);
         return analog;
+    }
+    public bool GetAxisAnalogMaxOffset(float value){
+        analog.x = Input.GetAxisRaw(InputButtons.handleHorizontal);
+        analog.y = Input.GetAxisRaw(InputButtons.handleVertical);
+        return (Mathf.Abs(analog.x) > value || Mathf.Abs(analog.y) > value);
     }
 }
 

@@ -92,7 +92,7 @@ public class BasicGun : Gun {
     }
 
     bool IsFireShootPressed(){
-        return (withPlayer.GetInput().GetFire() || (withPlayer.GetAIM().mode == AIM_MODE.JoystickAuto && withPlayer.GetInput().GetAxisAnalogRaw() != Vector2.zero)) && !isReloading && canShoot;
+        return (withPlayer.GetInput().GetFire() || (withPlayer.GetAIM().mode == AIM_MODE.JoystickAuto && withPlayer.GetInput().GetAxisAnalogMaxOffset(0.3f))) && !isReloading && canShoot;
     }
 
 }

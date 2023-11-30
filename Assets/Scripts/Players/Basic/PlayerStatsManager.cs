@@ -39,7 +39,10 @@ public class PlayerStatsManager
         player.Data.life -= (damage - player.Data.endurance) > 0 ? (damage-player.Data.endurance) : 0;
         LifeSlider(player.Data.life);
         player.UI().LifeSliderAnimator().SetTrigger("damage");
-        OnDamage?.Invoke(origin);
+        if(player.Data.life <= 0){
+            isDead = true;
+            OnDeath?.Invoke();
+        }else OnDamage?.Invoke(origin);
     }
 
     void LifeSlider(float life){
