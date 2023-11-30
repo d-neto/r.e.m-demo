@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance;
-    private List<AbleAim> enemies = new List<AbleAim>();
+    private List<Enemy> enemies = new List<Enemy>();
 
     private void Awake(){
         if(Instance == null)
@@ -13,21 +13,20 @@ public class EnemyManager : MonoBehaviour
         else Destroy(this);
     }
 
-    public void RegisterEnemy(AbleAim enemy){
+    public void RegisterEnemy(Enemy enemy){
         if (!enemies.Contains(enemy)) enemies.Add(enemy);
     }
 
-    public void UnregisterEnemy(AbleAim enemy){
+    public void UnregisterEnemy(Enemy enemy){
         if (enemies.Contains(enemy)) enemies.Remove(enemy);
     }
 
-    public List<AbleAim> GetEnemiesInRadius(Vector2 position, float searchRadius){
-        if(enemies.Count == 0) return enemies;
-        List<AbleAim> enemiesInRadius = new List<AbleAim>();
-        foreach (AbleAim enemy in enemies)
-        {
-            float distance = Vector2.Distance(position, enemy.transform.position);
-            if (distance <= searchRadius) enemiesInRadius.Add(enemy);
+    public List<AbleToAim> GetEnemiesInRadius(Vector2 position, float searchRadius){
+        List<AbleToAim> enemiesInRadius = new List<AbleToAim>();
+        if(enemies.Count == 0) return enemiesInRadius;
+        for(int i = 0; i < enemies.Count; i++){
+            float distance = Vector2.Distance(position, enemies[i].transform.position);
+            if (distance <= searchRadius) enemiesInRadius.Add(enemies[i].GetAbleToAim());
         }
         return enemiesInRadius;
     }

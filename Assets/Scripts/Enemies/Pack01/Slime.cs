@@ -60,7 +60,7 @@ public class Slime : Enemy
         SuperAnimator.SetTrigger("dead");
         Anim.SetTrigger("dead");
         Instantiate(PSDeath, particleSpawn.position, Quaternion.identity);
-        clone = Instantiate(GetData().XPPrefab, GetComponent<AbleAim>().Get().position, GetComponent<AbleAim>().Get().rotation);
+        clone = Instantiate(GetData().XPPrefab, GetComponent<AbleToAim>().Get().position, GetComponent<AbleToAim>().Get().rotation);
         clone.GetComponent<Experience>().Set(GetData().XPAmount);
     }
 

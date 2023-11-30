@@ -26,7 +26,7 @@ public class PlayerData : ScriptableObject
     
     [Header("Hand Weapons")]
     public int maxGunsInHands = 1;
-    public int actualGunsInHands = 1;
+    public Gun actualGunInHands = null;
     public List<Weapon> weapons;
 
 

@@ -10,6 +10,7 @@ public class BasicDeadState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        this.player.Config.DropAllGuns();
         this.player.gameObject.layer = 7;
         player.Movement.Lock(true);
         player.DisableCollision();

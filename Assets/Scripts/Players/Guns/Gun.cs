@@ -10,6 +10,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private float maxAngle = 360.0f;
     [SerializeField] private Transform targetRefer;
     [SerializeField] protected AudioSource Audio;
+    [SerializeField] protected PickableComponent pickableComponent;
     [SerializeField] private bool canInvertOn90Degree = true;
 
     [Header("Audios")]
@@ -46,6 +47,8 @@ public abstract class Gun : MonoBehaviour
     private void Awake(){
         if(!this.Audio)
             this.Audio = GetComponent<AudioSource>();
+        if(!this.pickableComponent) 
+            this.pickableComponent = GetComponent<PickableComponent>();
     }
 
     private void Start(){
@@ -153,4 +156,6 @@ public abstract class Gun : MonoBehaviour
             this.Aim.ActiveMode();
 
     }
+
+    public PickableComponent PickObject() => this.pickableComponent;
 }

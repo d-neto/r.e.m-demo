@@ -55,7 +55,7 @@ public class PickableComponent : MonoBehaviour {
         cloneView.GetComponent<PickableObject>().SetPick(this.gameObject);
 
         if(GetComponentType() == ComponentType.GUN){
-            player.Config?.RemoveFireGun();
+            player.Config?.RemoveFireGun(this.GetComponent<Gun>());
             for(int i = 0; i < transform.childCount; i++)
                 Destroy(transform.GetChild(i).gameObject);
         }

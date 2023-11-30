@@ -183,12 +183,12 @@ public class AimController : MonoBehaviour
         }
     }
 
-    List<AbleAim> targets = new List<AbleAim>();
+    List<AbleToAim> targets = new List<AbleToAim>();
 
     [SerializeField]
-    AbleAim actualTarget;
+    AbleToAim actualTarget;
     int targetIndex;
-    List<AbleAim> tempTargets;
+    List<AbleToAim> tempTargets;
     public void NewSearchTarget(float range = 15, bool findFirst = false){
         if(!EnemyManager.Instance){
             if(!disabled){
@@ -212,7 +212,7 @@ public class AimController : MonoBehaviour
             return;
         }
 
-        AbleAim choose = actualTarget;
+        AbleToAim choose = actualTarget;
         if(!actualTarget){
             choose = tempTargets.First();
             targetIndex = 0;
@@ -221,7 +221,7 @@ public class AimController : MonoBehaviour
 
         float distFromPlayer, distFromChoose, distChooseFromOther;
         int idx = 0;
-        foreach(AbleAim target in tempTargets){
+        foreach(AbleToAim target in tempTargets){
 
             if(targets != null && targets.Contains(target)) continue;
             else targets.Add(target);

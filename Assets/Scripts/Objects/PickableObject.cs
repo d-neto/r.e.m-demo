@@ -37,7 +37,11 @@ public class PickableObject : MonoBehaviour
                 pickObject.transform.SetParent(playerConfigs.GetNormalGunPosition());
                 pickableComponent.OnPick(this.gameObject, player);
                 pickableComponent.SetPlayer(player);
-                playerConfigs.AddFireGun();
+
+                if(pickObject.GetComponent<PickableComponent>().GetComponentType() == PickableComponent.ComponentType.GUN){
+                    playerConfigs.AddFireGun(pickObject.GetComponent<Gun>());
+                }
+
                 player.GetTips().Destroy();
             }
         }else if(playerCatch){

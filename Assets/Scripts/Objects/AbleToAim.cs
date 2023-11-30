@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbleAim : MonoBehaviour
+public class AbleToAim : MonoBehaviour
 {
     [SerializeField] protected Transform center;
 

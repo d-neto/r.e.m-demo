@@ -354,6 +354,7 @@ MonoBehaviour:
   Anim: {fileID: 6019450066045679751}
   rb2D: {fileID: 7016453856850972424}
   target: {fileID: 0}
+  ableToAim: {fileID: 7239646475660861524}
   waitTime: 0.7
   airTime: 0.35
   UIDamageIndicatorText: {fileID: 4422758632536850164, guid: d7d2bdf18c4ca1f18876c81e840656ca, type: 3}

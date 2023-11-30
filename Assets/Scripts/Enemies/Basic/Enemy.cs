@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Animator Anim;
     [SerializeField] protected Rigidbody2D rb2D;
     [SerializeField] protected Transform target;
+    [SerializeField] protected AbleToAim ableToAim;
     [SerializeField] protected PathFinder Finder;
     protected bool isDead;
 
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Start(){
-        EnemyManager.Instance.RegisterEnemy(this.GetComponent<AbleAim>());
+        EnemyManager.Instance.RegisterEnemy(this);
     }
 
     void Update(){
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void OnDeath(){
-        EnemyManager.Instance.UnregisterEnemy(this.GetComponent<AbleAim>());
+        EnemyManager.Instance.UnregisterEnemy(this);
         isDead = true;
     }
 
@@ -72,4 +73,6 @@ public class Enemy : MonoBehaviour
             return player.transform.position;
         return Vector3.zero;
     }
+
+    public AbleToAim GetAbleToAim() => this.ableToAim;
 }
