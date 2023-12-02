@@ -10,7 +10,9 @@ public class PlayerData : ScriptableObject
     public float life;
     public float endurance;
     public float skillPower;
-    public float experience;
+    public int level = 0;
+    public float experience = 0;
+    public float score = 0;
 
     [Header("Movement")]
     public float speed;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
+    public float timing = 1f;
     public List<GameObject> enemies;
     public List<Transform> spawns;
 
@@ -15,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator InfiniteSpawn(){
         while(true){
             RandomSpawn();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(timing);
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,17 +14,26 @@ public class PlayerStatsManager
 
     private Player player;
     private Slider lifeSlider;
+    private Slider XPSlider;
     private Slider skillPowerSlider;
+    private TMP_Text level;
     private bool isDead = false;
+    private float initialMaxExperience = 10;
+    private float maxExperience = 10;
+    private float maxLife = 0;
     public PlayerStatsManager(Player player){
         this.player = player;
         this.lifeSlider = player.UI().LifeSlider();
+        this.XPSlider = player.UI().ExpSlider();
         this.skillPowerSlider = player.UI().SkillSlider();
-
-        if(this.lifeSlider){
-            this.lifeSlider.maxValue = player.Data.life;
-            this.lifeSlider.value = player.Data.life;
-        }
+        this.maxLife = player.Data.life;
+        this.level = player.UI().LevelText();
+        // if(this.lifeSlider){
+        //     this.lifeSlider.maxValue = player.Data.life;
+        //     this.lifeSlider.value = player.Data.life;
+        // }
+        // if(this.XPSlider != null)
+        //     VerifyXP();
     }
 
     public void Update(){
@@ -52,6 +62,30 @@ public class PlayerStatsManager
 
     public void AddXp(float amount){
         this.player.Data.experience += amount;
+        VerifyXP();
+    }
+
+    public void VerifyXP(){ 
+        while(player.Data.experience >= maxExperience){
+            player.Data.level++;
+            maxExperience = CalculateNewMaxXP(player.Data.level);
+            this.XPSlider.minValue = player.Data.experience;
+        }
+        float gap = (maxExperience-this.XPSlider.minValue) * 0.08f;
+        this.XPSlider.maxValue = maxExperience + gap;
+        this.XPSlider.value = player.Data.experience + gap;
+        this.level.text = player.Data.level.ToString();
+    }
+
+    public void UpdateLifeSlider(){
+        if(this.lifeSlider){
+            this.lifeSlider.maxValue = maxLife;
+            this.lifeSlider.value = player.Data.life;
+        }
+    }
+
+    float CalculateNewMaxXP(int actualLevel){
+        return maxExperience + initialMaxExperience + (actualLevel*2f);
     }
 
     public bool IsDead() => isDead;

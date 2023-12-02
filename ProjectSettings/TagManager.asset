@@ -9,6 +9,11 @@ TagManager:
   - UI:HUD
   - PlayerCameraFollow
   - UI:DamageIndicators
+  - PostProcessing
+  - UI:HUDPosition
+  - HUD:XPSlider
+  - HUD:HealthSlider
+  - HUD:Level
   layers:
   - Default
   - TransparentFX
@@ -30,14 +35,14 @@ TagManager:
   - Enemy
   - 
   - 
-  - 
-  - 
+  - PostProcessing
+  - PostProcessingInGame
   - 
   - 
   - InvunerablePlayer
   - 
-  - 
-  - 
+  - GlobalUI
+  - UICamera
   - 
   - MapConnection
   - MapGrid
