@@ -271,6 +271,7 @@ public class AimController : MonoBehaviour
     public void Setup(Player player, Transform nullTarget, AIM_MODE mode){
         Setup(player, nullTarget);
         this.mode = mode;
+        ActiveMode();
     }
 
     public void Lock(bool status) => this.isLocked = status;

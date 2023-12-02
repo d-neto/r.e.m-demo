@@ -166,6 +166,7 @@ MonoBehaviour:
   maxAngle: 360
   targetRefer: {fileID: 0}
   Audio: {fileID: 8120356736300072544}
+  pickableComponent: {fileID: 0}
   canInvertOn90Degree: 1
   shootAudioClip: {fileID: 8300000, guid: 279019825c8c619c284e0bfbc041227f, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: eed5cb0c3a2393a669920483b278b039, type: 3}

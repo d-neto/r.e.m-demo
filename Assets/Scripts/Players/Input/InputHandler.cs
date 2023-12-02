@@ -26,6 +26,7 @@ public class InputHandler : MonoBehaviour
     }
 
     public InputMap Get() => this.InputButtons;
+    public void Set(InputMap inputs) => this.InputButtons = inputs;
     public float GetHorizontal() => Input.GetAxis(InputButtons.horizontalAxis);
     public float GetHorizontalRaw() => Input.GetAxisRaw(InputButtons.horizontalAxis);
     public float GetVertical() => Input.GetAxis(InputButtons.verticalAxis);

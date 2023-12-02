@@ -9,15 +9,24 @@ public class PlayerManager : MonoBehaviour
     public List<GameObject> playersInGame;
     public List<Player> players;
     public GameObject UIGameOver;
-
     void Awake(){
         if(!Instance)
             Instance = this;
         else Destroy(this);
+
+        for(int i = 0; i < GameManager.Instance.players.Count; i++){
+            GameObject player = Instantiate(GameManager.Instance.players[i], null);
+            player.transform.position = Vector3.zero;
+            Player playerComponent = player.GetComponent<Player>();
+            playerComponent.GetInput().Set(GameManager.Instance.playersInputs[i]);
+            playerComponent.GetAIM().mode = GameManager.Instance.playersInputs[i].targetMode;
+            playerComponent.GetAIM().ActiveMode();
+            playersInGame.Add(player);
+        }
     }
 
     void Start(){
-        this.totalPlayers = GameObject.FindGameObjectsWithTag("Player");
+        this.totalPlayers = playersInGame.ToArray();
         SetPlayersAlive(ref players, ref playersInGame);
     }
 

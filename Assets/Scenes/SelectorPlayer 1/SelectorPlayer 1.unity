@@ -276,16 +276,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68233172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3090171, w: 0.95105654}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1251876534}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -36}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.5, y: 23.3}
+  m_AnchoredPosition: {x: 4.5, y: 14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &68233174
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 25fa721f6f4d393f7bed6b6df5d2d36f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: acbecdf3d9119dd8e8675a65c3279a01, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 254753754}
   - component: {fileID: 254753753}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: '[ Game Manager ]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,7 +505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf27812820cd2544cbf5d5bb9a288e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterIndex: 0
+  playersInputs:
+  - {fileID: 11400000, guid: 59e2530d838ea58b0845175621c0b6e8, type: 2}
+  - {fileID: 11400000, guid: 3c598f68961511549af992a89b3451d8, type: 2}
   players: []
 --- !u!4 &254753754
 Transform:
@@ -1574,15 +1576,18 @@ MonoBehaviour:
     player: {fileID: 2358722470069083553, guid: 9892f1ace632c224aa444ead6d05d22d, type: 3}
   players:
   - inputs: {fileID: 11400000, guid: 59e2530d838ea58b0845175621c0b6e8, type: 2}
-    characterIndex: 0
+    characterIndex: -1
     selector: {fileID: 847757602}
+    playerPrefab: {fileID: 0}
     isReady: 0
+    isActived: 0
     pressedAxis: 0
-  player2:
-    inputs: {fileID: 11400000, guid: 3c598f68961511549af992a89b3451d8, type: 2}
-    characterIndex: 0
+  - inputs: {fileID: 11400000, guid: 3c598f68961511549af992a89b3451d8, type: 2}
+    characterIndex: -1
     selector: {fileID: 471913482}
+    playerPrefab: {fileID: 0}
     isReady: 0
+    isActived: 0
     pressedAxis: 0
   confirmAudio: {fileID: 8300000, guid: b1dddfaef5e1e0741b9ced16a982124a, type: 3}
   errorAudio: {fileID: 8300000, guid: cedecef8af02be14ba4a593cb8a18d4e, type: 3}
@@ -2565,17 +2570,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select Player
+  m_text: Player Selection
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d1a97a2b6106919d6b9e07feb5d4f39f, type: 2}
-  m_sharedMaterial: {fileID: 6213569904331144213, guid: d1a97a2b6106919d6b9e07feb5d4f39f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 976200964e6ee0960a5a9fe2e97084d3, type: 2}
+  m_sharedMaterial: {fileID: -3278140680719410216, guid: 976200964e6ee0960a5a9fe2e97084d3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4284868583
+  m_fontColor: {r: 0.90636104, g: 0.9068739, b: 0.39607954, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2592,8 +2597,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2819,7 +2824,7 @@ SceneRoots:
   - {fileID: 995906200}
   - {fileID: 847757605}
   - {fileID: 471913485}
-  - {fileID: 254753754}
   - {fileID: 1947956518}
   - {fileID: 412100454}
   - {fileID: 374622278}
+  - {fileID: 254753754}

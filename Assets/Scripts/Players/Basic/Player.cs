@@ -46,10 +46,10 @@ public class Player: MonoBehaviour
 
         States = new StateGroup(this, this.StateMachine, this.Data);
 
-        Config.AddFireGun(Data.actualGunInHands);
-
         if(!AIM)
             CreateAim();
+
+        Config.AddFireGunPrefab(Data.actualGunInHands);
     }
 
     void Start(){

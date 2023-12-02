@@ -25,5 +25,5 @@ MonoBehaviour:
   pause: Joystick1:Pause
   handleHorizontal: Joystick1:AnalogHorizontal
   handleVertical: Joystick1:AnalogVertical
-  targetMode: 3
+  targetMode: 2
   joystickIndex: 0

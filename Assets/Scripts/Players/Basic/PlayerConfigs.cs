@@ -47,6 +47,21 @@ public class PlayerConfigs
         if(gun == null) return;
         guns.Add(gun);
     }
+
+    public void AddFireGunPrefab(GameObject gun){
+        if(gun == null) return;
+
+        GameObject newGun = GameObject.Instantiate(gun, null);
+        newGun.SetActive(false);
+        newGun.transform.SetParent(GetNormalGunPosition());
+        newGun.transform.localPosition = Vector3.zero;
+
+        newGun.GetComponent<Gun>().withPlayer = player;
+        newGun.GetComponent<PickableComponent>().SetPlayer(player);
+        AddFireGun(newGun.GetComponent<Gun>());
+        newGun.SetActive(true);
+    }
+
     public void RemoveFireGun(Gun gun){
         if(gun == null) return;
         guns.Remove(gun);

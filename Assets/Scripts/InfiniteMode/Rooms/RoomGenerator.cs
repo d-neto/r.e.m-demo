@@ -8,7 +8,6 @@ public class RoomGenerator : MonoBehaviour
 {
     
     public static RoomGenerator Instance;
-    public List<Player> players = new List<Player>();
     public List<Room> rooms = new List<Room>();
 
     public RoomGroup roomsPrefabs;
@@ -31,9 +30,6 @@ public class RoomGenerator : MonoBehaviour
     }
 
     void Start(){
-        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-            players.Add(player.GetComponent<Player>());
-
         if(!initStarted)
             StartCoroutine(StartGenerate());
     }
@@ -150,7 +146,7 @@ public class RoomGenerator : MonoBehaviour
 
     bool IsRoomNearPlayer(Room room)
     {
-        foreach (Player player in players)
+        foreach (Player player in PlayerManager.Instance.players)
         {
             float distance = Vector2.Distance(room.transform.position, player.transform.position);
             if (distance < 32*4){

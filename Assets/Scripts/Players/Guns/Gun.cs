@@ -63,12 +63,16 @@ public abstract class Gun : MonoBehaviour
     }
 
     private void OnEnable(){
-        OnEnableGun();
+        if(!withPlayer) return;
+        if(this.transform.childCount <= 0)
+            this.SetupGun(withPlayer.Data.GetWeapon(referenceCode), withPlayer.GetAIM());
         if(hasLight){
             if(this.Light) Destroy(this.Light);
-            this.Light = Instantiate(this.LightPrefab, bulletTarget);
+            this.Light = Instantiate(this.LightPrefab, null);
+            this.Light.transform.SetParent(bulletTarget);
             this.Light.transform.localPosition = Vector3.zero;
         }
+        OnEnableGun();
     }
 
     private void Update()
@@ -94,7 +98,7 @@ public abstract class Gun : MonoBehaviour
         
     }
     public virtual void OnStart() {
-        if(withPlayer == null) withPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if(withPlayer == null) return;
         this.Aim = withPlayer.GetAIM();
     }
 

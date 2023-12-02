@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int characterIndex;
     public static GameManager Instance {get; private set;}
-    public List<PlayerSelectionSettings> players;
+    public List<InputMap> playersInputs;
+    public List<GameObject> players = new List<GameObject>(2);
     void Awake()
     {
         if(Instance == null) Instance = this;

@@ -145,7 +145,7 @@ MonoBehaviour:
   - {fileID: 5736834332796818903}
   - {fileID: 705398736696603369}
   - {fileID: 452761769683930818}
-  Anim: {fileID: 0}
+  Anim: {fileID: 132423215072613439}
   actualTarget: {fileID: 0}
 --- !u!210 &1677317605970672135
 SortingGroup:

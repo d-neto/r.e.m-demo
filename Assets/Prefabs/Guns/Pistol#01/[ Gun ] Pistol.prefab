@@ -166,6 +166,7 @@ MonoBehaviour:
   maxAngle: 360
   targetRefer: {fileID: 0}
   Audio: {fileID: 8120356736300072544}
+  pickableComponent: {fileID: 0}
   canInvertOn90Degree: 1
   shootAudioClip: {fileID: 8300000, guid: 1323d7ceaa4afbbffa86b33582997266, type: 3}
   reloadAudioClip: {fileID: 8300000, guid: eed5cb0c3a2393a669920483b278b039, type: 3}
@@ -181,7 +182,7 @@ MonoBehaviour:
   hasLight: 1
   LightPrefab: {fileID: 2082277598358406123, guid: 3b87350475156afbebd6c2cb958faa8c, type: 3}
   Light: {fileID: 0}
-  bulletPrefab: {fileID: 4586516442144795234, guid: 192a5f036bb30493298f6086df232ada, type: 3}
+  bulletPrefab: {fileID: 6939239731163391451, guid: c40517181276f59bcb376e86136ba28c, type: 3}
   dustParticle: {fileID: 5895144006383564259, guid: be5e1e8c755f4996ab71be0b44621e91, type: 3}
   bulletSpeed: 10
   bulletDamage: 3.5
