@@ -1579,7 +1579,7 @@ MonoBehaviour:
     isReady: 0
     pressedAxis: 0
   player2:
-    inputs: {fileID: 11400000, guid: 895703c827340092b9b7a91fc71def9f, type: 2}
+    inputs: {fileID: 11400000, guid: 3c598f68961511549af992a89b3451d8, type: 2}
     characterIndex: 0
     selector: {fileID: 471913482}
     isReady: 0
