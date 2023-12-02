@@ -23,6 +23,7 @@ public class SelectOption{
 }
 public class SelectMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject loading;
     [SerializeField] private List<SelectOption> characters;
     [SerializeField] private List<PlayerSelectionSettings> players;
     [SerializeField] private PlayerSelectionSettings player2;
@@ -109,7 +110,8 @@ public class SelectMenu : MonoBehaviour
         }
         if(!allReady) return;
 
-
+        GameManager.Instance.players = players;
+        loading.SetActive(true);
     }
     
 }

@@ -5,23 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int characterIndex;
-    private GameManager gameManager;
-    // Start is called before the first frame update
+    public static GameManager Instance {get; private set;}
+    public List<PlayerSelectionSettings> players;
     void Awake()
     {
-        if(gameManager == null){
-            gameManager = this;
-        }
-        else{
-            Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
+        if(Instance == null) Instance = this;
+        else Destroy(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
