@@ -304,9 +304,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b312d43511ee96f7b0403dd637c7aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 827506841048004409, guid: 84118f821543a03a2ad956f932e8fd9c, type: 3}
   lifeSliderAnimator: {fileID: 0}
   lifeSlider: {fileID: 0}
   skillPowerSlider: {fileID: 0}
+  XPSlider: {fileID: 0}
+  levelText: {fileID: 0}
   gunIcon: {fileID: 0}
   ammoText: {fileID: 0}
 --- !u!114 &1450313901202276073
