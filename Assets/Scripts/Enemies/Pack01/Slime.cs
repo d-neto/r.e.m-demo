@@ -41,6 +41,7 @@ public class Slime : Enemy
         this.waitTime = Random.Range(this.waitTime-0.1f, this.waitTime+0.1f);
 
         DamageCanvas = GameObject.FindWithTag("UI:DamageIndicators");
+        Finder.StartUpdate();
     }
     public override void OnUpdate()
     {

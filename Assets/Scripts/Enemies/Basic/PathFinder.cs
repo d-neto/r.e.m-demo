@@ -23,7 +23,6 @@ public class PathFinder
         this.seeker = seeker;
         this.enemy = e;
         this.updatePathTimer = updatePathTimer;
-        updatePath = enemy.StartCoroutine(UpdatePath());
     }
 
     public void Update(){
@@ -64,6 +63,11 @@ public class PathFinder
         if(path == null || (path != null && Vector3.Distance(enemy.transform.position, enemy.GetTargetPosition()) > nextWaypointDistance)){
             seeker.StartPath(enemy.transform.position, enemy.GetTargetPosition(), OnPathComplete);
         }
+    }
+
+    public void StartUpdate(){
+        if(updatePath == null)
+            updatePath = enemy.StartCoroutine(UpdatePath());
     }
 
     public void SetTimer(float value) => this.updatePathTimer = value;

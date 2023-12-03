@@ -33,7 +33,7 @@ TagManager:
   - 
   - PickableObject
   - Enemy
-  - 
+  - FlyingEnemy
   - 
   - PostProcessing
   - PostProcessingInGame
