@@ -13,8 +13,8 @@ public class Experience : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             if(!forPlayer){
                 other.gameObject.GetComponent<Player>().Stats.AddXp(this.amount);
-                Destroy(this.gameObject);
                 XPManager.Instance.PlayAudio(audioClip);
+                Destroy(this.gameObject);
             }else if(forPlayer == other.gameObject.GetComponent<Player>()){
                 forPlayer.Stats.AddXp(this.amount);
                 XPManager.Instance.PlayAudio(audioClip);

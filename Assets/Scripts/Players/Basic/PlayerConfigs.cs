@@ -75,4 +75,8 @@ public class PlayerConfigs
         guns.Clear();
         if(guns.Count <= 0) player.GetAIM().Disabled(true);
     }
+
+    public List<Gun> GetAllGuns(){
+        return this.guns;
+    }
 }

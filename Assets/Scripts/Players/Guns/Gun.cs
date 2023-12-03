@@ -23,6 +23,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] protected int maxAmmo;
     [SerializeField] protected int currentAmmo;
     [SerializeField] protected int loadedAmmo;
+    [SerializeField] protected float bulletDamage;
 
     [SerializeField] private int fireRateInMS;
     [SerializeField] private int reloadTimeInMS;
@@ -162,4 +163,7 @@ public abstract class Gun : MonoBehaviour
     }
 
     public PickableComponent PickObject() => this.pickableComponent;
+
+    public void AddDamage(float damage) => this.bulletDamage += damage;
+    public void LessFireRate(float value) => this.fireRate -= value;
 }

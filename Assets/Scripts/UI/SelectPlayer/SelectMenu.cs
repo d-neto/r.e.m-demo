@@ -97,7 +97,7 @@ public class SelectMenu : MonoBehaviour
                 allReady = false;
                 break;
             }
-            if(players[i].isReady) GameManager.Instance.players.Add(players[i].playerPrefab);
+            if(players[i].isReady && !GameManager.Instance.players.Contains(players[i].playerPrefab)) GameManager.Instance.players.Add(players[i].playerPrefab);
         }
         if(!allReady) return;
 

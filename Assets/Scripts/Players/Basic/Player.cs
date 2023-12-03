@@ -14,6 +14,7 @@ public class Player: MonoBehaviour
     public PlayerTips Tips;
 
     [Header("Player Components")]
+    [SerializeField] private SkillManager SkillManager;
     [SerializeField] private InputHandler Input;
     [SerializeField] private Animator Anim;
     [SerializeField] private AudioSource Audio;
@@ -107,6 +108,7 @@ public class Player: MonoBehaviour
     public void PlayAudio(AudioClip audioClip, float volume = 0.4f) => this.Audio.PlayOneShot(audioClip, volume);
     public PlayerTips GetTips() => this.Tips;
     public AimController GetAIM() => this.AIM;
+    public SkillManager GetSkillManager() => this.SkillManager;
     public void CreateAim(){
         this.AIM = Instantiate(this.Data.AimPrefab, null).GetComponent<AimController>();
         this.AIM.Setup(this, this.nullTargetPosition, this.Input.Get().targetMode);

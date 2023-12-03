@@ -46,6 +46,7 @@ public class InputHandler : MonoBehaviour
     public int GetJoystick() => InputButtons.joystickIndex;
 
     Vector2 analog = new Vector2();
+    Vector2 analogMovement = new Vector2();
     public Vector2 GetAxisAnalog(){
         analog.x = Input.GetAxis(InputButtons.handleHorizontal);
         analog.y = Input.GetAxis(InputButtons.handleVertical);
@@ -60,6 +61,11 @@ public class InputHandler : MonoBehaviour
         analog.x = Input.GetAxisRaw(InputButtons.handleHorizontal);
         analog.y = Input.GetAxisRaw(InputButtons.handleVertical);
         return (Mathf.Abs(analog.x) > value || Mathf.Abs(analog.y) > value);
+    }
+    public Vector2 GetAnalogMovementRaw(){
+        analogMovement.x = Input.GetAxisRaw(InputButtons.horizontalAxis);
+        analogMovement.y = Input.GetAxisRaw(InputButtons.verticalAxis);
+        return analogMovement;
     }
 }
 

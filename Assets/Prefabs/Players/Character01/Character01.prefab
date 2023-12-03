@@ -403,6 +403,7 @@ MonoBehaviour:
   Tips:
     player: {fileID: 1507406768997899912}
     pickObjectButton: {fileID: 3374782754042247013, guid: c22519b6a74b7de548b505d058e22d7e, type: 3}
+  SkillManager: {fileID: 5134059326459425842}
   Input: {fileID: 7144789858454219785}
   Anim: {fileID: 7194533984684189516}
   Audio: {fileID: 0}
@@ -456,7 +457,7 @@ MonoBehaviour:
   - {x: 0.10041283, y: -0.42855573, z: 0}
   m_ShapePathHash: 1473286560
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41540
+  m_InstanceId: 113402
   m_LocalBounds:
     m_Center: {x: -0.0039783195, y: -0.18215612, z: 0}
     m_Extent: {x: 0.10439115, y: 0.25428173, z: 0}

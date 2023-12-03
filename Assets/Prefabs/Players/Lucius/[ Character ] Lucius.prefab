@@ -328,6 +328,7 @@ MonoBehaviour:
   Tips:
     player: {fileID: 1450313901202276073}
     pickObjectButton: {fileID: 3374782754042247013, guid: c22519b6a74b7de548b505d058e22d7e, type: 3}
+  SkillManager: {fileID: 9079129841130746411}
   Input: {fileID: 144398507273202067}
   Anim: {fileID: 8368074375303039521}
   Audio: {fileID: 0}

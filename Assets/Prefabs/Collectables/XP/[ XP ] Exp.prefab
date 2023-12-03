@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8624458188259140017}
   - component: {fileID: 6374397077614112895}
   - component: {fileID: 784845644174361776}
-  m_Layer: 0
+  - component: {fileID: 9101837066326600691}
+  m_Layer: 9
   m_Name: '[ XP ] Exp'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +107,33 @@ MonoBehaviour:
   amount: 0
   forPlayer: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 442af65cdce3c001d886d5544fe1fd8d, type: 3}
+--- !u!50 &9101837066326600691
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2930067973319114197}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7771304643925972138
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7955234338083246339}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: '[ GFX ]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984369693680914106}
   - component: {fileID: 8050990796755077633}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

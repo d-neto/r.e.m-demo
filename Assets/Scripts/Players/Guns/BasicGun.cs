@@ -7,7 +7,6 @@ public class BasicGun : Gun {
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected GameObject dustParticle;
     [SerializeField] protected float bulletSpeed;
-    [SerializeField] protected float bulletDamage;
     protected bool canShoot = true;
 
     protected float timingRate = 0f;

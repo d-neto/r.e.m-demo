@@ -70,6 +70,8 @@ public class PlayerStatsManager
             player.Data.level++;
             maxExperience = CalculateNewMaxXP(player.Data.level);
             this.XPSlider.minValue = player.Data.experience;
+            if(SkillSelector.Instance)
+                SkillSelector.Instance.StartSelector(player);
         }
         float gap = (maxExperience-this.XPSlider.minValue) * 0.08f;
         this.XPSlider.maxValue = maxExperience + gap;

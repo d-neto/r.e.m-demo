@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour {
 
-    protected string skillName;
+    [SerializeField] protected string skillName;
     [SerializeField] protected SkillManager Manager;
 
     void Start(){
@@ -21,4 +21,9 @@ public class Skill : MonoBehaviour {
         //Do Something...
     }
 
+    public void SetManager(SkillManager manager){
+        this.Manager = manager;
+    }
+
+    public string GetName() => this.skillName;
 }
