@@ -16,6 +16,10 @@ public class MenuPrincipalManager : MonoBehaviour
     [SerializeField] List<InputMap> allInputs;
 
     bool isStarted = false;
+
+    void Start(){
+        Cursor.visible = true;
+    }
     void Update(){
         if(!isStarted && Input.anyKey && !Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2)){
             audioSource.PlayOneShot(startAudio, 0.8f);

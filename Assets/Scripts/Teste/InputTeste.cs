@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class InputTeste : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Joystick1:Confirm")) Debug.Log("APERTADO 1");
+        if(Input.GetButtonDown("Joystick2:Confirm")) Debug.Log("APERTADO 2 TBM!");
     }
 }

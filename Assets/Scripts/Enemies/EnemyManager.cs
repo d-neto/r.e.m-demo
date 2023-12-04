@@ -30,4 +30,6 @@ public class EnemyManager : MonoBehaviour
         }
         return enemiesInRadius;
     }
+
+    public int TotalEnemiesAlive () => enemies.Count;
 }

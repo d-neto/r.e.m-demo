@@ -87,7 +87,7 @@ public class PlayerStatsManager
     }
 
     float CalculateNewMaxXP(int actualLevel){
-        return maxExperience + initialMaxExperience + (actualLevel*2f);
+        return maxExperience + (initialMaxExperience*((actualLevel+1)/2f))+initialMaxExperience;
     }
 
     public bool IsDead() => isDead;

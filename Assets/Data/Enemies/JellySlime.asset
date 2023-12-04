@@ -17,5 +17,5 @@ MonoBehaviour:
   endurance: 0
   XPPrefab: {fileID: 2930067973319114197, guid: 5c9555e3a0fe1a65b9b47af69f3226fd, type: 3}
   XPAmount: 4
-  speed: 1
+  speed: 3
   animator: {fileID: 9100000, guid: e1450949e4df7501488ccfe0b7897784, type: 2}

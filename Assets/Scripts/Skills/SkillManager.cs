@@ -51,7 +51,6 @@ public class SkillManager : MonoBehaviour
         foreach(Skill skill in Skills)
             if(skill.GetName() == skillName)
                 count++;
-        Debug.Log(skillName +": "+count);
         return count;
     }
 

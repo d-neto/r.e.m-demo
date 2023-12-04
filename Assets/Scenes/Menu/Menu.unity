@@ -2853,6 +2853,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59e2530d838ea58b0845175621c0b6e8, type: 2}
   - {fileID: 11400000, guid: 895703c827340092b9b7a91fc71def9f, type: 2}
   - {fileID: 11400000, guid: 3c598f68961511549af992a89b3451d8, type: 2}
+  - {fileID: 11400000, guid: c4755cdf30dba8abc84e97a348b19db4, type: 2}
 --- !u!4 &1147311782
 Transform:
   m_ObjectHideFlags: 0
@@ -3055,7 +3056,7 @@ MonoBehaviour:
   m_Value: 2
   m_Options:
     m_Options:
-    - m_Text: Keyboard And Mouse
+    - m_Text: Keyboard&Mouse
       m_Image: {fileID: 0}
     - m_Text: Keyboard
       m_Image: {fileID: 0}
@@ -4490,7 +4491,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 410d58825cf94da409ebb5df427fadba, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5240,7 +5241,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Keyboard And Mouse
+    - m_Text: Keyboard&Mouse
       m_Image: {fileID: 0}
     - m_Text: Keyboard
       m_Image: {fileID: 0}

@@ -27,6 +27,12 @@ public class JoystickVibration : MonoBehaviour
         Gamepad.all[index]?.SetMotorSpeeds(0f, 0f);
     }
 
+    public void DisableAll(){
+        for(int i = 0; i < Gamepad.all.Count; i++){
+            Gamepad.all[i]?.SetMotorSpeeds(0f, 0f);
+        }
+    }
+
     private void OnApplicationQuit() {
         for(int i = 0; i < Gamepad.all.Count; i++){
             Gamepad.all[i]?.SetMotorSpeeds(0f, 0f);

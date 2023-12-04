@@ -96,8 +96,7 @@ public class SkillSelector : MonoBehaviour
 
         SkillCanvas.SetActive(true);
         isChoosing = true;
-        Debug.Log("ISCHOOSING: "+isChoosing);
-        Debug.Log("PLAYER: "+actualPlayer);
+        JoystickVibration.Instance.DisableAll();
         Time.timeScale = 0f;
     }
 

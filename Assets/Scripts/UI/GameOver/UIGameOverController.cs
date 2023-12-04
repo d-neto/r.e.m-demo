@@ -56,6 +56,10 @@ public class UIGameOverController : MonoBehaviour
                     Time.timeScale = 1;
                     SceneManager.LoadScene(0);
                     break;
+                case 1:
+                    Time.timeScale = 1;
+                    SceneManager.LoadScene(2);
+                    break;
             }
         }
     }

@@ -37,7 +37,7 @@ public class BasicGun : Gun {
         }
         if(withPlayer.GetInput().GetFireDown() && loadedAmmo <= 0 && currentAmmo <= 0 && timingRate <= 0 && !isInfinite){
             timingRate = fireRate;
-            Audio.PlayOneShot(emptyAudioClip, 0.1f);
+            Audio.PlayOneShot(emptyAudioClip, 0.8f);
         }
     }
 
@@ -62,11 +62,11 @@ public class BasicGun : Gun {
         timingRate = fireRate;
         loadedAmmo -= 1;
         MyCamera.Instance.ShakeCam(0.2f, 1.4f, 1f);
-        this.Audio.PlayOneShot(shootAudioClip, 0.1f);
+        this.Audio.PlayOneShot(shootAudioClip, 0.8f);
     }
 
     public override void Reload(){
-        this.Audio.PlayOneShot(reloadAudioClip, 0.1f);
+        this.Audio.PlayOneShot(reloadAudioClip, 0.8f);
         if(!isReloading){
             StartCoroutine(ReloadingAmmo());
         }

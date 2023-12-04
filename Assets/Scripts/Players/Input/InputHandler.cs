@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     public delegate void InputEvent();
@@ -40,7 +41,9 @@ public class InputHandler : MonoBehaviour
     public bool GetDropObject() => Input.GetButton(InputButtons.dropObject);
     public bool GetPickObject() => Input.GetButton(InputButtons.pickObject);
     public bool GetSwitchModeDown() => Input.GetButtonDown(InputButtons.switchAIMMode);
-    public bool GetConfirmDown() => Input.GetButtonDown(InputButtons.confirm);
+    public bool GetConfirmDown(){
+        return Input.GetButtonDown(InputButtons.confirm);
+    }
     public bool GetConfirm() => Input.GetButton(InputButtons.confirm);
     public bool GetPauseDown() => Input.GetButtonDown(InputButtons.pause);
     public int GetJoystick() => InputButtons.joystickIndex;
